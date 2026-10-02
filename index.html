@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Natalia & Franco — Nuestro Matrimonio · 30 · 01 · 27</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'linen-sand': '#E4D9C8',
+            'olive-deep': '#353B2D',
+            'olive-dark': '#2D3326',
+            'bronze-gold': '#8E5F34',
+            'gold-light': '#B5824C',
+            'gold-muted': '#A48259',
+            'gold-border': '#D8C5AE',
+            'paper-card': '#FAF7F2',
+            'text-charcoal': '#3D362E',
+            'text-muted': '#7D7060',
+            'parchment-map': '#F4E9D7',
+          },
+          fontFamily: {
+            script: ['"Alex Brush"', 'cursive'],
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Montserrat"', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      color: #3D362E;
+      background-color: #FAF8F5;
+      background-image: 
+        linear-gradient(180deg, rgba(250, 248, 245, 0.76) 0%, rgba(246, 241, 233, 0.70) 100%),
+        url('images/background.jpeg');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      background-attachment: scroll;
+    }
+
+    .font-script { font-family: 'Alex Brush', cursive; }
+    .font-serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+    .font-sans-caps { font-family: 'Montserrat', sans-serif; text-transform: uppercase; }
+
+    /* ================= HERO SECTION BACKGROUND ================= */
+    .hero-linen-bg {
+      position: relative;
+      background-image: 
+        radial-gradient(ellipse at 50% 45%, rgba(255, 255, 255, 0.25) 0%, rgba(228, 217, 200, 0.1) 80%),
+        url('images/background.jpeg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      min-height: 560px;
+      overflow: hidden;
+    }
+    .hero-linen-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(250, 248, 245, 0.2) 0%, rgba(235, 226, 215, 0.15) 65%, rgba(220, 208, 192, 0.3) 100%);
+      pointer-events: none;
+    }
+
+    /* Envelope styling */
+    .envelope-container {
+      filter: drop-shadow(0 16px 28px rgba(65, 50, 35, 0.16));
+    }
+
+    /* Card styling */
+    .invitation-card {
+      background: #FAF7F2;
+      box-shadow: 0 10px 32px rgba(55, 42, 28, 0.12);
+      position: relative;
+      border: 1px solid rgba(214, 197, 174, 0.5);
+    }
+    .card-inner-border {
+      position: absolute;
+      inset: 10px;
+      border: 1px solid #D6C5AE;
+      pointer-events: none;
+    }
+
+    /* Polaroid photo stack */
+    .polaroid-frame {
+      background: #FFFFFF;
+      padding: 5px 5px 18px 5px;
+      box-shadow: 0 10px 24px rgba(45, 35, 20, 0.2), 0 2px 6px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+    .polaroid-frame:hover {
+      transform: scale(1.05) rotate(0deg) !important;
+      z-index: 35 !important;
+    }
+
+    /* Form input styling */
+    .rsvp-input {
+      width: 100%;
+      padding: 7px 11px;
+      background: #FFFFFF;
+      border: 1px solid #DFD5C6;
+      border-radius: 2px;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 13.5px;
+      color: #3D362E;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    .rsvp-input::placeholder {
+      color: #9A8D7E;
+      font-style: italic;
+    }
+    .rsvp-input:focus {
+      border-color: #8E5F34;
+      box-shadow: 0 0 0 1px rgba(142, 95, 52, 0.35);
+    }
+
+    /* Brown pill button */
+    .btn-brown-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6.5px 22px;
+      background: #8E5F34;
+      color: #FFFFFF;
+      border-radius: 9999px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      text-decoration: none;
+      box-shadow: 0 3px 8px rgba(142, 95, 52, 0.22);
+      transition: all 0.25s ease;
+    }
+    .btn-brown-pill:hover {
+      background: #754B24;
+      transform: translateY(-1px);
+      box-shadow: 0 5px 12px rgba(142, 95, 52, 0.3);
+    }
+
+    /* Map styling */
+    .vintage-map-container {
+      background: #F4E9D7;
+      border: 2px solid #8E6D4B;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(60, 45, 25, 0.1);
+    }
+    .vintage-map-inner-border {
+      position: absolute;
+      inset: 4px;
+      border: 1px solid #C4A783;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-amber-100 selection:text-amber-900">
+
+  <!-- ======================================================== -->
+  <!-- 1. HERO / INVITATION SECTION                             -->
+  <!-- ======================================================== -->
+  <section class="hero-linen-bg py-10 sm:py-14 flex flex-col items-center justify-center relative">
+    <div class="hero-linen-overlay"></div>
+
+    <!-- Main Assembly: Envelope + Card + Polaroids + Gardenia + Bougainvillea -->
+    <div class="relative z-10 max-w-4xl mx-auto w-full px-4 flex items-center justify-center">
+      <div class="relative w-full max-w-[500px] sm:max-w-[560px] md:max-w-[600px] flex items-center justify-center py-4">
+
+        <!-- Envelope and Letter Assembly -->
+        <div class="envelope-container relative flex items-center justify-center">
+          <img src="images/envelope.svg" alt="Sobre de invitación" class="w-[310px] sm:w-[380px] md:w-[420px] h-[340px] sm:h-[400px] md:h-[440px] select-none" />
+
+          <!-- Central Invitation Letter -->
+          <div class="invitation-card absolute z-10 w-[220px] sm:w-[260px] md:w-[285px] filter drop-shadow-[0_10px_32px_rgba(55,42,28,0.14)]" style="top: 50%; left: 50%; transform: translate(-50%, -46%);">
+            <img src="images/letter.svg" alt="Carta de invitación: Natalia & Franco — Sábado 30 · 01 · 27" class="w-full h-auto block select-none" />
+          </div>
+        </div>
+
+        <!-- Polaroid Photos Stack (Top Right) -->
+        <div class="absolute right-[0px] sm:right-[-10px] md:right-[-30px] top-[10px] sm:top-[20px] z-20 pointer-events-auto">
+          
+          <!-- Bougainvillea Flower Accent pinned top-right -->
+          <div class="absolute -top-7 -right-2 z-30 w-14 h-14 sm:w-16 sm:h-16 pointer-events-none drop-shadow-md">
+            <img src="images/bougainvillea-flower.svg" alt="Flor Bougainvillea" class="w-full h-full transform rotate-12 select-none" />
+          </div>
+
+          <!-- Polaroid 1 (Top: Couple outdoors at twilight) -->
+          <div class="polaroid-frame w-[95px] sm:w-[118px] md:w-[136px] transform rotate-[9deg] absolute -top-2 right-4 sm:right-6 z-20 cursor-pointer">
+            <div class="aspect-[4/3] bg-neutral-800 overflow-hidden relative">
+              <img src="images/polaroid-1.jpg" alt="Natalia y Franco al atardecer" class="w-full h-full object-cover brightness-95 contrast-105" />
+            </div>
+          </div>
+
+          <!-- Polaroid 2 (Middle: Scenic Landscape) -->
+          <div class="polaroid-frame w-[88px] sm:w-[108px] md:w-[124px] transform rotate-[1deg] absolute top-10 right-0 sm:right-2 z-10 opacity-90 cursor-pointer">
+            <div class="aspect-[4/3] bg-neutral-700 overflow-hidden relative">
+              <img src="images/polaroid-2.jpg" alt="Paisaje" class="w-full h-full object-cover sepia-[0.2]" />
+            </div>
+          </div>
+
+          <!-- Polaroid 3 (Bottom: Smiling couple portrait) -->
+          <div class="polaroid-frame w-[95px] sm:w-[118px] md:w-[136px] transform rotate-[-3deg] absolute top-24 sm:top-32 right-5 sm:right-8 z-20 cursor-pointer">
+            <div class="aspect-[4/3] bg-neutral-200 overflow-hidden relative">
+              <img src="images/polaroid-3.jpg" alt="Retrato Novios" class="w-full h-full object-cover brightness-105" />
+            </div>
+          </div>
+        </div>
+
+        <!-- White Gardenia Flower with dark leaves (Bottom-Right of Card) -->
+        <div class="absolute bottom-[-10px] sm:bottom-[-16px] right-[90px] sm:right-[120px] md:right-[140px] z-30 pointer-events-none drop-shadow-xl w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32">
+          <img src="images/gardenia-flower.svg" alt="Flor Gardenia" class="w-full h-full object-contain select-none" />
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Audio / Music Player Controls below Hero Card -->
+    <div class="relative z-20 mt-2 flex flex-col items-center justify-center w-full max-w-[260px] sm:max-w-[290px] mx-auto px-4">
+      <div id="player-progress-bar" class="w-full h-[2px] bg-white/45 rounded-full relative cursor-pointer my-2">
+        <div id="player-progress-fill" class="h-full bg-white rounded-full w-[26%] relative">
+          <span class="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full shadow-sm"></span>
+        </div>
+      </div>
+      <div class="flex items-center justify-center gap-6 mt-1 text-white">
+        <button id="btn-player-prev" class="text-white/80 hover:text-white transition-opacity transform hover:scale-110 active:scale-95" title="Anterior">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+          </svg>
+        </button>
+        <button id="btn-player-play" class="w-6 h-6 rounded-full border border-white flex items-center justify-center hover:bg-white/15 transition-all transform hover:scale-105 active:scale-95 shadow-sm" title="Reproducir música">
+          <span id="player-play-icon" class="w-2 h-2 bg-white rounded-full block"></span>
+        </button>
+        <button id="btn-player-next" class="text-white/80 hover:text-white transition-opacity transform hover:scale-110 active:scale-95" title="Siguiente">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 2. COUNTDOWN / CUENTA REGRESIVA SECTION                  -->
+  <!-- ======================================================== -->
+  <section class="relative py-7 sm:py-9 text-white overflow-hidden" style="background-color: #353B2D; background-image: radial-gradient(circle at 50% 50%, rgba(65, 75, 55, 0.4) 0%, rgba(42, 48, 35, 0.8) 100%);">
+    
+    <!-- Left Fine-Line Etched Botanical Branch -->
+    <div class="absolute left-2 sm:left-6 md:left-12 top-1/2 -translate-y-1/2 w-16 sm:w-24 md:w-32 h-24 sm:h-32 opacity-40 pointer-events-none">
+      <img src="images/countdown-leaves.svg" alt="Hojas botánicas" class="w-full h-full object-contain select-none" />
+    </div>
+
+    <!-- Right Fine-Line Etched Botanical Branch (Mirrored) -->
+    <div class="absolute right-2 sm:right-6 md:right-12 top-1/2 -translate-y-1/2 w-16 sm:w-24 md:w-32 h-24 sm:h-32 opacity-40 pointer-events-none transform scale-x-[-1]">
+      <img src="images/countdown-leaves.svg" alt="Hojas botánicas" class="w-full h-full object-contain select-none" />
+    </div>
+
+    <!-- Countdown Digits & Label -->
+    <div class="relative z-10 max-w-xl mx-auto px-4 text-center">
+      <div class="flex items-center justify-center gap-4 mb-3 sm:mb-5">
+        <span class="w-12 sm:w-20 h-[1px] bg-[#B5824C] opacity-50"></span>
+        <h2 class="font-sans-caps text-[#B5824C] text-[10px] sm:text-[11px] tracking-[0.3em] font-medium">
+          Cuenta Regresiva
+        </h2>
+        <span class="w-12 sm:w-20 h-[1px] bg-[#B5824C] opacity-50"></span>
+      </div>
+
+      <div class="flex items-center justify-center gap-1.5 sm:gap-5 md:gap-7">
+        <div class="text-center min-w-[50px] sm:min-w-[65px]">
+          <span id="cd-days" class="font-serif text-[40px] sm:text-[52px] md:text-[60px] leading-none text-[#B5824C] block font-light tracking-tight">120</span>
+          <span class="font-sans-caps text-[#B5824C] opacity-80 text-[7.5px] sm:text-[9px] tracking-[0.25em] font-medium mt-1 block">Días</span>
+        </div>
+
+        <span class="h-9 sm:h-12 w-[1px] bg-[#B5824C]/35"></span>
+
+        <div class="text-center min-w-[50px] sm:min-w-[65px]">
+          <span id="cd-hours" class="font-serif text-[40px] sm:text-[52px] md:text-[60px] leading-none text-[#B5824C] block font-light tracking-tight">19</span>
+          <span class="font-sans-caps text-[#B5824C] opacity-80 text-[7.5px] sm:text-[9px] tracking-[0.25em] font-medium mt-1 block">Horas</span>
+        </div>
+
+        <span class="h-9 sm:h-12 w-[1px] bg-[#B5824C]/35"></span>
+
+        <div class="text-center min-w-[50px] sm:min-w-[65px]">
+          <span id="cd-minutes" class="font-serif text-[40px] sm:text-[52px] md:text-[60px] leading-none text-[#B5824C] block font-light tracking-tight">43</span>
+          <span class="font-sans-caps text-[#B5824C] opacity-80 text-[7.5px] sm:text-[9px] tracking-[0.25em] font-medium mt-1 block">Minutos</span>
+        </div>
+
+        <span class="h-9 sm:h-12 w-[1px] bg-[#B5824C]/35"></span>
+
+        <div class="text-center min-w-[50px] sm:min-w-[65px]">
+          <span id="cd-seconds" class="font-serif text-[40px] sm:text-[52px] md:text-[60px] leading-none text-[#B5824C] block font-light tracking-tight">26</span>
+          <span class="font-sans-caps text-[#B5824C] opacity-80 text-[7.5px] sm:text-[9px] tracking-[0.25em] font-medium mt-1 block">Segundos</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 3. RSVP / CONFIRMAR ASISTENCIA SECTION                   -->
+  <!-- ======================================================== -->
+  <section class="py-12 sm:py-16 px-4 relative overflow-visible">
+    <div class="max-w-[720px] mx-auto relative">
+      
+      <!-- Card Container -->
+      <div class="bg-white rounded-[2px] border border-[#EAE1D4] shadow-[0_10px_38px_rgba(55,42,28,0.06)] grid grid-cols-1 md:grid-cols-12 overflow-visible relative z-10">
+        
+        <!-- Left Column: Confirmar Info -->
+        <div class="md:col-span-5 p-6 sm:p-7 flex flex-col items-center justify-center text-center border-b md:border-b-0 md:border-r border-[#EFE8DF]">
+          <h2 class="font-script text-bronze-gold text-[40px] sm:text-[46px] leading-none mb-2.5">
+            Confirmar
+          </h2>
+          <p class="font-sans-caps text-text-charcoal text-[9px] sm:text-[10px] tracking-[0.24em] font-semibold leading-relaxed mb-3.5">
+            Tu asistencia es muy<br />importante para nosotros
+          </p>
+
+          <!-- Botanical Sprig -->
+          <div class="flex items-center justify-center gap-3 my-2 w-full max-w-[170px]">
+            <span class="flex-1 h-[1px] bg-bronze-gold opacity-40"></span>
+            <img src="images/botanical-sprig.svg" alt="Detalle botánico" class="w-5 h-9 object-contain" />
+            <span class="flex-1 h-[1px] bg-bronze-gold opacity-40"></span>
+          </div>
+
+          <!-- Select dropdown: ¿Asistirás? -->
+          <div class="mt-3.5 w-full max-w-[170px]">
+            <select id="rsvp-attendance" class="w-full text-xs font-serif italic text-text-muted bg-white border border-[#D8CCBC] rounded-[2px] py-1.5 px-2.5 focus:outline-none focus:border-bronze-gold cursor-pointer">
+              <option value="">¿Asistirás?</option>
+              <option value="si">Sí, asistiré</option>
+              <option value="no">No podré asistir</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Right Column: Form Inputs -->
+        <div class="md:col-span-7 p-6 sm:p-7 flex flex-col justify-center">
+          
+          <div class="text-center mb-4">
+            <p class="font-serif text-text-charcoal text-[13px] sm:text-[13.5px]">
+              Esta invitación incluye acompañante
+            </p>
+            <p class="font-script text-text-charcoal text-[20px] sm:text-[22px] leading-tight">
+              Confirma antes del 15 de diciembre
+            </p>
+          </div>
+
+          <form id="rsvp-form" class="space-y-2.5" onsubmit="event.preventDefault(); submitRsvp();">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <input type="text" required placeholder="Nombre completo" class="rsvp-input" />
+              <input type="text" placeholder="Preferencia alimentaria" class="rsvp-input" />
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <input type="text" placeholder="Nombre acompañante (solo si asiste)" class="rsvp-input" />
+              <input type="text" placeholder="Preferencia alimentaria" class="rsvp-input" />
+            </div>
+
+            <div>
+              <input type="text" placeholder="¿Alguno tiene alergias alimentarias?" class="rsvp-input" />
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <input type="email" required placeholder="Deja tu correo" class="rsvp-input" />
+              <input type="text" placeholder="Déjanos un mensaje o canción infaltable (opcional)" class="rsvp-input text-[11.5px]" />
+            </div>
+
+            <div class="pt-1.5">
+              <button type="submit" class="w-full py-2 border border-[#D5C4AC] hover:border-bronze-gold hover:bg-bronze-gold hover:text-white transition-all text-text-muted font-sans-caps text-[10px] tracking-[0.28em] font-medium rounded-[2px] bg-transparent">
+                Enviar
+              </button>
+            </div>
+          </form>
+
+        </div>
+
+      </div>
+
+      <!-- Gardenia Flower Overlapping Right Edge of RSVP Card -->
+      <div class="absolute -bottom-8 -right-8 sm:-right-14 md:-right-16 z-20 pointer-events-none drop-shadow-xl w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44">
+        <img src="images/gardenia-flower.svg" alt="Flor Gardenia" class="w-full h-full object-contain select-none" />
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 4. QUICK ACTIONS: CALENDAR & NOVIOS PARIS                 -->
+  <!-- ======================================================== -->
+  <section class="py-5 sm:py-7 px-4">
+    <div class="max-w-2xl mx-auto flex items-center justify-center gap-10 sm:gap-18 md:gap-24">
+      
+      <!-- Calendar action -->
+      <a href="javascript:void(0)" onclick="addToCalendar()" class="group flex items-center gap-3 text-text-charcoal hover:text-bronze-gold transition-colors no-underline cursor-pointer">
+        <img src="images/icon-calendar.svg" alt="Calendario" class="w-10 sm:w-11 h-10 sm:h-11 flex-shrink-0 group-hover:opacity-80 transition-opacity" />
+        <div class="text-left">
+          <p class="font-serif text-[14px] sm:text-[15px] leading-snug text-text-charcoal group-hover:text-bronze-gold transition-colors">
+            Agrega la fecha a<br />tu calendario
+          </p>
+        </div>
+      </a>
+
+      <!-- Novios Paris action -->
+      <a href="javascript:void(0)" onclick="copyRegistryCode()" class="group flex items-center gap-3 text-text-charcoal hover:text-bronze-gold transition-colors no-underline cursor-pointer">
+        <img src="images/icon-gift.svg" alt="Novios Paris" class="w-10 sm:w-11 h-10 sm:h-11 flex-shrink-0 group-hover:opacity-80 transition-opacity" />
+        <div class="text-left">
+          <p class="font-serif text-[14px] sm:text-[15px] leading-snug text-text-charcoal font-medium group-hover:text-bronze-gold transition-colors">
+            Novios Paris
+          </p>
+          <p class="font-serif text-[14px] sm:text-[15px] leading-snug text-text-charcoal group-hover:text-bronze-gold transition-colors">
+            21 05 64 48
+          </p>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 5. DÓNDE Y CUÁNDO SECTION                                -->
+  <!-- ======================================================== -->
+  <section class="py-10 sm:py-14 px-4">
+    
+    <!-- Section Heading with horizontal rules -->
+    <div class="flex items-center justify-center gap-4 max-w-lg mx-auto mb-9 sm:mb-12">
+      <span class="w-14 sm:w-20 h-[1px] bg-bronze-gold opacity-50"></span>
+      <h2 class="font-sans-caps text-text-charcoal text-[11.5px] sm:text-[12.5px] tracking-[0.3em] font-semibold whitespace-nowrap">
+        Dónde y Cuándo
+      </h2>
+      <span class="w-14 sm:w-20 h-[1px] bg-bronze-gold opacity-50"></span>
+    </div>
+
+    <!-- Two Venues Grid: Ceremonia & Recepción -->
+    <div class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 text-center">
+      
+      <!-- Venue 1: CEREMONIA -->
+      <div class="flex flex-col items-center">
+        <div class="w-14 h-14 mb-2.5 flex items-center justify-center">
+          <img src="images/icon-church.svg" alt="Ceremonia Iglesia San Ignacio" class="w-full h-full object-contain" />
+        </div>
+
+        <h3 class="font-sans-caps text-bronze-gold text-[11px] sm:text-[12px] tracking-[0.25em] font-semibold mb-1.5">
+          Ceremonia
+        </h3>
+        <p class="font-serif text-text-charcoal text-[16.5px] sm:text-[18px] font-medium leading-snug">
+          Iglesia San Ignacio de Loyola
+        </p>
+        <p class="font-script text-text-charcoal text-[19px] sm:text-[22px] my-0.5 leading-snug whitespace-nowrap">
+          Padre Alonso de Ovalle #1494, Santiago Centro
+        </p>
+        <p class="font-serif text-text-charcoal text-[14.5px] sm:text-[15.5px] font-normal mb-4">
+          18:00 hr
+        </p>
+
+        <a href="#mapa-section" class="btn-brown-pill">
+          <img src="images/icon-pin.svg" alt="" class="w-3.5 h-3.5" />
+          Cómo Llegar
+        </a>
+      </div>
+
+      <!-- Venue 2: RECEPCIÓN -->
+      <div class="flex flex-col items-center">
+        <div class="w-14 h-14 mb-2.5 flex items-center justify-center">
+          <img src="images/icon-reception.svg" alt="Recepción Casona Anwandter" class="w-full h-full object-contain" />
+        </div>
+
+        <h3 class="font-sans-caps text-bronze-gold text-[11px] sm:text-[12px] tracking-[0.25em] font-semibold mb-1.5">
+          Recepción
+        </h3>
+        <p class="font-serif text-text-charcoal text-[16.5px] sm:text-[18px] font-medium leading-snug">
+          Casona Anwandter
+        </p>
+        <p class="font-script text-text-charcoal text-[19px] sm:text-[22px] my-0.5 leading-snug whitespace-nowrap">
+          Avenida España #620, Santiago Centro
+        </p>
+        <p class="font-serif text-transparent text-[14.5px] sm:text-[15.5px] mb-4 select-none" aria-hidden="true">
+          &nbsp;
+        </p>
+
+        <a href="#mapa-section" class="btn-brown-pill">
+          <img src="images/icon-pin.svg" alt="" class="w-3.5 h-3.5" />
+          Cómo Llegar
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Small ornamental divider chevron -->
+    <div class="text-center mt-10 mb-1 text-bronze-gold opacity-50">
+      <svg class="w-3.5 h-3.5 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M7 10l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 6. DRESS CODE SECTION                                    -->
+  <!-- ======================================================== -->
+  <section class="py-8 sm:py-12 px-4">
+    <div class="max-w-xl mx-auto flex items-center justify-center gap-6 sm:gap-12">
+      
+      <!-- Hand-drawn Fashion Sketch Illustration (Suit & Gown) -->
+      <div class="w-32 sm:w-44 h-44 sm:h-60 flex-shrink-0 flex items-center justify-center">
+        <img src="images/icon-dresscode.svg" alt="Dress Code Formal" class="w-full h-full object-contain" />
+      </div>
+
+      <!-- Text: DRESS CODE Formal -->
+      <div class="text-left">
+        <h3 class="font-sans-caps text-text-charcoal text-[12.5px] sm:text-[14px] tracking-[0.28em] font-semibold mb-0.5">
+          Dress Code
+        </h3>
+        <p class="font-script text-bronze-gold text-[50px] sm:text-[64px] md:text-[72px] leading-none select-none">
+          Formal
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 7. ILLUSTRATED MAP SECTION ("CÓMO LLEGAR")              -->
+  <!-- ======================================================== -->
+  <section id="mapa-section" class="py-10 sm:py-14 px-4">
+    <div class="max-w-[760px] mx-auto">
+      
+      <!-- Vintage Map Frame Container -->
+      <div class="vintage-map-container p-3 sm:p-5">
+        <div class="vintage-map-inner-border"></div>
+
+        <!-- The Grand Architectural Map Image -->
+        <img src="images/mapa-santiago.svg" alt="Mapa ilustrado: Cómo llegar a Iglesia San Ignacio de Loyola y Casona Anwandter" class="w-full h-auto select-none rounded-[2px]" />
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 8. FOOTER SECTION                                        -->
+  <!-- ======================================================== -->
+  <div class="h-10 sm:h-12 w-full" style="background-color: #353B2D;"></div>
+
+
+
+  <!-- Toast Notification Container -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-[#353B2D] text-[#FAF7F2] px-5 py-3 rounded shadow-lg text-sm font-serif transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    Mensaje
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- JAVASCRIPT: LOGIC & INTERACTIONS                         -->
+  <!-- ======================================================== -->
+  <script>
+    // 1. LIVE COUNTDOWN TIMER
+    (function initCountdown() {
+      const targetDate = new Date('2027-01-30T18:00:00-03:00').getTime();
+      const elDays = document.getElementById('cd-days');
+      const elHours = document.getElementById('cd-hours');
+      const elMinutes = document.getElementById('cd-minutes');
+      const elSeconds = document.getElementById('cd-seconds');
+
+      function update() {
+        const now = new Date().getTime();
+        const difference = targetDate - now;
+
+        if (difference <= 0) {
+          elDays.textContent = '0';
+          elHours.textContent = '0';
+          elMinutes.textContent = '0';
+          elSeconds.textContent = '0';
+          return;
+        }
+
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        elDays.textContent = days;
+        elHours.textContent = hours < 10 ? '0' + hours : hours;
+        elMinutes.textContent = minutes < 10 ? '0' + minutes : minutes;
+        elSeconds.textContent = seconds < 10 ? '0' + seconds : seconds;
+      }
+
+      update();
+      setInterval(update, 1000);
+    })();
+
+
+    // 2. AUDIO / MUSIC PLAYER
+    (function initPlayer() {
+      let isPlaying = false;
+      let progress = 26;
+      let interval = null;
+      let audioCtx = null;
+      let chordOscillators = [];
+
+      const btnPlay = document.getElementById('btn-player-play');
+      const playIcon = document.getElementById('player-play-icon');
+      const progressFill = document.getElementById('player-progress-fill');
+      const progressBar = document.getElementById('player-progress-bar');
+      const btnPrev = document.getElementById('btn-player-prev');
+      const btnNext = document.getElementById('btn-player-next');
+
+      function playAmbientChords() {
+        try {
+          if (!audioCtx) {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          }
+          if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+          }
+          stopAmbientChords();
+
+          const freqs = [293.66, 369.99, 440.00, 587.33];
+          chordOscillators = freqs.map((f, i) => {
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(f, audioCtx.currentTime);
+
+            gain.gain.setValueAtTime(0, audioCtx.currentTime);
+            gain.gain.linearRampToValueAtTime(0.016 / (i + 1), audioCtx.currentTime + 1.5);
+
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            return { osc, gain };
+          });
+        } catch(e) {}
+      }
+
+      function stopAmbientChords() {
+        chordOscillators.forEach(({ osc, gain }) => {
+          try {
+            gain.gain.linearRampToValueAtTime(0.0001, audioCtx.currentTime + 0.8);
+            setTimeout(() => osc.stop(), 800);
+          } catch(e) {}
+        });
+        chordOscillators = [];
+      }
+
+      function togglePlay() {
+        isPlaying = !isPlaying;
+        if (isPlaying) {
+          playIcon.className = 'w-2 h-2.5 bg-white flex items-center justify-center';
+          playIcon.innerHTML = '<span class="inline-block w-0.5 h-2 bg-white mr-0.5"></span><span class="inline-block w-0.5 h-2 bg-white"></span>';
+          playAmbientChords();
+          showToast('♪ Reproduciendo música');
+          interval = setInterval(() => {
+            progress = (progress + 0.5) % 100;
+            progressFill.style.width = progress + '%';
+          }, 400);
+        } else {
+          playIcon.className = 'w-2 h-2 bg-white rounded-full block';
+          playIcon.innerHTML = '';
+          stopAmbientChords();
+          clearInterval(interval);
+        }
+      }
+
+      btnPlay.addEventListener('click', togglePlay);
+      btnPrev.addEventListener('click', () => {
+        progress = 0;
+        progressFill.style.width = '0%';
+        showToast('⏮ Canción reiniciada');
+      });
+      btnNext.addEventListener('click', () => {
+        progress = 50;
+        progressFill.style.width = '50%';
+        showToast('⏭ Siguiente pista');
+      });
+
+      progressBar.addEventListener('click', (e) => {
+        const rect = progressBar.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        progress = Math.max(0, Math.min(100, (clickX / rect.width) * 100));
+        progressFill.style.width = progress + '%';
+      });
+    })();
+
+
+    // 3. TOAST NOTIFICATIONS
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 3200);
+    }
+
+
+    // 4. QUICK ACTIONS HANDLERS
+    function addToCalendar() {
+      const icsContent = 
+`BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Natalia y Franco//Matrimonio//ES
+BEGIN:VEVENT
+UID:matrimonio-natalia-franco-2027
+DTSTAMP:20261001T000000Z
+DTSTART:20270130T210000Z
+DTEND:20270131T070000Z
+SUMMARY:Matrimonio Natalia & Franco
+DESCRIPTION:Ceremonia en Iglesia San Ignacio de Loyola (18:00 hr) seguida de Recepción en Casona Anwandter.
+LOCATION:Iglesia San Ignacio de Loyola, Padre Alonso de Ovalle #1494, Santiago Centro
+END:VEVENT
+END:VCALENDAR`;
+
+      const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      link.setAttribute('download', 'Matrimonio_Natalia_y_Franco.ics');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      showToast('📅 ¡Evento guardado en tu calendario!');
+    }
+
+    function copyRegistryCode() {
+      const code = '21 05 64 48';
+      navigator.clipboard.writeText(code).then(() => {
+        showToast('🎁 Código Novios Paris copiado: ' + code);
+      }).catch(() => {
+        showToast('🎁 Código Novios Paris: ' + code);
+      });
+    }
+
+    function submitRsvp() {
+      const attendance = document.getElementById('rsvp-attendance').value;
+      if (!attendance) {
+        showToast('Por favor, selecciona si asistirás en el menú');
+        return;
+      }
+      showToast('💌 ¡Muchas gracias! Tu confirmación ha sido enviada.');
+      document.getElementById('rsvp-form').reset();
+    }
+  </script>
+
+</body>
+</html>
