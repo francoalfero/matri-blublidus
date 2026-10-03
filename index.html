@@ -660,61 +660,37 @@
   <!-- ======================================================== -->
   <!-- 4. QUICK ACTIONS: CALENDAR & NOVIOS PARIS MODALS         -->
   <!-- ======================================================== -->
-  <section class="py-10 sm:py-16 px-4">
-    <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+  <section class="py-8 sm:py-12 md:py-14 px-4">
+    <div class="max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-8 sm:gap-14 md:gap-20">
       
       <!-- Calendar Action Trigger (Opens Smart Calendar Options) -->
-      <div onclick="openCalendarModal()" onkeydown="if(event.key==='Enter'||event.key===' ') openCalendarModal()" role="button" tabindex="0" class="double-bezel-card p-6 sm:p-8 flex flex-col justify-between items-center text-center group cursor-pointer hover:shadow-luxury-hover hover:-translate-y-1 transition-all duration-300">
-        <div class="flex flex-col items-center w-full">
-          <div class="w-16 h-16 sm:w-20 sm:h-20 mb-4 rounded-full bg-[#F4E9D7]/60 border border-[#D8C5AE] flex items-center justify-center shadow-sm group-hover:scale-105 group-hover:border-bronze-gold transition-all flex-shrink-0">
-            <img src="images/icon-calendar.svg" alt="Calendario" class="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
-          </div>
-          <span class="font-sans text-bronze-gold text-[10px] sm:text-[11px] tracking-[0.25em] font-semibold uppercase mb-1">
-            Reserva la Fecha
-          </span>
-          <h3 class="font-serif text-text-charcoal text-[22px] sm:text-[25px] font-semibold leading-snug group-hover:text-bronze-gold transition-colors">
-            Agrega la fecha a tu calendario
-          </h3>
-          <p class="font-serif italic text-text-muted text-[14.5px] sm:text-[15.5px] mt-1.5 mb-5 max-w-xs leading-relaxed">
-            Sábado 30 de Enero, 2027<br />
-            <span class="font-sans not-italic text-[10px] sm:text-[10.5px] uppercase tracking-wider text-bronze-gold font-semibold">Google · Apple · Outlook</span>
+      <button type="button" onclick="openCalendarModal()" class="group flex items-center gap-4 sm:gap-5 text-text-charcoal hover:text-bronze-gold transition-all text-left bg-transparent border-0 cursor-pointer">
+        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/85 border border-[#D8C5AE] shadow-md flex items-center justify-center group-hover:scale-105 group-hover:border-bronze-gold group-hover:shadow-lg transition-all flex-shrink-0">
+          <img src="images/icon-calendar.svg" alt="Calendario" class="w-9 h-9 sm:w-11 sm:h-11 object-contain" />
+        </div>
+        <div>
+          <p class="font-serif text-[20px] sm:text-[23px] md:text-[25px] leading-tight font-medium text-text-charcoal group-hover:text-bronze-gold transition-colors">
+            Agrega la fecha a<br />tu calendario
           </p>
+          <span class="font-sans text-[10px] sm:text-[11.5px] uppercase tracking-wider text-bronze-gold font-semibold">Google / Apple / Outlook ↗</span>
         </div>
-        <div class="w-full pt-4 border-t border-[#EFE8DF] flex justify-center">
-          <span class="btn-luxury-pill">
-            <span>Agendar en Calendario</span>
-            <span class="icon-bubble">↗</span>
-          </span>
-        </div>
-      </div>
+      </button>
 
       <!-- Novios Paris Action Trigger (Opens Paris Registry Modal) -->
-      <div onclick="openGiftsModal()" onkeydown="if(event.key==='Enter'||event.key===' ') openGiftsModal()" role="button" tabindex="0" class="double-bezel-card p-6 sm:p-8 flex flex-col justify-between items-center text-center group cursor-pointer hover:shadow-luxury-hover hover:-translate-y-1 transition-all duration-300">
-        <div class="flex flex-col items-center w-full">
-          <div class="w-16 h-16 sm:w-20 sm:h-20 mb-4 rounded-full bg-[#F4E9D7]/60 border border-[#D8C5AE] flex items-center justify-center shadow-sm group-hover:scale-105 group-hover:border-bronze-gold transition-all flex-shrink-0">
-            <img src="images/icon-gift.svg" alt="Mesa de Regalos" class="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
-          </div>
-          <span class="font-sans text-bronze-gold text-[10px] sm:text-[11px] tracking-[0.25em] font-semibold uppercase mb-1">
-            Mesa de Regalos
-          </span>
-          <h3 class="font-serif text-text-charcoal text-[22px] sm:text-[25px] font-semibold leading-snug group-hover:text-bronze-gold transition-colors">
+      <button type="button" onclick="openGiftsModal()" class="group flex items-center gap-4 sm:gap-5 text-text-charcoal hover:text-bronze-gold transition-all text-left bg-transparent border-0 cursor-pointer">
+        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/85 border border-[#D8C5AE] shadow-md flex items-center justify-center group-hover:scale-105 group-hover:border-bronze-gold group-hover:shadow-lg transition-all flex-shrink-0">
+          <img src="images/icon-gift.svg" alt="Regalo" class="w-9 h-9 sm:w-11 sm:h-11 object-contain" />
+        </div>
+        <div>
+          <p class="font-serif text-[20px] sm:text-[23px] md:text-[25px] leading-tight text-text-charcoal font-medium group-hover:text-bronze-gold transition-colors">
             Novios Paris
-          </h3>
-          <div class="my-2 py-1 px-4 bg-[#FAF8F5] border border-[#E8DCCB] rounded-sm inline-block">
-            <span class="font-sans text-[8.5px] uppercase tracking-wider text-text-muted font-semibold block">Código de Novios</span>
-            <span class="font-serif text-[22px] sm:text-[24px] font-bold text-bronze-gold tracking-wider">21 05 64 48</span>
-          </div>
-          <p class="font-serif italic text-text-muted text-[14px] sm:text-[15px] mt-1 mb-5">
-            Tu presencia es nuestro mejor regalo
           </p>
+          <p class="font-serif text-[20px] sm:text-[23px] md:text-[25px] leading-tight text-bronze-gold font-semibold">
+            21 05 64 48
+          </p>
+          <span class="font-sans text-[10px] sm:text-[11.5px] uppercase tracking-wider text-text-muted font-semibold">Ver lista de regalos ↗</span>
         </div>
-        <div class="w-full pt-4 border-t border-[#EFE8DF] flex justify-center">
-          <span class="btn-luxury-pill">
-            <span>Ver Mesa de Regalos</span>
-            <span class="icon-bubble">↗</span>
-          </span>
-        </div>
-      </div>
+      </button>
 
     </div>
   </section>
@@ -933,35 +909,35 @@
   <!-- MODAL 2: SMART CALENDAR SELECTION                        -->
   <!-- ======================================================== -->
   <div id="modal-calendar" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Añadir a calendario">
-    <div class="max-w-md w-full double-bezel-card p-7 sm:p-8 relative bg-white shadow-2xl text-center">
+    <div class="max-w-sm w-full double-bezel-card p-6 sm:p-7 relative bg-white shadow-2xl text-center">
       
       <button onclick="closeCalendarModal()" class="absolute top-4 right-4 text-text-muted hover:text-text-charcoal" title="Cerrar">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
 
-      <div class="w-16 h-16 mx-auto mb-3.5 rounded-full bg-[#F4E9D7]/60 flex items-center justify-center border border-[#D8C5AE] shadow-sm">
-        <img src="images/icon-calendar.svg" alt="" class="w-9 h-9 object-contain" />
+      <div class="w-14 h-14 mx-auto mb-3 rounded-full bg-[#F4E9D7]/60 flex items-center justify-center border border-[#D8C5AE]">
+        <img src="images/icon-calendar.svg" alt="" class="w-8 h-8 object-contain" />
       </div>
 
-      <h3 class="font-serif text-[24px] sm:text-[26px] font-semibold text-text-charcoal mb-1">
+      <h3 class="font-serif text-[22px] font-semibold text-text-charcoal mb-1">
         Agendar la Fecha
       </h3>
-      <p class="font-sans text-[10.5px] tracking-[0.2em] uppercase text-bronze-gold font-semibold mb-2">
+      <p class="font-sans text-[10px] tracking-[0.2em] uppercase text-bronze-gold font-semibold mb-2">
         Sábado 30 de Enero, 2027
       </p>
-      <p class="font-serif text-[15px] text-text-muted mb-6 leading-snug">
+      <p class="font-serif text-[14px] text-text-muted mb-5 leading-snug">
         Elige tu calendario favorito para no perderte ningún detalle:
       </p>
 
-      <div class="space-y-3">
+      <div class="space-y-2.5">
         <!-- Google Calendar direct URL -->
-        <a id="btn-add-gcal" href="#" target="_blank" rel="noopener noreferrer" class="w-full py-3 px-5 bg-[#8E5F34] hover:bg-[#774D26] text-white font-sans text-[11px] uppercase tracking-wider font-semibold rounded-sm transition-all flex items-center justify-center gap-2.5 shadow-sm">
+        <a id="btn-add-gcal" href="#" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-[#8E5F34] hover:bg-[#774D26] text-white font-sans text-[10.5px] uppercase tracking-wider font-semibold rounded-sm transition-all flex items-center justify-center gap-2 shadow-sm">
           <svg class="w-4 h-4 fill-currentColor" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 002 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>
           Google Calendar
         </a>
 
         <!-- Apple / Outlook .ics download -->
-        <button type="button" onclick="downloadIcsFile()" class="w-full py-3 px-5 bg-[#FAF7F2] hover:bg-[#F3ECE0] text-text-charcoal border border-[#DFD5C6] font-sans text-[11px] uppercase tracking-wider font-semibold rounded-sm transition-all flex items-center justify-center gap-2.5">
+        <button type="button" onclick="downloadIcsFile()" class="w-full py-2.5 px-4 bg-[#FAF7F2] hover:bg-[#F3ECE0] text-text-charcoal border border-[#DFD5C6] font-sans text-[10.5px] uppercase tracking-wider font-semibold rounded-sm transition-all flex items-center justify-center gap-2">
           <svg class="w-4 h-4 fill-currentColor" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
           Apple / Outlook (.ics)
         </button>
@@ -975,37 +951,37 @@
   <!-- MODAL 3: NOVIOS PARIS (MESA DE REGALOS)                  -->
   <!-- ======================================================== -->
   <div id="modal-gifts" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Lista de novios y regalos">
-    <div class="max-w-lg w-full double-bezel-card p-7 sm:p-9 relative bg-white shadow-2xl">
+    <div class="max-w-md w-full double-bezel-card p-6 sm:p-7 relative bg-white shadow-2xl">
       
       <button onclick="closeGiftsModal()" class="absolute top-4 right-4 text-text-muted hover:text-text-charcoal" title="Cerrar">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
 
-      <div class="text-center mb-6">
-        <div class="w-16 h-16 mx-auto mb-3.5 rounded-full bg-[#F4E9D7]/60 flex items-center justify-center border border-[#D8C5AE] shadow-sm">
-          <img src="images/icon-gift.svg" alt="" class="w-9 h-9 object-contain" />
+      <div class="text-center mb-5">
+        <div class="w-12 h-12 mx-auto mb-2 rounded-full bg-[#F4E9D7]/60 flex items-center justify-center border border-[#D8C5AE]">
+          <img src="images/icon-gift.svg" alt="" class="w-6 h-6 object-contain" />
         </div>
-        <h3 class="font-serif text-[24px] sm:text-[27px] font-semibold text-text-charcoal mb-1">
+        <h3 class="font-serif text-[22px] font-semibold text-text-charcoal mb-0.5">
           Mesa de Regalos
         </h3>
-        <p class="font-serif italic text-text-muted text-[15px]">
+        <p class="font-serif italic text-text-muted text-[13.5px]">
           Tu presencia es nuestro mayor regalo. Si deseas hacernos un presente:
         </p>
       </div>
 
       <!-- Novios Paris -->
-      <div class="bg-[#FAF8F5] border border-[#E8DCCB] p-6 rounded-sm text-center">
-        <span class="font-sans text-[10px] uppercase tracking-[0.25em] text-text-muted font-semibold block mb-1">
+      <div class="bg-[#FAF8F5] border border-[#E8DCCB] p-5 rounded-sm text-center">
+        <span class="font-sans text-[9px] uppercase tracking-[0.25em] text-text-muted font-semibold block mb-1">
           Código Novios Paris
         </span>
-        <p class="font-serif text-[32px] sm:text-[36px] font-bold text-bronze-gold tracking-wider my-2">
+        <p class="font-serif text-[28px] sm:text-[30px] font-bold text-bronze-gold tracking-wider my-1">
           21 05 64 48
         </p>
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mt-5">
-          <button type="button" onclick="copyText('21 05 64 48', 'Código Novios Paris copiado al portapapeles')" class="w-full sm:w-auto py-2.5 px-5 bg-white border border-[#D8C5AE] hover:border-bronze-gold rounded-sm font-sans text-[10.5px] uppercase tracking-wider font-semibold text-text-charcoal transition-all">
+        <div class="flex items-center justify-center gap-2 mt-4">
+          <button type="button" onclick="copyText('21 05 64 48', 'Código Novios Paris copiado al portapapeles')" class="py-2 px-3.5 bg-white border border-[#D8C5AE] hover:border-bronze-gold rounded-sm font-sans text-[9.5px] uppercase tracking-wider font-semibold text-text-charcoal transition-all">
             Copiar Código
           </button>
-          <a href="https://www.noviosparis.cl/home/couple-catalog/21056448" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto py-2.5 px-5 bg-[#8E5F34] hover:bg-[#774D26] text-white rounded-sm font-sans text-[10.5px] uppercase tracking-wider font-semibold transition-all">
+          <a href="https://www.noviosparis.cl/home/couple-catalog/21056448" target="_blank" rel="noopener noreferrer" class="py-2 px-3.5 bg-[#8E5F34] hover:bg-[#774D26] text-white rounded-sm font-sans text-[9.5px] uppercase tracking-wider font-semibold transition-all">
             Ir a Novios Paris ↗
           </a>
         </div>
