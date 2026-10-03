@@ -861,11 +861,15 @@
   <!-- 8. FOOTER SECTION                                        -->
   <!-- ======================================================== -->
   <footer class="py-12 px-4 text-center text-[#FAF7F2] relative overflow-hidden" style="background-color: #282F22;">
-    <div class="max-w-md mx-auto flex flex-col items-center justify-center">
-      <p class="font-script text-[#E4D9C8] text-[38px] sm:text-[44px] mb-1 flex items-center justify-center gap-2 sm:gap-3">
-        <span class="whitespace-nowrap">Natalia & Franco</span>
-        <img src="images/gardenia-flower.svg" alt="Flor Gardenia" class="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 object-contain select-none pointer-events-none drop-shadow-xl shrink-0 -my-4 sm:-my-6" decoding="async" />
-      </p>
+    <div class="max-w-md mx-auto flex flex-col items-center justify-center relative">
+      <div class="relative inline-flex items-center justify-center mb-1">
+        <p class="font-script text-[#E4D9C8] text-[34px] min-[480px]:text-[38px] sm:text-[44px] text-center whitespace-nowrap leading-tight">
+          Natalia & Franco
+        </p>
+        <div class="absolute left-full ml-3 min-[480px]:ml-5 sm:ml-6 top-1/2 -translate-y-1/2 pointer-events-none drop-shadow-xl w-16 h-16 min-[480px]:w-24 min-[480px]:h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 shrink-0">
+          <img src="images/gardenia-flower.svg" alt="Flor Gardenia" class="w-full h-full object-contain select-none" decoding="async" />
+        </div>
+      </div>
       <p class="font-sans text-[#B5824C] text-[10px] tracking-[0.3em] uppercase font-semibold mb-4">
         30 · 01 · 27 — Santiago de Chile
       </p>
@@ -1041,7 +1045,7 @@
         <!-- Direct 1-Click WhatsApp Confirmation Link -->
         <a id="btn-rsvp-whatsapp" href="#" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-[#25D366] hover:bg-[#1EBE5D] text-white font-sans text-[10.5px] uppercase tracking-wider font-semibold rounded-sm transition-all flex items-center justify-center gap-2 shadow-md">
           <svg class="w-4 h-4 fill-currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.969.54 1.761.815 2.796.815 3.183 0 5.77-2.587 5.77-5.767 0-3.181-2.587-5.768-5.77-5.768zm0 10.354c-.934 0-1.849-.251-2.646-.725l-.189-.113-1.571.412.42-1.531-.124-.197c-.521-.828-.795-1.785-.795-2.734 0-2.827 2.301-5.127 5.128-5.127 2.828 0 5.129 2.301 5.129 5.128 0 2.828-2.301 5.127-5.128 5.127z"/></svg>
-          Enviar respaldo por WhatsApp
+          Enviar confirmación por WhatsApp
         </a>
 
         <button type="button" onclick="closeRsvpSuccessModal()" class="w-full py-2 px-4 bg-transparent hover:bg-[#FAF7F2] text-text-muted font-sans text-[10px] uppercase tracking-wider font-semibold rounded-sm transition-all">
@@ -1074,7 +1078,7 @@
     const RSVP_WEBHOOK_URL = ''; 
 
     // Teléfono de contacto de los novios para el botón directo de WhatsApp (código país + número, sin signos):
-    const NOVIOS_WHATSAPP_PHONE = '56912345678';
+    const NOVIOS_WHATSAPP_PHONE = '56966660670';
 
 
     /* ========================================================
@@ -1450,12 +1454,13 @@
       btnText.textContent = 'Enviando...';
       spinner.classList.remove('hidden');
 
-      // Envío a Webhook si está configurado
+      // Envío a Webhook si está configurado (compatible con Google Apps Script y servicios REST)
       if (RSVP_WEBHOOK_URL) {
         try {
           await fetch(RSVP_WEBHOOK_URL, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
             body: JSON.stringify(payload),
           });
         } catch (err) {
