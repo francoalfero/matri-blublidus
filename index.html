@@ -243,7 +243,7 @@
     .eq-bar {
       width: 2px;
       height: 14px;
-      background: #B5824C;
+      background: #8E5F34;
       border-radius: 1px;
       transform-origin: bottom;
       transform: scaleY(0.25);
@@ -254,6 +254,23 @@
     .is-playing .eq-bar:nth-child(2) { animation: soundwave 0.8s ease-in-out infinite 0.3s; }
     .is-playing .eq-bar:nth-child(3) { animation: soundwave 1.2s ease-in-out infinite 0s; }
     .is-playing .eq-bar:nth-child(4) { animation: soundwave 0.9s ease-in-out infinite 0.2s; }
+
+    /* Liquid Glass Audio Player */
+    .liquid-glass-player {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.15) 50%, rgba(250, 245, 238, 0.3) 100%);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border: none;
+      box-shadow: 
+        0 14px 32px -4px rgba(60, 45, 25, 0.14),
+        0 4px 10px -2px rgba(60, 45, 25, 0.06);
+    }
+    .liquid-glass-player:hover {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.52) 0%, rgba(255, 255, 255, 0.22) 50%, rgba(250, 245, 238, 0.38) 100%);
+      box-shadow: 
+        0 18px 36px -4px rgba(60, 45, 25, 0.18),
+        0 6px 14px -2px rgba(60, 45, 25, 0.08);
+    }
   </style>
 </head>
 <body class="antialiased">
@@ -336,16 +353,16 @@
     <!-- ======================================================== -->
     <!-- HIGH-CONTRAST LUXURY FLOATING AUDIO CONTROLLER           -->
     <!-- ======================================================== -->
-    <div class="relative z-30 mt-4 sm:mt-6 w-full max-w-[340px] sm:max-w-[380px] mx-auto px-3">
+    <div class="relative z-30 mt-4 sm:mt-6 w-full max-w-[350px] sm:max-w-[380px] mx-auto px-3">
       <audio id="audio-player" src="Levitating.mp3" preload="auto" loop playsinline></audio>
 
-      <!-- Glass Capsule Island with Double-Bezel Gold Edge -->
-      <div id="audio-capsule" class="bg-[#262C20]/95 backdrop-blur-md border border-[#B5824C]/40 rounded-full px-4 py-2.5 shadow-floating-island flex flex-col gap-1.5 transition-all duration-300">
+      <!-- Liquid Glass Capsule Island -->
+      <div id="audio-capsule" class="liquid-glass-player rounded-full px-3.5 sm:px-4 py-2.5 flex flex-col gap-1.5 transition-all duration-300">
         
-        <div class="flex items-center justify-between text-[#FAF7F2]">
+        <div class="flex items-center justify-between text-[#2D261E]">
           
           <!-- Track Info & Dynamic Equalizer -->
-          <div class="flex items-center gap-2.5 overflow-hidden">
+          <div class="flex items-center gap-2 overflow-hidden">
             <div id="soundwave-container" class="flex items-end gap-[2px] h-3.5 w-3.5 flex-shrink-0" title="Estado de reproducción">
               <span class="eq-bar h-1"></span>
               <span class="eq-bar h-2"></span>
@@ -353,36 +370,36 @@
               <span class="eq-bar h-1.5"></span>
             </div>
             <div class="truncate text-left">
-              <p class="font-sans text-[10px] tracking-[0.16em] uppercase font-semibold text-[#D8C5AE] truncate leading-tight">
+              <p class="font-sans text-[9px] sm:text-[10px] tracking-[0.12em] sm:tracking-[0.16em] uppercase font-semibold text-[#8E5F34] truncate leading-tight">
                 Música de Fondo
               </p>
-              <p class="font-serif italic text-[13px] text-[#FAF7F2]/90 truncate leading-none">
+              <p class="font-serif italic text-[13px] sm:text-[13.5px] text-[#2D261E] font-medium truncate leading-none">
                 Natalia & Franco
               </p>
             </div>
           </div>
 
           <!-- Controls: Prev, Play, Next, Mute -->
-          <div class="flex items-center gap-2 flex-shrink-0">
+          <div class="flex items-center gap-1 sm:gap-2 flex-shrink-0">
             <!-- Prev / Restart -->
-            <button id="btn-player-prev" class="w-7 h-7 rounded-full flex items-center justify-center text-[#FAF7F2]/80 hover:text-[#FFFFFF] hover:bg-white/10 active:scale-95 transition-all" title="Reiniciar canción" aria-label="Reiniciar canción">
+            <button id="btn-player-prev" class="w-7 h-7 rounded-full flex items-center justify-center text-[#5A4B3C] hover:text-[#2D261E] hover:bg-black/5 active:scale-95 transition-all" title="Reiniciar canción" aria-label="Reiniciar canción">
               <svg class="w-3 h-3 fill-currentColor" viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
             </button>
 
             <!-- Play / Pause Button with Gold Glow -->
-            <button id="btn-player-play" class="w-8 h-8 rounded-full bg-[#B5824C] hover:bg-[#C8945E] text-[#262C20] flex items-center justify-center shadow-[0_2px_10px_rgba(181,130,76,0.4)] active:scale-90 transition-all" title="Reproducir música" aria-label="Reproducir o pausar música">
+            <button id="btn-player-play" class="w-8 h-8 rounded-full bg-[#8E5F34] hover:bg-[#784B22] text-white flex items-center justify-center shadow-[0_3px_12px_rgba(142,95,52,0.35)] active:scale-90 transition-all" title="Reproducir música" aria-label="Reproducir o pausar música">
               <span id="player-play-icon" class="flex items-center justify-center w-full h-full">
-                <svg class="w-3.5 h-3.5 fill-[#262C20] translate-x-[1px]" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <svg class="w-3.5 h-3.5 fill-white translate-x-[1px]" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
               </span>
             </button>
 
             <!-- Next -->
-            <button id="btn-player-next" class="w-7 h-7 rounded-full flex items-center justify-center text-[#FAF7F2]/80 hover:text-[#FFFFFF] hover:bg-white/10 active:scale-95 transition-all" title="Reiniciar pista" aria-label="Reiniciar pista">
+            <button id="btn-player-next" class="w-7 h-7 rounded-full flex items-center justify-center text-[#5A4B3C] hover:text-[#2D261E] hover:bg-black/5 active:scale-95 transition-all" title="Reiniciar pista" aria-label="Reiniciar pista">
               <svg class="w-3 h-3 fill-currentColor" viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
             </button>
 
             <!-- Mute / Unmute -->
-            <button id="btn-player-mute" class="w-7 h-7 rounded-full flex items-center justify-center text-[#FAF7F2]/70 hover:text-[#FFFFFF] hover:bg-white/10 active:scale-95 transition-all" title="Silenciar / Activar sonido" aria-label="Silenciar sonido">
+            <button id="btn-player-mute" class="w-7 h-7 rounded-full flex items-center justify-center text-[#5A4B3C] hover:text-[#2D261E] hover:bg-black/5 active:scale-95 transition-all" title="Silenciar / Activar sonido" aria-label="Silenciar sonido">
               <svg id="icon-volume" class="w-3.5 h-3.5 fill-currentColor" viewBox="0 0 24 24">
                 <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
               </svg>
@@ -392,15 +409,15 @@
 
         <!-- Progress Scrubber & Live Time Readout -->
         <div class="flex items-center gap-2 pt-0.5">
-          <span id="player-time-current" class="font-sans text-[8.5px] text-[#FAF7F2]/60 w-6 text-right font-medium">0:00</span>
+          <span id="player-time-current" class="font-sans text-[8.5px] text-[#726759] w-6 text-right font-medium">0:00</span>
           
-          <div id="player-progress-bar" class="flex-1 h-[3px] bg-white/20 hover:bg-white/30 rounded-full relative cursor-pointer group transition-all" title="Adelantar o retroceder">
-            <div id="player-progress-fill" class="h-full bg-[#B5824C] rounded-full w-0 relative transition-[width] duration-100">
-              <span class="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-[#FAF7F2] rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity"></span>
+          <div id="player-progress-bar" class="flex-1 h-[3px] bg-[#2D261E]/15 hover:bg-[#2D261E]/25 rounded-full relative cursor-pointer group transition-all" title="Adelantar o retroceder">
+            <div id="player-progress-fill" class="h-full bg-[#8E5F34] rounded-full w-0 relative transition-[width] duration-100">
+              <span class="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-[#8E5F34] ring-2 ring-white rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity"></span>
             </div>
           </div>
 
-          <span id="player-time-duration" class="font-sans text-[8.5px] text-[#FAF7F2]/60 w-6 text-left font-medium">3:23</span>
+          <span id="player-time-duration" class="font-sans text-[8.5px] text-[#726759] w-6 text-left font-medium">3:23</span>
         </div>
 
       </div>
@@ -754,14 +771,9 @@
           </h3>
 
           <!-- Readable address in crisp font -->
-          <p class="font-serif text-text-muted text-[15px] sm:text-[16px] mt-1 mb-2 font-normal">
+          <p class="font-serif text-text-muted text-[15px] sm:text-[16px] mt-1 mb-6 font-normal">
             Avenida España #620, Santiago Centro
           </p>
-
-          <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#F4E9D7]/60 border border-[#D8C5AE] rounded-full text-bronze-gold font-serif font-semibold text-[14.5px] mb-6">
-            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            19:30 hrs
-          </div>
         </div>
 
         <!-- Direct GPS Action Buttons -->
@@ -826,44 +838,13 @@
   <!-- ======================================================== -->
   <section id="mapa-section" class="py-12 sm:py-16 px-4">
     <div class="max-w-[820px] mx-auto">
-      
-      <div class="text-center mb-6">
-        <h2 class="font-sans text-text-charcoal text-[11.5px] sm:text-[12.5px] tracking-[0.3em] font-semibold uppercase mb-1">
-          Plano Ilustrado de Santiago
-        </h2>
-        <p class="font-serif italic text-text-muted text-[15px]">
-          Ubicación de Iglesia San Ignacio & Casona Anwandter
-        </p>
-      </div>
-
       <!-- Vintage Map Frame Container -->
       <div class="vintage-map-container p-3 sm:p-5 relative group">
         <div class="vintage-map-inner-border"></div>
 
         <!-- The Grand Architectural Map Image with lazy load -->
         <img src="images/mapa-santiago.svg" loading="lazy" decoding="async" alt="Mapa ilustrado: Cómo llegar a Iglesia San Ignacio de Loyola y Casona Anwandter" class="w-full h-auto select-none rounded-[2px] block" />
-
-        <!-- Floating Zoom Pill -->
-        <div class="absolute bottom-6 right-6 z-10">
-          <button type="button" onclick="openMapModal()" class="btn-luxury-pill bg-[#262C20]/90 hover:bg-[#353B2D] text-white shadow-lg backdrop-blur-sm">
-            <span>Ver Mapa Completo</span>
-            <span class="icon-bubble">🔍</span>
-          </button>
-        </div>
       </div>
-
-      <!-- Quick GPS reminder below the map -->
-      <div class="flex flex-wrap items-center justify-center gap-4 mt-6 text-center">
-        <span class="font-serif italic text-[14.5px] text-text-muted">¿Vas en camino?</span>
-        <a href="https://maps.google.com/?q=Iglesia+San+Ignacio+de+Loyola+Padre+Alonso+de+Ovalle+1494+Santiago" target="_blank" rel="noopener noreferrer" class="font-sans text-[10px] tracking-wider uppercase font-semibold text-bronze-gold hover:underline">
-          Abrir Iglesia en Maps ↗
-        </a>
-        <span class="text-text-muted/40">•</span>
-        <a href="https://maps.google.com/?q=Casona+Anwandter+Avenida+Espana+620+Santiago" target="_blank" rel="noopener noreferrer" class="font-sans text-[10px] tracking-wider uppercase font-semibold text-bronze-gold hover:underline">
-          Abrir Casona en Maps ↗
-        </a>
-      </div>
-
     </div>
   </section>
 
@@ -872,8 +853,9 @@
   <!-- ======================================================== -->
   <footer class="py-12 px-4 text-center text-[#FAF7F2] relative overflow-hidden" style="background-color: #282F22;">
     <div class="max-w-md mx-auto flex flex-col items-center justify-center">
-      <p class="font-script text-[#E4D9C8] text-[38px] sm:text-[44px] mb-1">
-        Natalia & Franco
+      <p class="font-script text-[#E4D9C8] text-[38px] sm:text-[44px] mb-1 flex items-center justify-center gap-2 sm:gap-3">
+        <span class="whitespace-nowrap">Natalia & Franco</span>
+        <img src="images/gardenia-flower.svg" alt="Flor Gardenia" class="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 object-contain select-none pointer-events-none drop-shadow-xl shrink-0 -my-4 sm:-my-6" decoding="async" />
       </p>
       <p class="font-sans text-[#B5824C] text-[10px] tracking-[0.3em] uppercase font-semibold mb-4">
         30 · 01 · 27 — Santiago de Chile
@@ -1145,8 +1127,8 @@
 
       if (!audio) return;
 
-      const playSvg = '<svg class="w-3.5 h-3.5 fill-[#262C20] translate-x-[1px]" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
-      const pauseSvg = '<svg class="w-3.5 h-3.5 fill-[#262C20]" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+      const playSvg = '<svg class="w-3.5 h-3.5 fill-white translate-x-[1px]" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+      const pauseSvg = '<svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
 
       let userInteracted = false;
 
