@@ -136,13 +136,19 @@
     /* Polaroid Frames with Washi Tape & Lift Effect */
     .polaroid-frame {
       background: #FFFFFF;
-      padding: 6px 6px 20px 6px;
-      box-shadow: 0 14px 30px rgba(45, 35, 20, 0.2), 0 3px 8px rgba(0, 0, 0, 0.09);
+      padding: 5px 5px 15px 5px;
+      box-shadow: 0 10px 22px rgba(45, 35, 20, 0.16), 0 2px 6px rgba(0, 0, 0, 0.08);
       transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.25, 1), box-shadow 0.3s ease;
       cursor: pointer;
       border-radius: 2px;
       position: relative;
       will-change: transform;
+    }
+    @media (min-width: 640px) {
+      .polaroid-frame {
+        padding: 6px 6px 20px 6px;
+        box-shadow: 0 14px 30px rgba(45, 35, 20, 0.2), 0 3px 8px rgba(0, 0, 0, 0.09);
+      }
     }
     .polaroid-frame:hover {
       transform: scale(1.08) rotate(0deg) !important;
@@ -152,15 +158,22 @@
     .polaroid-frame::after {
       content: '';
       position: absolute;
-      top: -6px;
+      top: -5px;
       left: 50%;
       transform: translateX(-50%);
-      width: 28px;
-      height: 10px;
+      width: 20px;
+      height: 8px;
       background: rgba(228, 217, 200, 0.75);
       box-shadow: 0 1px 2px rgba(0,0,0,0.06);
       border-radius: 1px;
       pointer-events: none;
+    }
+    @media (min-width: 640px) {
+      .polaroid-frame::after {
+        top: -6px;
+        width: 28px;
+        height: 10px;
+      }
     }
 
     /* Form input styling */
@@ -301,45 +314,45 @@
         </div>
 
         <!-- Polaroid Photos Cascade (Interactive 6-photo fan) -->
-        <div class="absolute right-[-8px] sm:right-[-20px] md:right-[-45px] lg:right-[-80px] xl:right-[-105px] -top-3 sm:-top-5 md:-top-7 z-20 pointer-events-auto">
+        <div class="absolute right-[-4px] sm:right-[-20px] md:right-[-45px] lg:right-[-80px] xl:right-[-105px] -top-2 sm:-top-5 md:-top-7 z-20 pointer-events-auto">
 
           <!-- Polaroid 1: Atardecer -->
-          <div onclick="openLightbox(0)" class="polaroid-frame w-[110px] sm:w-[145px] md:w-[185px] lg:w-[215px] xl:w-[230px] transform rotate-[8deg] absolute top-0 right-4 sm:right-6 md:right-8 lg:right-11 z-[21]" title="Clic para ver foto en grande">
+          <div onclick="openLightbox(0)" class="polaroid-frame w-[82px] sm:w-[145px] md:w-[185px] lg:w-[215px] xl:w-[230px] transform rotate-[8deg] absolute top-0 right-3 sm:right-6 md:right-8 lg:right-11 z-[21]" title="Clic para ver foto en grande">
             <div class="aspect-[4/3] bg-neutral-800 overflow-hidden relative">
               <img src="images/polaroid-1.jpg" alt="Natalia y Franco al atardecer" class="w-full h-full object-cover brightness-95 contrast-105" decoding="async" />
             </div>
           </div>
 
           <!-- Polaroid 2: Alianzas & Flores -->
-          <div onclick="openLightbox(1)" class="polaroid-frame w-[106px] sm:w-[140px] md:w-[178px] lg:w-[208px] xl:w-[222px] transform rotate-[-5deg] absolute top-[54px] sm:top-[74px] md:top-[92px] lg:top-[100px] right-0 sm:right-1 md:right-2 lg:right-3 z-[22]" title="Clic para ver foto en grande">
+          <div onclick="openLightbox(1)" class="polaroid-frame w-[78px] sm:w-[140px] md:w-[178px] lg:w-[208px] xl:w-[222px] transform rotate-[-5deg] absolute top-[40px] sm:top-[74px] md:top-[92px] lg:top-[100px] right-0 sm:right-1 md:right-2 lg:right-3 z-[22]" title="Clic para ver foto en grande">
             <div class="aspect-[4/3] bg-neutral-100 overflow-hidden relative">
               <img src="images/polaroid-4.jpg" alt="Anillos de matrimonio y bouquet floral" class="w-full h-full object-cover brightness-100 contrast-100" decoding="async" />
             </div>
           </div>
 
           <!-- Polaroid 3: Beso bajo lluvia de pétalos -->
-          <div onclick="openLightbox(2)" class="polaroid-frame w-[112px] sm:w-[148px] md:w-[188px] lg:w-[220px] xl:w-[234px] transform rotate-[6deg] absolute top-[108px] sm:top-[148px] md:top-[184px] lg:top-[210px] right-3 sm:right-5 md:right-7 lg:right-9 z-[23]" title="Clic para ver foto en grande">
+          <div onclick="openLightbox(2)" class="polaroid-frame w-[84px] sm:w-[148px] md:w-[188px] lg:w-[220px] xl:w-[234px] transform rotate-[6deg] absolute top-[80px] sm:top-[148px] md:top-[184px] lg:top-[210px] right-2 sm:right-5 md:right-7 lg:right-9 z-[23]" title="Clic para ver foto en grande">
             <div class="aspect-[4/3] bg-neutral-100 overflow-hidden relative">
               <img src="images/polaroid-5.jpg" alt="Beso de los novios bajo lluvia de pétalos" class="w-full h-full object-cover brightness-100 contrast-105" decoding="async" />
             </div>
           </div>
 
           <!-- Polaroid 4: En la naturaleza -->
-          <div onclick="openLightbox(3)" class="polaroid-frame w-[105px] sm:w-[138px] md:w-[176px] lg:w-[206px] xl:w-[220px] transform rotate-[-6deg] absolute top-[162px] sm:top-[222px] md:top-[276px] lg:top-[320px] right-0 sm:right-2 md:right-3 lg:right-4 z-[24]" title="Clic para ver foto en grande">
+          <div onclick="openLightbox(3)" class="polaroid-frame w-[78px] sm:w-[138px] md:w-[176px] lg:w-[206px] xl:w-[220px] transform rotate-[-6deg] absolute top-[120px] sm:top-[222px] md:top-[276px] lg:top-[320px] right-0 sm:right-2 md:right-3 lg:right-4 z-[24]" title="Clic para ver foto en grande">
             <div class="aspect-[4/3] bg-neutral-700 overflow-hidden relative">
               <img src="images/polaroid-2.jpg" alt="Paisaje natural" class="w-full h-full object-cover sepia-[0.15]" decoding="async" />
             </div>
           </div>
 
           <!-- Polaroid 5: Globos y celebración -->
-          <div onclick="openLightbox(4)" class="polaroid-frame w-[110px] sm:w-[145px] md:w-[185px] lg:w-[216px] xl:w-[230px] transform rotate-[5deg] absolute top-[216px] sm:top-[296px] md:top-[368px] lg:top-[430px] right-4 sm:right-6 md:right-8 lg:right-10 z-[25]" title="Clic para ver foto en grande">
+          <div onclick="openLightbox(4)" class="polaroid-frame w-[82px] sm:w-[145px] md:w-[185px] lg:w-[216px] xl:w-[230px] transform rotate-[5deg] absolute top-[160px] sm:top-[296px] md:top-[368px] lg:top-[430px] right-3 sm:right-6 md:right-8 lg:right-10 z-[25]" title="Clic para ver foto en grande">
             <div class="aspect-[4/3] bg-neutral-200 overflow-hidden relative">
               <img src="images/polaroid-3.jpg" alt="Celebración con globos y amigos" class="w-full h-full object-cover brightness-105" decoding="async" />
             </div>
           </div>
 
           <!-- Polaroid 6: Tomados de la mano -->
-          <div onclick="openLightbox(5)" class="polaroid-frame w-[108px] sm:w-[142px] md:w-[180px] lg:w-[212px] xl:w-[226px] transform rotate-[-4deg] absolute top-[270px] sm:top-[370px] md:top-[460px] lg:top-[540px] right-1 sm:right-2 md:right-4 lg:right-6 z-[26]" title="Clic para ver foto en grande">
+          <div onclick="openLightbox(5)" class="polaroid-frame w-[80px] sm:w-[142px] md:w-[180px] lg:w-[212px] xl:w-[226px] transform rotate-[-4deg] absolute top-[200px] sm:top-[370px] md:top-[460px] lg:top-[540px] right-1 sm:right-2 md:right-4 lg:right-6 z-[26]" title="Clic para ver foto en grande">
             <div class="aspect-[4/3] bg-neutral-200 overflow-hidden relative">
               <img src="images/polaroid-6.jpg" alt="Tomados de la mano" class="w-full h-full object-cover brightness-100" decoding="async" />
             </div>
@@ -659,34 +672,34 @@
   <!-- 4. QUICK ACTIONS: CALENDAR & NOVIOS PARIS MODALS         -->
   <!-- ======================================================== -->
   <section class="py-8 sm:py-12 md:py-14 px-4">
-    <div class="max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-8 sm:gap-14 md:gap-20">
+    <div class="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 sm:gap-10 md:gap-16">
       
       <!-- Calendar Action Trigger (Opens Smart Calendar Options) -->
-      <button type="button" onclick="openCalendarModal()" class="group flex items-center gap-4 sm:gap-5 text-text-charcoal hover:text-bronze-gold transition-all text-left bg-transparent border-0 cursor-pointer">
+      <button type="button" onclick="openCalendarModal()" class="group flex items-center gap-4 sm:gap-5 text-text-charcoal hover:text-bronze-gold transition-all text-left bg-transparent border-0 cursor-pointer w-[290px] sm:w-[325px] max-w-full">
         <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/85 border border-[#D8C5AE] shadow-md flex items-center justify-center group-hover:scale-105 group-hover:border-bronze-gold group-hover:shadow-lg transition-all flex-shrink-0">
           <img src="images/icon-calendar.svg" alt="Calendario" class="w-9 h-9 sm:w-11 sm:h-11 object-contain" />
         </div>
-        <div>
+        <div class="min-w-0">
           <p class="font-serif text-[20px] sm:text-[23px] md:text-[25px] leading-tight font-medium text-text-charcoal group-hover:text-bronze-gold transition-colors">
             Agrega la fecha a<br />tu calendario
           </p>
-          <span class="font-sans text-[10px] sm:text-[11.5px] uppercase tracking-wider text-bronze-gold font-semibold">Google / Apple / Outlook ↗</span>
+          <span class="font-sans text-[10px] sm:text-[11.5px] uppercase tracking-wider text-bronze-gold font-semibold whitespace-nowrap">Google / Apple / Outlook ↗</span>
         </div>
       </button>
 
       <!-- Novios Paris Action Trigger (Opens Paris Registry Modal) -->
-      <button type="button" onclick="openGiftsModal()" class="group flex items-center gap-4 sm:gap-5 text-text-charcoal hover:text-bronze-gold transition-all text-left bg-transparent border-0 cursor-pointer">
+      <button type="button" onclick="openGiftsModal()" class="group flex items-center gap-4 sm:gap-5 text-text-charcoal hover:text-bronze-gold transition-all text-left bg-transparent border-0 cursor-pointer w-[290px] sm:w-[325px] max-w-full">
         <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/85 border border-[#D8C5AE] shadow-md flex items-center justify-center group-hover:scale-105 group-hover:border-bronze-gold group-hover:shadow-lg transition-all flex-shrink-0">
           <img src="images/icon-gift.svg" alt="Regalo" class="w-9 h-9 sm:w-11 sm:h-11 object-contain" />
         </div>
-        <div>
+        <div class="min-w-0">
           <p class="font-serif text-[20px] sm:text-[23px] md:text-[25px] leading-tight text-text-charcoal font-medium group-hover:text-bronze-gold transition-colors">
             Novios Paris
           </p>
           <p class="font-serif text-[20px] sm:text-[23px] md:text-[25px] leading-tight text-bronze-gold font-semibold">
             21 05 64 48
           </p>
-          <span class="font-sans text-[10px] sm:text-[11.5px] uppercase tracking-wider text-text-muted font-semibold">Ver lista de regalos ↗</span>
+          <span class="font-sans text-[10px] sm:text-[11.5px] uppercase tracking-wider text-text-muted font-semibold whitespace-nowrap">Ver lista de regalos ↗</span>
         </div>
       </button>
 
