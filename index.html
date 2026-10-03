@@ -1,13 +1,24 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Natalia & Franco — Nuestro Matrimonio · 30 · 01 · 27</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- OpenGraph / Social Sharing Meta (WhatsApp, iMessage, etc.) -->
+  <meta property="og:title" content="Natalia & Franco — Nuestro Matrimonio · 30 · 01 · 27" />
+  <meta property="og:description" content="Acompáñanos a celebrar nuestro matrimonio el sábado 30 de enero de 2027 en Santiago de Chile." />
+  <meta property="og:image" content="images/polaroid-5.jpg" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#353B2D" />
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -15,14 +26,17 @@
           colors: {
             'linen-sand': '#E4D9C8',
             'olive-deep': '#353B2D',
-            'olive-dark': '#2D3326',
+            'olive-dark': '#282F22',
+            'olive-soft': '#454D3B',
             'bronze-gold': '#8E5F34',
             'gold-light': '#B5824C',
             'gold-muted': '#A48259',
             'gold-border': '#D8C5AE',
+            'gold-champagne': '#E9DFD0',
             'paper-card': '#FAF7F2',
-            'text-charcoal': '#3D362E',
-            'text-muted': '#7D7060',
+            'paper-warm': '#F7F4EE',
+            'text-charcoal': '#2D261E',
+            'text-muted': '#726759',
             'parchment-map': '#F4E9D7',
           },
           fontFamily: {
@@ -30,96 +44,148 @@
             serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
             sans: ['"Montserrat"', 'sans-serif'],
           },
+          boxShadow: {
+            'luxury': '0 20px 45px -10px rgba(45, 38, 30, 0.14), 0 8px 18px -6px rgba(45, 38, 30, 0.08)',
+            'luxury-hover': '0 28px 56px -12px rgba(45, 38, 30, 0.22), 0 12px 24px -8px rgba(45, 38, 30, 0.12)',
+            'inner-delicate': 'inset 0 1px 3px rgba(142, 95, 52, 0.15)',
+            'floating-island': '0 16px 36px rgba(25, 29, 21, 0.35), 0 2px 10px rgba(0, 0, 0, 0.2)',
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards',
+            'pulse-subtle': 'pulseSubtle 3s ease-in-out infinite',
+            'soundwave': 'soundwave 1.2s ease-in-out infinite',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0', transform: 'translateY(12px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            pulseSubtle: {
+              '0%, 100%': { opacity: '1' },
+              '50%': { opacity: '0.85' },
+            },
+            soundwave: {
+              '0%, 100%': { height: '4px' },
+              '50%': { height: '14px' },
+            }
+          }
         },
       },
     };
   </script>
+
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; overflow-x: hidden; }
     body {
       margin: 0;
       font-family: 'Cormorant Garamond', Georgia, serif;
-      color: #3D362E;
+      color: #2D261E;
       background-color: #FAF8F5;
       background-image: 
-        linear-gradient(180deg, rgba(250, 248, 245, 0.76) 0%, rgba(246, 241, 233, 0.70) 100%),
+        linear-gradient(180deg, rgba(250, 248, 245, 0.78) 0%, rgba(246, 241, 233, 0.72) 100%),
         url('images/background.jpeg');
       background-size: cover;
       background-position: center top;
       background-repeat: no-repeat;
       background-attachment: scroll;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .font-script { font-family: 'Alex Brush', cursive; }
-    .font-serif { font-family: 'Cormorant Garamond', Georgia, serif; }
-    .font-sans-caps { font-family: 'Montserrat', sans-serif; text-transform: uppercase; }
+    /* Selection Color */
+    ::selection {
+      background-color: #E8DCCB;
+      color: #353B2D;
+    }
 
-    /* ================= HERO SECTION BACKGROUND ================= */
+    /* Subtle Paper Grain Overlay */
+    .paper-texture-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 99;
+      opacity: 0.025;
+      background-image: radial-gradient(#000 1px, transparent 1px);
+      background-size: 3px 3px;
+    }
+
+    /* Hero Section Linen Canvas */
     .hero-linen-bg {
       position: relative;
       background-image: 
-        radial-gradient(ellipse at 50% 45%, rgba(255, 255, 255, 0.25) 0%, rgba(228, 217, 200, 0.1) 80%),
+        radial-gradient(ellipse at 50% 45%, rgba(255, 255, 255, 0.3) 0%, rgba(228, 217, 200, 0.12) 80%),
         url('images/background.jpeg');
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
-      min-height: 560px;
+      min-height: 600px;
       overflow: hidden;
     }
     .hero-linen-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(250, 248, 245, 0.2) 0%, rgba(235, 226, 215, 0.15) 65%, rgba(220, 208, 192, 0.3) 100%);
+      background: linear-gradient(180deg, rgba(250, 248, 245, 0.15) 0%, rgba(235, 226, 215, 0.2) 65%, rgba(220, 208, 192, 0.35) 100%);
       pointer-events: none;
     }
 
-    /* Envelope styling */
-    .envelope-container {
-      filter: drop-shadow(0 16px 28px rgba(65, 50, 35, 0.16));
-    }
-
-    /* Card styling */
-    .invitation-card {
-      background: #FAF7F2;
-      box-shadow: 0 10px 32px rgba(55, 42, 28, 0.12);
+    /* Double-Bezel Nested Architecture */
+    .double-bezel-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(216, 197, 174, 0.6);
+      box-shadow: 0 16px 40px rgba(53, 44, 33, 0.08), 0 2px 8px rgba(53, 44, 33, 0.04);
       position: relative;
-      border: 1px solid rgba(214, 197, 174, 0.5);
+      border-radius: 4px;
     }
-    .card-inner-border {
-      position: absolute;
-      inset: 10px;
-      border: 1px solid #D6C5AE;
-      pointer-events: none;
+    .double-bezel-inner {
+      border: 1px solid rgba(181, 130, 76, 0.35);
+      border-radius: 2px;
+      margin: 8px;
+      position: relative;
     }
 
-    /* Polaroid photo stack */
+    /* Polaroid Frames with Washi Tape & Lift Effect */
     .polaroid-frame {
       background: #FFFFFF;
-      padding: 6px 6px 22px 6px;
-      box-shadow: 0 12px 28px rgba(45, 35, 20, 0.18), 0 2px 7px rgba(0, 0, 0, 0.08);
-      transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.3, 1), box-shadow 0.35s ease;
+      padding: 6px 6px 20px 6px;
+      box-shadow: 0 14px 30px rgba(45, 35, 20, 0.2), 0 3px 8px rgba(0, 0, 0, 0.09);
+      transition: all 0.4s cubic-bezier(0.2, 0.8, 0.25, 1);
       cursor: pointer;
+      border-radius: 2px;
+      position: relative;
     }
     .polaroid-frame:hover {
-      transform: scale(1.08) rotate(0deg) !important;
-      box-shadow: 0 20px 38px rgba(45, 35, 20, 0.28), 0 5px 14px rgba(0, 0, 0, 0.12);
-      z-index: 45 !important;
+      transform: scale(1.1) rotate(0deg) !important;
+      box-shadow: 0 24px 44px rgba(45, 35, 20, 0.32), 0 6px 16px rgba(0, 0, 0, 0.15);
+      z-index: 50 !important;
+    }
+    .polaroid-frame::after {
+      content: '';
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 28px;
+      height: 10px;
+      background: rgba(228, 217, 200, 0.65);
+      backdrop-filter: blur(1px);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+      border-radius: 1px;
+      pointer-events: none;
     }
 
     /* Form input styling */
     .rsvp-input {
       width: 100%;
-      padding: 7px 11px;
+      padding: 9px 13px;
       background: #FFFFFF;
       border: 1px solid #DFD5C6;
-      border-radius: 2px;
+      border-radius: 3px;
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 13.5px;
-      color: #3D362E;
+      font-size: 14.5px;
+      color: #2D261E;
       outline: none;
-      transition: all 0.2s ease;
+      transition: all 0.25s ease;
     }
     .rsvp-input::placeholder {
       color: #9A8D7E;
@@ -127,31 +193,46 @@
     }
     .rsvp-input:focus {
       border-color: #8E5F34;
-      box-shadow: 0 0 0 1px rgba(142, 95, 52, 0.35);
+      box-shadow: 0 0 0 2px rgba(142, 95, 52, 0.18);
     }
 
-    /* Brown pill button */
-    .btn-brown-pill {
+    /* Nested Button-in-Button Architecture */
+    .btn-luxury-pill {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      padding: 6.5px 22px;
+      gap: 10px;
+      padding: 7px 10px 7px 20px;
       background: #8E5F34;
       color: #FFFFFF;
       border-radius: 9999px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 10px;
+      font-size: 10.5px;
       font-weight: 600;
       letter-spacing: 0.16em;
       text-transform: uppercase;
       text-decoration: none;
-      box-shadow: 0 3px 8px rgba(142, 95, 52, 0.22);
-      transition: all 0.25s ease;
+      box-shadow: 0 4px 12px rgba(142, 95, 52, 0.25);
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      cursor: pointer;
     }
-    .btn-brown-pill:hover {
+    .btn-luxury-pill .icon-bubble {
+      width: 24px;
+      height: 24px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.25s ease;
+    }
+    .btn-luxury-pill:hover {
       background: #754B24;
-      transform: translateY(-1px);
-      box-shadow: 0 5px 12px rgba(142, 95, 52, 0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(142, 95, 52, 0.32);
+    }
+    .btn-luxury-pill:hover .icon-bubble {
+      transform: translateX(2px);
+      background: rgba(255, 255, 255, 0.28);
     }
 
     /* Map styling */
@@ -159,84 +240,118 @@
       background: #F4E9D7;
       border: 2px solid #8E6D4B;
       position: relative;
-      box-shadow: 0 10px 30px rgba(60, 45, 25, 0.1);
+      box-shadow: 0 14px 36px rgba(60, 45, 25, 0.14);
+      border-radius: 3px;
     }
     .vintage-map-inner-border {
       position: absolute;
-      inset: 4px;
+      inset: 5px;
       border: 1px solid #C4A783;
       pointer-events: none;
     }
+
+    /* Equalizer Bar Animation */
+    .eq-bar {
+      width: 2px;
+      background: #B5824C;
+      border-radius: 1px;
+      transition: height 0.2s ease;
+    }
+    .is-playing .eq-bar:nth-child(1) { animation: soundwave 1s ease-in-out infinite 0.1s; }
+    .is-playing .eq-bar:nth-child(2) { animation: soundwave 0.8s ease-in-out infinite 0.3s; }
+    .is-playing .eq-bar:nth-child(3) { animation: soundwave 1.2s ease-in-out infinite 0s; }
+    .is-playing .eq-bar:nth-child(4) { animation: soundwave 0.9s ease-in-out infinite 0.2s; }
+    
+    /* Reveal Animation Utility */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .reveal-on-scroll.is-revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
-<body class="antialiased selection:bg-amber-100 selection:text-amber-900">
+<body class="antialiased">
+
+  <!-- Subtle Paper Texture Overlay -->
+  <div class="paper-texture-overlay" aria-hidden="true"></div>
 
   <!-- ======================================================== -->
   <!-- 1. HERO / INVITATION SECTION                             -->
   <!-- ======================================================== -->
-  <section class="hero-linen-bg py-10 sm:py-14 flex flex-col items-center justify-center relative">
+  <header class="hero-linen-bg pt-8 pb-14 sm:pt-12 sm:pb-16 flex flex-col items-center justify-center relative">
     <div class="hero-linen-overlay"></div>
 
-    <!-- Main Assembly: Envelope + Card + Polaroids + Gardenia + Bougainvillea -->
-    <div class="relative z-10 max-w-5xl mx-auto w-full px-2 sm:px-4 flex items-center justify-center">
-      <div class="relative w-full max-w-[480px] sm:max-w-[600px] md:max-w-[740px] lg:max-w-[860px] flex items-center justify-center py-4 -translate-x-5 sm:-translate-x-3 md:translate-x-0">
+    <!-- Main Assembly: Envelope + Card + Polaroids + Flowers -->
+    <div class="relative z-10 max-w-5xl mx-auto w-full px-3 sm:px-6 flex items-center justify-center">
+      <div class="relative w-full max-w-[480px] sm:max-w-[620px] md:max-w-[760px] lg:max-w-[880px] flex items-center justify-center py-4 -translate-x-4 sm:-translate-x-2 md:translate-x-0">
 
         <!-- Envelope and Letter Assembly -->
-        <div class="envelope-container relative flex items-center justify-center">
-          <img src="images/envelope.svg" alt="Sobre de invitación" class="w-[280px] sm:w-[350px] md:w-[420px] h-[310px] sm:h-[370px] md:h-[440px] select-none" />
+        <div class="envelope-container relative flex items-center justify-center filter drop-shadow-[0_16px_32px_rgba(55,42,28,0.18)]">
+          <img src="images/envelope.svg" alt="Sobre de invitación" class="w-[285px] sm:w-[360px] md:w-[430px] h-[315px] sm:h-[380px] md:h-[450px] select-none" />
 
-          <!-- Central Invitation Letter -->
-          <div class="invitation-card absolute z-10 w-[200px] sm:w-[245px] md:w-[285px] filter drop-shadow-[0_10px_32px_rgba(55,42,28,0.14)]" style="top: 50%; left: 50%; transform: translate(-50%, -46%);">
+          <!-- Central Invitation Letter with subtle micro-scale -->
+          <div class="invitation-card absolute z-10 w-[200px] sm:w-[250px] md:w-[290px] filter drop-shadow-[0_12px_32px_rgba(55,42,28,0.16)] transition-transform duration-300 hover:scale-[1.01]" style="top: 50%; left: 50%; transform: translate(-50%, -46%);">
             <img src="images/letter.svg" alt="Carta de invitación: Natalia & Franco — Sábado 30 · 01 · 27" class="w-full h-auto block select-none" />
           </div>
         </div>
 
-        <!-- Polaroid Photos Cascade (5 Photos, Spaced & Enlarged) -->
-        <div class="absolute right-[-10px] sm:right-[-25px] md:right-[-55px] lg:right-[-90px] xl:right-[-115px] -top-3 sm:-top-5 md:-top-7 z-20 pointer-events-auto">
+        <!-- Polaroid Photos Cascade (Interactive 6-photo fan) -->
+        <div class="absolute right-[-8px] sm:right-[-20px] md:right-[-45px] lg:right-[-80px] xl:right-[-105px] -top-3 sm:-top-5 md:-top-7 z-20 pointer-events-auto">
           
-          <!-- Bougainvillea Flower Accent pinned top-right of cascade -->
+          <!-- Bougainvillea Flower Accent pinned top-right -->
           <div class="absolute -top-7 -right-2 z-30 w-14 h-14 sm:w-16 sm:h-16 pointer-events-none drop-shadow-md">
             <img src="images/bougainvillea-flower.svg" alt="Flor Bougainvillea" class="w-full h-full transform rotate-12 select-none" />
           </div>
 
-          <!-- Polaroid 1 (Top: Couple outdoors at twilight) -->
-          <div class="polaroid-frame w-[110px] sm:w-[145px] md:w-[185px] lg:w-[220px] xl:w-[235px] transform rotate-[8deg] absolute top-0 sm:top-0 md:top-0 lg:top-[-10px] right-4 sm:right-6 md:right-8 lg:right-11 z-[21]">
+          <!-- Polaroid 1: Atardecer -->
+          <div onclick="openLightbox(0)" class="polaroid-frame w-[110px] sm:w-[145px] md:w-[185px] lg:w-[215px] xl:w-[230px] transform rotate-[8deg] absolute top-0 right-4 sm:right-6 md:right-8 lg:right-11 z-[21]" title="Clic para ver foto en grande">
             <div class="aspect-[4/3] bg-neutral-800 overflow-hidden relative">
               <img src="images/polaroid-1.jpg" alt="Natalia y Franco al atardecer" class="w-full h-full object-cover brightness-95 contrast-105" />
             </div>
           </div>
 
-          <!-- Polaroid 2 (Rings & Floral Bouquet) -->
-          <div class="polaroid-frame w-[106px] sm:w-[140px] md:w-[178px] lg:w-[212px] xl:w-[226px] transform rotate-[-5deg] absolute top-[56px] sm:top-[76px] md:top-[94px] lg:top-[102px] right-0 sm:right-1 md:right-2 lg:right-3 z-[22]">
+          <!-- Polaroid 2: Alianzas & Flores -->
+          <div onclick="openLightbox(1)" class="polaroid-frame w-[106px] sm:w-[140px] md:w-[178px] lg:w-[208px] xl:w-[222px] transform rotate-[-5deg] absolute top-[54px] sm:top-[74px] md:top-[92px] lg:top-[100px] right-0 sm:right-1 md:right-2 lg:right-3 z-[22]" title="Clic para ver foto en grande">
             <div class="aspect-[4/3] bg-neutral-100 overflow-hidden relative">
               <img src="images/polaroid-4.jpg" alt="Anillos de matrimonio y bouquet floral" class="w-full h-full object-cover brightness-100 contrast-100" />
             </div>
           </div>
 
-          <!-- Polaroid 3 (Newlyweds Kiss under Petals Confetti) -->
-          <div class="polaroid-frame w-[112px] sm:w-[148px] md:w-[188px] lg:w-[224px] xl:w-[238px] transform rotate-[6deg] absolute top-[112px] sm:top-[152px] md:top-[188px] lg:top-[214px] right-3 sm:right-5 md:right-7 lg:right-9 z-[23]">
+          <!-- Polaroid 3: Beso bajo lluvia de pétalos -->
+          <div onclick="openLightbox(2)" class="polaroid-frame w-[112px] sm:w-[148px] md:w-[188px] lg:w-[220px] xl:w-[234px] transform rotate-[6deg] absolute top-[108px] sm:top-[148px] md:top-[184px] lg:top-[210px] right-3 sm:right-5 md:right-7 lg:right-9 z-[23]" title="Clic para ver foto en grande">
             <div class="aspect-[4/3] bg-neutral-100 overflow-hidden relative">
               <img src="images/polaroid-5.jpg" alt="Beso de los novios bajo lluvia de pétalos" class="w-full h-full object-cover brightness-100 contrast-105" />
             </div>
           </div>
 
-          <!-- Polaroid 4 (Scenic Mountain Landscape) -->
-          <div class="polaroid-frame w-[105px] sm:w-[138px] md:w-[176px] lg:w-[210px] xl:w-[224px] transform rotate-[-6deg] absolute top-[168px] sm:top-[228px] md:top-[282px] lg:top-[326px] right-0 sm:right-2 md:right-3 lg:right-4 z-[24]">
+          <!-- Polaroid 4: En la naturaleza -->
+          <div onclick="openLightbox(3)" class="polaroid-frame w-[105px] sm:w-[138px] md:w-[176px] lg:w-[206px] xl:w-[220px] transform rotate-[-6deg] absolute top-[162px] sm:top-[222px] md:top-[276px] lg:top-[320px] right-0 sm:right-2 md:right-3 lg:right-4 z-[24]" title="Clic para ver foto en grande">
             <div class="aspect-[4/3] bg-neutral-700 overflow-hidden relative">
               <img src="images/polaroid-2.jpg" alt="Paisaje natural" class="w-full h-full object-cover sepia-[0.15]" />
             </div>
           </div>
 
-          <!-- Polaroid 5 (Celebration & Balloon Release with Guests) -->
-          <div class="polaroid-frame w-[110px] sm:w-[145px] md:w-[185px] lg:w-[220px] xl:w-[235px] transform rotate-[5deg] absolute top-[224px] sm:top-[304px] md:top-[376px] lg:top-[438px] right-4 sm:right-6 md:right-8 lg:right-10 z-[25]">
+          <!-- Polaroid 5: Globos y celebración -->
+          <div onclick="openLightbox(4)" class="polaroid-frame w-[110px] sm:w-[145px] md:w-[185px] lg:w-[216px] xl:w-[230px] transform rotate-[5deg] absolute top-[216px] sm:top-[296px] md:top-[368px] lg:top-[430px] right-4 sm:right-6 md:right-8 lg:right-10 z-[25]" title="Clic para ver foto en grande">
             <div class="aspect-[4/3] bg-neutral-200 overflow-hidden relative">
-              <img src="images/polaroid-3.jpg" alt="Celebración de novios y globos" class="w-full h-full object-cover brightness-105" />
+              <img src="images/polaroid-3.jpg" alt="Celebración con globos y amigos" class="w-full h-full object-cover brightness-105" />
+            </div>
+          </div>
+
+          <!-- Polaroid 6: Tomados de la mano -->
+          <div onclick="openLightbox(5)" class="polaroid-frame w-[108px] sm:w-[142px] md:w-[180px] lg:w-[212px] xl:w-[226px] transform rotate-[-4deg] absolute top-[270px] sm:top-[370px] md:top-[460px] lg:top-[540px] right-1 sm:right-2 md:right-4 lg:right-6 z-[26]" title="Clic para ver foto en grande">
+            <div class="aspect-[4/3] bg-neutral-200 overflow-hidden relative">
+              <img src="images/polaroid-6.jpg" alt="Tomados de la mano" class="w-full h-full object-cover brightness-100" />
             </div>
           </div>
 
         </div>
 
-        <!-- White Gardenia Flower with dark leaves (Bottom-Right of Card) -->
+        <!-- White Gardenia Flower (Bottom-Right of Card) -->
         <div class="absolute bottom-[-10px] sm:bottom-[-16px] right-[90px] sm:right-[120px] md:right-[140px] z-30 pointer-events-none drop-shadow-xl w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32">
           <img src="images/gardenia-flower.svg" alt="Flor Gardenia" class="w-full h-full object-contain select-none" />
         </div>
@@ -244,85 +359,137 @@
       </div>
     </div>
 
-    <!-- Audio / Music Player Controls below Hero Card -->
-    <div class="relative z-20 mt-2 flex flex-col items-center justify-center w-full max-w-[260px] sm:max-w-[290px] mx-auto px-4">
-      <audio id="audio-player" src="Levitating.mp3" preload="auto" loop autoplay playsinline></audio>
-      <div id="player-progress-bar" class="w-full h-[2px] bg-white/45 rounded-full relative cursor-pointer my-2">
-        <div id="player-progress-fill" class="h-full bg-white rounded-full w-0 relative">
-          <span class="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full shadow-sm"></span>
+    <!-- ======================================================== -->
+    <!-- HIGH-CONTRAST LUXURY FLOATING AUDIO CONTROLLER           -->
+    <!-- ======================================================== -->
+    <div class="relative z-30 mt-4 sm:mt-6 w-full max-w-[340px] sm:max-w-[380px] mx-auto px-3">
+      <audio id="audio-player" src="Levitating.mp3" preload="auto" loop playsinline></audio>
+
+      <!-- Glass Capsule Island with Double-Bezel Gold Edge -->
+      <div id="audio-capsule" class="bg-[#262C20]/95 backdrop-blur-md border border-[#B5824C]/40 rounded-full px-4 py-2.5 shadow-floating-island flex flex-col gap-1.5 transition-all duration-300">
+        
+        <div class="flex items-center justify-between text-[#FAF7F2]">
+          
+          <!-- Track Info & Dynamic Equalizer -->
+          <div class="flex items-center gap-2.5 overflow-hidden">
+            <div id="soundwave-container" class="flex items-end gap-[2px] h-3.5 w-3.5 flex-shrink-0" title="Estado de reproducción">
+              <span class="eq-bar h-1"></span>
+              <span class="eq-bar h-2"></span>
+              <span class="eq-bar h-3.5"></span>
+              <span class="eq-bar h-1.5"></span>
+            </div>
+            <div class="truncate text-left">
+              <p class="font-sans text-[10px] tracking-[0.16em] uppercase font-semibold text-[#D8C5AE] truncate leading-tight">
+                Música de Fondo
+              </p>
+              <p class="font-serif italic text-[13px] text-[#FAF7F2]/90 truncate leading-none">
+                Natalia & Franco
+              </p>
+            </div>
+          </div>
+
+          <!-- Controls: Prev, Play, Next, Mute -->
+          <div class="flex items-center gap-2 flex-shrink-0">
+            <!-- Prev / Restart -->
+            <button id="btn-player-prev" class="w-7 h-7 rounded-full flex items-center justify-center text-[#FAF7F2]/80 hover:text-[#FFFFFF] hover:bg-white/10 active:scale-95 transition-all" title="Reiniciar canción" aria-label="Reiniciar canción">
+              <svg class="w-3 h-3 fill-currentColor" viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+            </button>
+
+            <!-- Play / Pause Button with Gold Glow -->
+            <button id="btn-player-play" class="w-8 h-8 rounded-full bg-[#B5824C] hover:bg-[#C8945E] text-[#262C20] flex items-center justify-center shadow-[0_2px_10px_rgba(181,130,76,0.4)] active:scale-90 transition-all" title="Reproducir música" aria-label="Reproducir o pausar música">
+              <span id="player-play-icon" class="flex items-center justify-center w-full h-full">
+                <svg class="w-3.5 h-3.5 fill-[#262C20] translate-x-[1px]" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </span>
+            </button>
+
+            <!-- Next -->
+            <button id="btn-player-next" class="w-7 h-7 rounded-full flex items-center justify-center text-[#FAF7F2]/80 hover:text-[#FFFFFF] hover:bg-white/10 active:scale-95 transition-all" title="Reiniciar pista" aria-label="Reiniciar pista">
+              <svg class="w-3 h-3 fill-currentColor" viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+            </button>
+
+            <!-- Mute / Unmute -->
+            <button id="btn-player-mute" class="w-7 h-7 rounded-full flex items-center justify-center text-[#FAF7F2]/70 hover:text-[#FFFFFF] hover:bg-white/10 active:scale-95 transition-all" title="Silenciar / Activar sonido" aria-label="Silenciar sonido">
+              <svg id="icon-volume" class="w-3.5 h-3.5 fill-currentColor" viewBox="0 0 24 24">
+                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+              </svg>
+            </button>
+          </div>
         </div>
-      </div>
-      <div class="flex items-center justify-center gap-6 mt-1 text-white">
-        <button id="btn-player-prev" class="text-white/80 hover:text-white transition-opacity transform hover:scale-110 active:scale-95" title="Reiniciar">
-          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
-          </svg>
-        </button>
-        <button id="btn-player-play" class="w-6 h-6 rounded-full border border-white flex items-center justify-center hover:bg-white/15 transition-all transform hover:scale-105 active:scale-95 shadow-sm" title="Reproducir música">
-          <span id="player-play-icon" class="flex items-center justify-center w-full h-full">
-            <svg class="w-2.5 h-2.5 fill-white translate-x-[1px]" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          </span>
-        </button>
-        <button id="btn-player-next" class="text-white/80 hover:text-white transition-opacity transform hover:scale-110 active:scale-95" title="Reiniciar">
-          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
-          </svg>
-        </button>
+
+        <!-- Progress Scrubber & Live Time Readout -->
+        <div class="flex items-center gap-2 pt-0.5">
+          <span id="player-time-current" class="font-sans text-[8.5px] text-[#FAF7F2]/60 w-6 text-right font-medium">0:00</span>
+          
+          <div id="player-progress-bar" class="flex-1 h-[3px] bg-white/20 hover:bg-white/30 rounded-full relative cursor-pointer group transition-all" title="Adelantar o retroceder">
+            <div id="player-progress-fill" class="h-full bg-[#B5824C] rounded-full w-0 relative transition-[width] duration-100">
+              <span class="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-[#FAF7F2] rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity"></span>
+            </div>
+          </div>
+
+          <span id="player-time-duration" class="font-sans text-[8.5px] text-[#FAF7F2]/60 w-6 text-left font-medium">3:23</span>
+        </div>
+
       </div>
     </div>
-  </section>
+  </header>
 
   <!-- ======================================================== -->
   <!-- 2. COUNTDOWN / CUENTA REGRESIVA SECTION                  -->
   <!-- ======================================================== -->
-  <section class="relative py-7 sm:py-9 text-white overflow-hidden" style="background-color: #353B2D; background-image: radial-gradient(circle at 50% 50%, rgba(65, 75, 55, 0.4) 0%, rgba(42, 48, 35, 0.8) 100%);">
+  <section class="relative py-8 sm:py-10 text-white overflow-hidden" style="background-color: #353B2D; background-image: radial-gradient(circle at 50% 50%, rgba(65, 75, 55, 0.45) 0%, rgba(40, 47, 34, 0.9) 100%);">
     
-    <!-- Left Fine-Line Etched Botanical Branch -->
-    <div class="absolute left-2 sm:left-6 md:left-12 top-1/2 -translate-y-1/2 w-16 sm:w-24 md:w-32 h-24 sm:h-32 opacity-40 pointer-events-none">
-      <img src="images/countdown-leaves.svg" alt="Hojas botánicas" class="w-full h-full object-contain select-none" />
+    <!-- Left Botanical Leaves Accent -->
+    <div class="absolute left-2 sm:left-6 md:left-12 top-1/2 -translate-y-1/2 w-16 sm:w-24 md:w-32 h-24 sm:h-32 opacity-40 pointer-events-none" aria-hidden="true">
+      <img src="images/countdown-leaves.svg" alt="" class="w-full h-full object-contain select-none" />
     </div>
 
-    <!-- Right Fine-Line Etched Botanical Branch (Mirrored) -->
-    <div class="absolute right-2 sm:right-6 md:right-12 top-1/2 -translate-y-1/2 w-16 sm:w-24 md:w-32 h-24 sm:h-32 opacity-40 pointer-events-none transform scale-x-[-1]">
-      <img src="images/countdown-leaves.svg" alt="Hojas botánicas" class="w-full h-full object-contain select-none" />
+    <!-- Right Botanical Leaves Accent (Mirrored) -->
+    <div class="absolute right-2 sm:right-6 md:right-12 top-1/2 -translate-y-1/2 w-16 sm:w-24 md:w-32 h-24 sm:h-32 opacity-40 pointer-events-none transform scale-x-[-1]" aria-hidden="true">
+      <img src="images/countdown-leaves.svg" alt="" class="w-full h-full object-contain select-none" />
     </div>
 
     <!-- Countdown Digits & Label -->
     <div class="relative z-10 max-w-xl mx-auto px-4 text-center">
       <div class="flex items-center justify-center gap-4 mb-3 sm:mb-5">
         <span class="w-12 sm:w-20 h-[1px] bg-[#B5824C] opacity-50"></span>
-        <h2 class="font-sans-caps text-[#B5824C] text-[10px] sm:text-[11px] tracking-[0.3em] font-medium">
+        <h2 class="font-sans text-[#B5824C] text-[10px] sm:text-[11px] tracking-[0.3em] font-semibold uppercase">
           Cuenta Regresiva
         </h2>
         <span class="w-12 sm:w-20 h-[1px] bg-[#B5824C] opacity-50"></span>
       </div>
 
-      <div class="flex items-center justify-center gap-1.5 sm:gap-5 md:gap-7">
-        <div class="text-center min-w-[50px] sm:min-w-[65px]">
-          <span id="cd-days" class="font-serif text-[40px] sm:text-[52px] md:text-[60px] leading-none text-[#B5824C] block font-light tracking-tight">120</span>
-          <span class="font-sans-caps text-[#B5824C] opacity-80 text-[7.5px] sm:text-[9px] tracking-[0.25em] font-medium mt-1 block">Días</span>
+      <div class="flex items-center justify-center gap-2 sm:gap-6 md:gap-8">
+        
+        <!-- Days -->
+        <div class="text-center min-w-[56px] sm:min-w-[70px]">
+          <span id="cd-days" class="font-serif text-[42px] sm:text-[54px] md:text-[64px] leading-none text-[#B5824C] block font-light tracking-tight">--</span>
+          <span class="font-sans text-[#B5824C]/85 text-[8px] sm:text-[9.5px] tracking-[0.25em] font-semibold uppercase mt-1 block">Días</span>
         </div>
 
-        <span class="h-9 sm:h-12 w-[1px] bg-[#B5824C]/35"></span>
+        <span class="h-10 sm:h-12 w-[1px] bg-[#B5824C]/35"></span>
 
-        <div class="text-center min-w-[50px] sm:min-w-[65px]">
-          <span id="cd-hours" class="font-serif text-[40px] sm:text-[52px] md:text-[60px] leading-none text-[#B5824C] block font-light tracking-tight">19</span>
-          <span class="font-sans-caps text-[#B5824C] opacity-80 text-[7.5px] sm:text-[9px] tracking-[0.25em] font-medium mt-1 block">Horas</span>
+        <!-- Hours -->
+        <div class="text-center min-w-[56px] sm:min-w-[70px]">
+          <span id="cd-hours" class="font-serif text-[42px] sm:text-[54px] md:text-[64px] leading-none text-[#B5824C] block font-light tracking-tight">--</span>
+          <span class="font-sans text-[#B5824C]/85 text-[8px] sm:text-[9.5px] tracking-[0.25em] font-semibold uppercase mt-1 block">Horas</span>
         </div>
 
-        <span class="h-9 sm:h-12 w-[1px] bg-[#B5824C]/35"></span>
+        <span class="h-10 sm:h-12 w-[1px] bg-[#B5824C]/35"></span>
 
-        <div class="text-center min-w-[50px] sm:min-w-[65px]">
-          <span id="cd-minutes" class="font-serif text-[40px] sm:text-[52px] md:text-[60px] leading-none text-[#B5824C] block font-light tracking-tight">43</span>
-          <span class="font-sans-caps text-[#B5824C] opacity-80 text-[7.5px] sm:text-[9px] tracking-[0.25em] font-medium mt-1 block">Minutos</span>
+        <!-- Minutes -->
+        <div class="text-center min-w-[56px] sm:min-w-[70px]">
+          <span id="cd-minutes" class="font-serif text-[42px] sm:text-[54px] md:text-[64px] leading-none text-[#B5824C] block font-light tracking-tight">--</span>
+          <span class="font-sans text-[#B5824C]/85 text-[8px] sm:text-[9.5px] tracking-[0.25em] font-semibold uppercase mt-1 block">Minutos</span>
         </div>
 
-        <span class="h-9 sm:h-12 w-[1px] bg-[#B5824C]/35"></span>
+        <span class="h-10 sm:h-12 w-[1px] bg-[#B5824C]/35"></span>
 
-        <div class="text-center min-w-[50px] sm:min-w-[65px]">
-          <span id="cd-seconds" class="font-serif text-[40px] sm:text-[52px] md:text-[60px] leading-none text-[#B5824C] block font-light tracking-tight">26</span>
-          <span class="font-sans-caps text-[#B5824C] opacity-80 text-[7.5px] sm:text-[9px] tracking-[0.25em] font-medium mt-1 block">Segundos</span>
+        <!-- Seconds -->
+        <div class="text-center min-w-[56px] sm:min-w-[70px]">
+          <span id="cd-seconds" class="font-serif text-[42px] sm:text-[54px] md:text-[64px] leading-none text-[#B5824C] block font-light tracking-tight">--</span>
+          <span class="font-sans text-[#B5824C]/85 text-[8px] sm:text-[9.5px] tracking-[0.25em] font-semibold uppercase mt-1 block">Segundos</span>
         </div>
+
       </div>
     </div>
   </section>
@@ -330,75 +497,163 @@
   <!-- ======================================================== -->
   <!-- 3. RSVP / CONFIRMAR ASISTENCIA SECTION                   -->
   <!-- ======================================================== -->
-  <section class="py-12 sm:py-16 px-4 relative overflow-visible">
-    <div class="max-w-[720px] mx-auto relative">
+  <section id="rsvp-section" class="py-12 sm:py-16 px-4 relative overflow-visible">
+    <div class="max-w-[780px] mx-auto relative">
       
-      <!-- Card Container -->
-      <div class="bg-white rounded-[2px] border border-[#EAE1D4] shadow-[0_10px_38px_rgba(55,42,28,0.06)] grid grid-cols-1 md:grid-cols-12 overflow-visible relative z-10">
+      <!-- Card Container with Double-Bezel Inner Lining -->
+      <div class="double-bezel-card grid grid-cols-1 md:grid-cols-12 overflow-visible relative z-10">
         
-        <!-- Left Column: Confirmar Info -->
-        <div class="md:col-span-5 p-6 sm:p-7 flex flex-col items-center justify-center text-center border-b md:border-b-0 md:border-r border-[#EFE8DF]">
-          <h2 class="font-script text-bronze-gold text-[40px] sm:text-[46px] leading-none mb-2.5">
+        <!-- Left Column: Editorial Wedding Note -->
+        <div class="md:col-span-5 p-6 sm:p-8 flex flex-col items-center justify-center text-center border-b md:border-b-0 md:border-r border-[#EFE8DF] bg-[#FAF8F5]/60">
+          
+          <span class="font-sans text-[9px] tracking-[0.3em] uppercase text-gold-light font-semibold mb-1">
+            R.S.V.P.
+          </span>
+          <h2 class="font-script text-bronze-gold text-[44px] sm:text-[50px] leading-none mb-2">
             Confirmar
           </h2>
-          <p class="font-sans-caps text-text-charcoal text-[9px] sm:text-[10px] tracking-[0.24em] font-semibold leading-relaxed mb-3.5">
+          <p class="font-sans text-text-charcoal text-[9.5px] sm:text-[10px] tracking-[0.24em] font-semibold uppercase leading-relaxed mb-4">
             Tu asistencia es muy<br />importante para nosotros
           </p>
 
           <!-- Botanical Sprig -->
-          <div class="flex items-center justify-center gap-3 my-2 w-full max-w-[170px]">
+          <div class="flex items-center justify-center gap-3 my-2 w-full max-w-[170px]" aria-hidden="true">
             <span class="flex-1 h-[1px] bg-bronze-gold opacity-40"></span>
-            <img src="images/botanical-sprig.svg" alt="Detalle botánico" class="w-5 h-9 object-contain" />
+            <img src="images/botanical-sprig.svg" alt="" class="w-5 h-9 object-contain" />
             <span class="flex-1 h-[1px] bg-bronze-gold opacity-40"></span>
           </div>
 
-          <!-- Select dropdown: ¿Asistirás? -->
-          <div class="mt-3.5 w-full max-w-[170px]">
-            <select id="rsvp-attendance" class="w-full text-xs font-serif italic text-text-muted bg-white border border-[#D8CCBC] rounded-[2px] py-1.5 px-2.5 focus:outline-none focus:border-bronze-gold cursor-pointer">
-              <option value="">¿Asistirás?</option>
-              <option value="si">Sí, asistiré</option>
-              <option value="no">No podré asistir</option>
-            </select>
+          <div class="mt-4 p-3 bg-white/80 border border-[#E8DCCB] rounded-sm max-w-[210px] text-center shadow-sm">
+            <p class="font-serif italic text-text-muted text-[13px] leading-snug">
+              "Los momentos más hermosos cobran vida cuando los compartimos con quienes más queremos."
+            </p>
+            <p class="font-sans text-[9px] uppercase tracking-[0.2em] text-bronze-gold font-semibold mt-2">
+              Plazo de confirmación
+            </p>
+            <p class="font-serif text-[14px] text-text-charcoal font-medium">
+              Antes del 15 de diciembre de 2026
+            </p>
           </div>
         </div>
 
-        <!-- Right Column: Form Inputs -->
-        <div class="md:col-span-7 p-6 sm:p-7 flex flex-col justify-center">
+        <!-- Right Column: Interactive Segmented Form -->
+        <div class="md:col-span-7 p-6 sm:p-8 flex flex-col justify-center">
           
-          <div class="text-center mb-4">
-            <p class="font-serif text-text-charcoal text-[13px] sm:text-[13.5px]">
+          <div class="text-center mb-5">
+            <p class="font-serif text-text-charcoal text-[14px]">
               Esta invitación incluye acompañante
             </p>
-            <p class="font-script text-text-charcoal text-[20px] sm:text-[22px] leading-tight">
-              Confirma antes del 15 de diciembre
+            <p class="font-script text-bronze-gold text-[22px] sm:text-[24px] leading-tight">
+              ¿Nos acompañarás en nuestro gran día?
             </p>
           </div>
 
-          <form id="rsvp-form" class="space-y-2.5" onsubmit="event.preventDefault(); submitRsvp();">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-              <input type="text" required placeholder="Nombre completo" class="rsvp-input" />
-              <input type="text" placeholder="Preferencia alimentaria" class="rsvp-input" />
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-              <input type="text" placeholder="Nombre acompañante (solo si asiste)" class="rsvp-input" />
-              <input type="text" placeholder="Preferencia alimentaria" class="rsvp-input" />
-            </div>
-
-            <div>
-              <input type="text" placeholder="¿Alguno tiene alergias alimentarias?" class="rsvp-input" />
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-              <input type="email" required placeholder="Deja tu correo" class="rsvp-input" />
-              <input type="text" placeholder="Déjanos un mensaje o canción infaltable (opcional)" class="rsvp-input text-[11.5px]" />
-            </div>
-
-            <div class="pt-1.5">
-              <button type="submit" class="w-full py-2 border border-[#D5C4AC] hover:border-bronze-gold hover:bg-bronze-gold hover:text-white transition-all text-text-muted font-sans-caps text-[10px] tracking-[0.28em] font-medium rounded-[2px] bg-transparent">
-                Enviar
+          <!-- Segmented Attendance Toggle (Clear, prominent and integrated!) -->
+          <div class="mb-5">
+            <label class="block font-sans text-[9.5px] tracking-[0.2em] uppercase font-semibold text-text-muted text-center mb-2">
+              Selecciona tu respuesta:
+            </label>
+            <div class="grid grid-cols-2 gap-2 bg-[#F3ECE0] p-1 rounded-sm border border-[#DFD5C6]">
+              <button type="button" id="toggle-attending-yes" onclick="setAttendance(true)" class="py-2 px-3 rounded-sm text-xs font-sans tracking-wider uppercase font-semibold transition-all bg-[#8E5F34] text-white shadow-sm flex items-center justify-center gap-1.5">
+                <span>✓</span> Sí, asistiré
+              </button>
+              <button type="button" id="toggle-attending-no" onclick="setAttendance(false)" class="py-2 px-3 rounded-sm text-xs font-sans tracking-wider uppercase font-semibold transition-all text-text-muted hover:text-text-charcoal flex items-center justify-center gap-1.5">
+                <span>✕</span> No podré asistir
               </button>
             </div>
+            <input type="hidden" id="rsvp-attendance-value" value="si" />
+          </div>
+
+          <!-- RSVP Form -->
+          <form id="rsvp-form" class="space-y-3" onsubmit="event.preventDefault(); handleRsvpSubmit();">
+            
+            <!-- Guest Full Name & Email -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <div>
+                <label for="rsvp-name" class="block font-sans text-[9px] uppercase tracking-wider text-text-muted mb-1 font-semibold">Tu nombre y apellido *</label>
+                <input id="rsvp-name" type="text" required placeholder="Ej: Carla Morales" class="rsvp-input" />
+              </div>
+              <div>
+                <label for="rsvp-email" class="block font-sans text-[9px] uppercase tracking-wider text-text-muted mb-1 font-semibold">Tu correo electrónico *</label>
+                <input id="rsvp-email" type="email" required placeholder="tu-correo@ejemplo.com" class="rsvp-input" />
+              </div>
+            </div>
+
+            <!-- Conditional Block: When Attending (Yes) -->
+            <div id="rsvp-attending-fields" class="space-y-3 transition-all duration-300">
+              
+              <!-- Dietary Preference -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <div>
+                  <label for="rsvp-diet" class="block font-sans text-[9px] uppercase tracking-wider text-text-muted mb-1 font-semibold">Preferencia alimentaria</label>
+                  <select id="rsvp-diet" class="rsvp-input cursor-pointer bg-white">
+                    <option value="Tradicional">Menú tradicional</option>
+                    <option value="Vegetariano">Vegetariano</option>
+                    <option value="Vegano">Vegano</option>
+                    <option value="Celiaco">Celíaco / Sin gluten</option>
+                    <option value="Infantil">Menú infantil</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="rsvp-allergies" class="block font-sans text-[9px] uppercase tracking-wider text-text-muted mb-1 font-semibold">¿Alergias o restricciones?</label>
+                  <input id="rsvp-allergies" type="text" placeholder="Ej: Frutos secos, mariscos, etc." class="rsvp-input" />
+                </div>
+              </div>
+
+              <!-- Companion Details -->
+              <div class="pt-2 border-t border-[#EFE8DF]">
+                <div class="flex items-center justify-between mb-2">
+                  <label for="rsvp-has-companion" class="font-sans text-[9.5px] uppercase tracking-wider text-text-charcoal font-semibold cursor-pointer">
+                    ¿Asistirás con acompañante?
+                  </label>
+                  <input type="checkbox" id="rsvp-has-companion" onchange="toggleCompanionFields(this.checked)" class="w-4 h-4 text-bronze-gold rounded border-[#D8C5AE] focus:ring-bronze-gold cursor-pointer" />
+                </div>
+
+                <div id="companion-container" class="hidden space-y-2.5 pt-1 pl-2 border-l-2 border-[#D8C5AE]">
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    <div>
+                      <label for="rsvp-companion-name" class="block font-sans text-[9px] uppercase tracking-wider text-text-muted mb-1 font-semibold">Nombre del acompañante</label>
+                      <input id="rsvp-companion-name" type="text" placeholder="Nombre completo" class="rsvp-input" />
+                    </div>
+                    <div>
+                      <label for="rsvp-companion-diet" class="block font-sans text-[9px] uppercase tracking-wider text-text-muted mb-1 font-semibold">Menú acompañante</label>
+                      <select id="rsvp-companion-diet" class="rsvp-input cursor-pointer bg-white">
+                        <option value="Tradicional">Menú tradicional</option>
+                        <option value="Vegetariano">Vegetariano</option>
+                        <option value="Vegano">Vegano</option>
+                        <option value="Celiaco">Celíaco / Sin gluten</option>
+                        <option value="Infantil">Menú infantil</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Song suggestion or note -->
+              <div>
+                <label for="rsvp-song" class="block font-sans text-[9px] uppercase tracking-wider text-text-muted mb-1 font-semibold">Canción infaltable para la fiesta (opcional)</label>
+                <input id="rsvp-song" type="text" placeholder="Ej: Dua Lipa — Levitating / Tu tema favorito" class="rsvp-input text-[13px]" />
+              </div>
+
+            </div>
+
+            <!-- Conditional Block: When NOT Attending (No) -->
+            <div id="rsvp-not-attending-fields" class="hidden transition-all duration-300">
+              <label for="rsvp-message" class="block font-sans text-[9px] uppercase tracking-wider text-text-muted mb-1 font-semibold">Déjanos un mensaje con tus mejores deseos</label>
+              <textarea id="rsvp-message" rows="3" placeholder="Queridos Natalia y Franco, lamentablemente no podré acompañarlos, pero les deseo lo mejor..." class="rsvp-input text-[13px] resize-none"></textarea>
+            </div>
+
+            <!-- Submit Button with loading state -->
+            <div class="pt-2">
+              <button id="btn-rsvp-submit" type="submit" class="w-full py-2.5 px-4 bg-bronze-gold hover:bg-[#774D26] text-white transition-all font-sans text-[10.5px] uppercase tracking-[0.25em] font-semibold rounded-sm shadow-md flex items-center justify-center gap-2">
+                <span id="btn-rsvp-text">Enviar Confirmación</span>
+                <svg id="btn-rsvp-spinner" class="hidden w-4 h-4 animate-spin text-white" viewBox="0 0 24 24" fill="none">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                </svg>
+              </button>
+            </div>
+
           </form>
 
         </div>
@@ -406,140 +661,186 @@
       </div>
 
       <!-- Gardenia Flower Overlapping Right Edge of RSVP Card -->
-      <div class="absolute -bottom-8 -right-8 sm:-right-14 md:-right-16 z-20 pointer-events-none drop-shadow-xl w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44">
-        <img src="images/gardenia-flower.svg" alt="Flor Gardenia" class="w-full h-full object-contain select-none" />
+      <div class="absolute -bottom-8 -right-8 sm:-right-14 md:-right-16 z-20 pointer-events-none drop-shadow-xl w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44" aria-hidden="true">
+        <img src="images/gardenia-flower.svg" alt="" class="w-full h-full object-contain select-none" />
       </div>
 
     </div>
   </section>
 
   <!-- ======================================================== -->
-  <!-- 4. QUICK ACTIONS: CALENDAR & NOVIOS PARIS                 -->
+  <!-- 4. QUICK ACTIONS: CALENDAR & NOVIOS PARIS MODALS         -->
   <!-- ======================================================== -->
-  <section class="py-5 sm:py-7 px-4">
+  <section class="py-6 sm:py-9 px-4">
     <div class="max-w-2xl mx-auto flex items-center justify-center gap-8 sm:gap-16 md:gap-24">
       
-      <!-- Calendar action -->
-      <a href="javascript:void(0)" onclick="addToCalendar()" class="group flex items-center gap-3 text-text-charcoal hover:text-bronze-gold transition-colors no-underline cursor-pointer">
-        <img src="images/icon-calendar.svg" alt="Calendario" class="w-11 sm:w-12 h-11 sm:h-12 flex-shrink-0 group-hover:opacity-80 transition-opacity" />
-        <div class="text-left">
-          <p class="font-serif text-[16.5px] sm:text-[18px] leading-snug font-medium text-text-charcoal group-hover:text-bronze-gold transition-colors">
+      <!-- Calendar Action Trigger (Opens Smart Calendar Options) -->
+      <button type="button" onclick="openCalendarModal()" class="group flex items-center gap-3.5 text-text-charcoal hover:text-bronze-gold transition-all text-left bg-transparent border-0 cursor-pointer">
+        <div class="w-12 h-12 rounded-full bg-white/80 border border-[#D8C5AE] shadow-sm flex items-center justify-center group-hover:scale-105 group-hover:border-bronze-gold transition-all flex-shrink-0">
+          <img src="images/icon-calendar.svg" alt="Calendario" class="w-7 h-7 object-contain" />
+        </div>
+        <div>
+          <p class="font-serif text-[17px] sm:text-[18.5px] leading-tight font-medium text-text-charcoal group-hover:text-bronze-gold transition-colors">
             Agrega la fecha a<br />tu calendario
           </p>
+          <span class="font-sans text-[8.5px] uppercase tracking-wider text-bronze-gold font-semibold">Google / Apple / Outlook ↗</span>
         </div>
-      </a>
+      </button>
 
-      <!-- Novios Paris action -->
-      <a href="javascript:void(0)" onclick="copyRegistryCode()" class="group flex items-center gap-3 text-text-charcoal hover:text-bronze-gold transition-colors no-underline cursor-pointer">
-        <img src="images/icon-gift.svg" alt="Novios Paris" class="w-11 sm:w-12 h-11 sm:h-12 flex-shrink-0 group-hover:opacity-80 transition-opacity" />
-        <div class="text-left">
-          <p class="font-serif text-[16.5px] sm:text-[18px] leading-snug text-text-charcoal font-medium group-hover:text-bronze-gold transition-colors">
+      <!-- Novios Paris Action Trigger (Opens Paris Registry & Bank Details) -->
+      <button type="button" onclick="openGiftsModal()" class="group flex items-center gap-3.5 text-text-charcoal hover:text-bronze-gold transition-all text-left bg-transparent border-0 cursor-pointer">
+        <div class="w-12 h-12 rounded-full bg-white/80 border border-[#D8C5AE] shadow-sm flex items-center justify-center group-hover:scale-105 group-hover:border-bronze-gold transition-all flex-shrink-0">
+          <img src="images/icon-gift.svg" alt="Regalo" class="w-7 h-7 object-contain" />
+        </div>
+        <div>
+          <p class="font-serif text-[17px] sm:text-[18.5px] leading-tight text-text-charcoal font-medium group-hover:text-bronze-gold transition-colors">
             Novios Paris
           </p>
-          <p class="font-serif text-[16.5px] sm:text-[18px] leading-snug text-text-charcoal font-medium group-hover:text-bronze-gold transition-colors">
+          <p class="font-serif text-[17px] sm:text-[18.5px] leading-tight text-bronze-gold font-semibold">
             21 05 64 48
           </p>
+          <span class="font-sans text-[8.5px] uppercase tracking-wider text-text-muted font-semibold">Ver código y datos ↗</span>
         </div>
-      </a>
+      </button>
 
     </div>
   </section>
 
   <!-- ======================================================== -->
-  <!-- 5. DÓNDE Y CUÁNDO SECTION                                -->
+  <!-- 5. DÓNDE Y CUÁNDO SECTION (WITH DIRECT GPS LINKS)        -->
   <!-- ======================================================== -->
-  <section class="py-10 sm:py-14 px-4">
+  <section class="py-12 sm:py-16 px-4">
     
-    <!-- Section Heading with horizontal rules -->
-    <div class="flex items-center justify-center gap-4 max-w-lg mx-auto mb-9 sm:mb-12">
+    <!-- Section Heading with decorative rules -->
+    <div class="flex items-center justify-center gap-4 max-w-lg mx-auto mb-10 sm:mb-14">
       <span class="w-14 sm:w-20 h-[1px] bg-bronze-gold opacity-50"></span>
-      <h2 class="font-sans-caps text-text-charcoal text-[11.5px] sm:text-[12.5px] tracking-[0.3em] font-semibold whitespace-nowrap">
+      <h2 class="font-sans text-text-charcoal text-[11.5px] sm:text-[12.5px] tracking-[0.3em] font-semibold uppercase whitespace-nowrap">
         Dónde y Cuándo
       </h2>
       <span class="w-14 sm:w-20 h-[1px] bg-bronze-gold opacity-50"></span>
     </div>
 
     <!-- Two Venues Grid: Ceremonia & Recepción -->
-    <div class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 text-center">
+    <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 text-center">
       
-      <!-- Venue 1: CEREMONIA -->
-      <div class="flex flex-col items-center">
-        <div class="w-14 h-14 mb-2.5 flex items-center justify-center">
-          <img src="images/icon-church.svg" alt="Ceremonia Iglesia San Ignacio" class="w-full h-full object-contain" />
+      <!-- Venue 1: CEREMONIA RELIGIOSA -->
+      <div class="double-bezel-card p-6 sm:p-8 flex flex-col items-center justify-between hover:shadow-luxury-hover transition-all duration-300">
+        <div class="flex flex-col items-center w-full">
+          
+          <div class="w-16 h-16 mb-3 rounded-full bg-[#F4E9D7]/50 border border-[#D8C5AE] flex items-center justify-center shadow-sm">
+            <img src="images/icon-church.svg" alt="Ceremonia Iglesia San Ignacio" class="w-9 h-9 object-contain" />
+          </div>
+
+          <span class="font-sans text-bronze-gold text-[10px] sm:text-[11px] tracking-[0.25em] font-semibold uppercase mb-1">
+            Ceremonia Religiosa
+          </span>
+
+          <h3 class="font-serif text-text-charcoal text-[21px] sm:text-[23px] font-semibold leading-snug">
+            Iglesia San Ignacio de Loyola
+          </h3>
+
+          <!-- Readable address in crisp font -->
+          <p class="font-serif text-text-muted text-[15px] sm:text-[16px] mt-1 mb-2 font-normal">
+            Padre Alonso de Ovalle #1494, Santiago Centro
+          </p>
+
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#F4E9D7]/60 border border-[#D8C5AE] rounded-full text-bronze-gold font-serif font-semibold text-[14.5px] mb-6">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            18:00 hrs
+          </div>
         </div>
 
-        <h3 class="font-sans-caps text-bronze-gold text-[11px] sm:text-[12px] tracking-[0.25em] font-semibold mb-1.5">
-          Ceremonia
-        </h3>
-        <p class="font-serif text-text-charcoal text-[16.5px] sm:text-[18px] font-medium leading-snug">
-          Iglesia San Ignacio de Loyola
-        </p>
-        <p class="font-script text-text-charcoal text-[19px] sm:text-[22px] my-0.5 leading-snug whitespace-nowrap">
-          Padre Alonso de Ovalle #1494, Santiago Centro
-        </p>
-        <p class="font-serif text-text-charcoal text-[14.5px] sm:text-[15.5px] font-normal mb-4">
-          18:00 hr
-        </p>
-
-        <a href="#mapa-section" class="btn-brown-pill">
-          <img src="images/icon-pin.svg" alt="" class="w-3.5 h-3.5" />
-          Cómo Llegar
-        </a>
+        <!-- Direct GPS Action Buttons -->
+        <div class="flex flex-wrap items-center justify-center gap-2.5 w-full pt-4 border-t border-[#EFE8DF]">
+          <a href="https://maps.google.com/?q=Iglesia+San+Ignacio+de+Loyola+Padre+Alonso+de+Ovalle+1494+Santiago" target="_blank" rel="noopener noreferrer" class="btn-luxury-pill" title="Abrir en Google Maps">
+            <span>Google Maps</span>
+            <span class="icon-bubble">↗</span>
+          </a>
+          <a href="https://waze.com/ul?q=Iglesia+San+Ignacio+de+Loyola+Padre+Alonso+de+Ovalle+1494+Santiago" target="_blank" rel="noopener noreferrer" class="btn-luxury-pill bg-[#5B6350] hover:bg-[#434A3A]" title="Abrir en Waze">
+            <span>Waze</span>
+            <span class="icon-bubble">↗</span>
+          </a>
+        </div>
       </div>
 
-      <!-- Venue 2: RECEPCIÓN -->
-      <div class="flex flex-col items-center">
-        <div class="w-14 h-14 mb-2.5 flex items-center justify-center">
-          <img src="images/icon-reception.svg" alt="Recepción Casona Anwandter" class="w-full h-full object-contain" />
+      <!-- Venue 2: RECEPCIÓN Y FIESTA -->
+      <div class="double-bezel-card p-6 sm:p-8 flex flex-col items-center justify-between hover:shadow-luxury-hover transition-all duration-300">
+        <div class="flex flex-col items-center w-full">
+          
+          <div class="w-16 h-16 mb-3 rounded-full bg-[#F4E9D7]/50 border border-[#D8C5AE] flex items-center justify-center shadow-sm">
+            <img src="images/icon-reception.svg" alt="Recepción Casona Anwandter" class="w-9 h-9 object-contain" />
+          </div>
+
+          <span class="font-sans text-bronze-gold text-[10px] sm:text-[11px] tracking-[0.25em] font-semibold uppercase mb-1">
+            Recepción, Cóctel & Fiesta
+          </span>
+
+          <h3 class="font-serif text-text-charcoal text-[21px] sm:text-[23px] font-semibold leading-snug">
+            Casona Anwandter
+          </h3>
+
+          <!-- Readable address in crisp font -->
+          <p class="font-serif text-text-muted text-[15px] sm:text-[16px] mt-1 mb-2 font-normal">
+            Avenida España #620, Santiago Centro
+          </p>
+
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#F4E9D7]/60 border border-[#D8C5AE] rounded-full text-bronze-gold font-serif font-semibold text-[14.5px] mb-6">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            19:30 hrs
+          </div>
         </div>
 
-        <h3 class="font-sans-caps text-bronze-gold text-[11px] sm:text-[12px] tracking-[0.25em] font-semibold mb-1.5">
-          Recepción
-        </h3>
-        <p class="font-serif text-text-charcoal text-[16.5px] sm:text-[18px] font-medium leading-snug">
-          Casona Anwandter
-        </p>
-        <p class="font-script text-text-charcoal text-[19px] sm:text-[22px] my-0.5 leading-snug whitespace-nowrap">
-          Avenida España #620, Santiago Centro
-        </p>
-        <p class="font-serif text-transparent text-[14.5px] sm:text-[15.5px] mb-4 select-none" aria-hidden="true">
-          &nbsp;
-        </p>
-
-        <a href="#mapa-section" class="btn-brown-pill">
-          <img src="images/icon-pin.svg" alt="" class="w-3.5 h-3.5" />
-          Cómo Llegar
-        </a>
+        <!-- Direct GPS Action Buttons -->
+        <div class="flex flex-wrap items-center justify-center gap-2.5 w-full pt-4 border-t border-[#EFE8DF]">
+          <a href="https://maps.google.com/?q=Casona+Anwandter+Avenida+Espana+620+Santiago" target="_blank" rel="noopener noreferrer" class="btn-luxury-pill" title="Abrir en Google Maps">
+            <span>Google Maps</span>
+            <span class="icon-bubble">↗</span>
+          </a>
+          <a href="https://waze.com/ul?q=Casona+Anwandter+Avenida+Espana+620+Santiago" target="_blank" rel="noopener noreferrer" class="btn-luxury-pill bg-[#5B6350] hover:bg-[#434A3A]" title="Abrir en Waze">
+            <span>Waze</span>
+            <span class="icon-bubble">↗</span>
+          </a>
+        </div>
       </div>
 
     </div>
 
-    <!-- Small ornamental divider chevron -->
-    <div class="text-center mt-10 mb-1 text-bronze-gold opacity-50">
-      <svg class="w-3.5 h-3.5 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M7 10l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+    <!-- Scroll down to illustrated map indicator -->
+    <div class="text-center mt-10">
+      <a href="#mapa-section" class="inline-flex items-center gap-1.5 text-bronze-gold hover:text-text-charcoal font-sans text-[10px] uppercase tracking-widest font-semibold transition-colors">
+        <span>Ver plano ilustrado de cómo llegar</span>
+        <svg class="w-3.5 h-3.5 animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 10l5 5 5-5"/></svg>
+      </a>
     </div>
   </section>
 
   <!-- ======================================================== -->
   <!-- 6. DRESS CODE SECTION                                    -->
   <!-- ======================================================== -->
-  <section class="py-8 sm:py-12 px-4">
-    <div class="max-w-xl mx-auto flex items-center justify-center gap-6 sm:gap-12">
+  <section class="py-10 sm:py-14 px-4">
+    <div class="max-w-xl mx-auto double-bezel-card p-6 sm:p-9 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10">
       
-      <!-- Hand-drawn Fashion Sketch Illustration (Suit & Gown) -->
-      <div class="w-32 sm:w-44 h-44 sm:h-60 flex-shrink-0 flex items-center justify-center">
+      <!-- Hand-drawn Fashion Sketch Illustration -->
+      <div class="w-28 sm:w-36 h-40 sm:h-52 flex-shrink-0 flex items-center justify-center p-2 bg-[#FAF7F2] rounded border border-[#E8DCCB] shadow-inner-delicate">
         <img src="images/icon-dresscode.svg" alt="Dress Code Formal" class="w-full h-full object-contain" />
       </div>
 
       <!-- Text: DRESS CODE Formal -->
-      <div class="text-left">
-        <h3 class="font-sans-caps text-text-charcoal text-[12.5px] sm:text-[14px] tracking-[0.28em] font-semibold mb-0.5">
+      <div class="text-center sm:text-left">
+        <span class="font-sans text-[9px] sm:text-[10px] tracking-[0.3em] uppercase text-text-muted font-semibold block mb-1">
+          Código de Vestimenta
+        </span>
+        <h3 class="font-sans text-text-charcoal text-[13px] sm:text-[15px] tracking-[0.25em] font-semibold uppercase mb-0.5">
           Dress Code
         </h3>
-        <p class="font-script text-bronze-gold text-[50px] sm:text-[64px] md:text-[72px] leading-none select-none">
+        <p class="font-script text-bronze-gold text-[54px] sm:text-[68px] md:text-[76px] leading-none select-none my-1">
           Formal
+        </p>
+        <p class="font-serif italic text-text-muted text-[14px] leading-relaxed max-w-[280px]">
+          Traje formal y vestido largo o de fiesta.
+        </p>
+        <p class="font-sans text-[9px] uppercase tracking-wider text-bronze-gold font-semibold mt-1">
+          Nota: Colores blanco y marfil reservados para la novia.
         </p>
       </div>
 
@@ -549,15 +850,44 @@
   <!-- ======================================================== -->
   <!-- 7. ILLUSTRATED MAP SECTION ("CÓMO LLEGAR")              -->
   <!-- ======================================================== -->
-  <section id="mapa-section" class="py-10 sm:py-14 px-4">
-    <div class="max-w-[760px] mx-auto">
+  <section id="mapa-section" class="py-12 sm:py-16 px-4">
+    <div class="max-w-[820px] mx-auto">
       
+      <div class="text-center mb-6">
+        <h2 class="font-sans text-text-charcoal text-[11.5px] sm:text-[12.5px] tracking-[0.3em] font-semibold uppercase mb-1">
+          Plano Ilustrado de Santiago
+        </h2>
+        <p class="font-serif italic text-text-muted text-[15px]">
+          Ubicación de Iglesia San Ignacio & Casona Anwandter
+        </p>
+      </div>
+
       <!-- Vintage Map Frame Container -->
-      <div class="vintage-map-container p-3 sm:p-5">
+      <div class="vintage-map-container p-3 sm:p-5 relative group">
         <div class="vintage-map-inner-border"></div>
 
-        <!-- The Grand Architectural Map Image -->
-        <img src="images/mapa-santiago.svg" alt="Mapa ilustrado: Cómo llegar a Iglesia San Ignacio de Loyola y Casona Anwandter" class="w-full h-auto select-none rounded-[2px]" />
+        <!-- The Grand Architectural Map Image with lazy load -->
+        <img src="images/mapa-santiago.svg" loading="lazy" alt="Mapa ilustrado: Cómo llegar a Iglesia San Ignacio de Loyola y Casona Anwandter" class="w-full h-auto select-none rounded-[2px] block" />
+
+        <!-- Floating Zoom Pill -->
+        <div class="absolute bottom-6 right-6 z-10">
+          <button type="button" onclick="openMapModal()" class="btn-luxury-pill bg-[#262C20]/90 hover:bg-[#353B2D] text-white shadow-lg backdrop-blur-sm">
+            <span>Ver Mapa Completo</span>
+            <span class="icon-bubble">🔍</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick GPS reminder below the map -->
+      <div class="flex flex-wrap items-center justify-center gap-4 mt-6 text-center">
+        <span class="font-serif italic text-[14.5px] text-text-muted">¿Vas en camino?</span>
+        <a href="https://maps.google.com/?q=Iglesia+San+Ignacio+de+Loyola+Padre+Alonso+de+Ovalle+1494+Santiago" target="_blank" rel="noopener noreferrer" class="font-sans text-[10px] tracking-wider uppercase font-semibold text-bronze-gold hover:underline">
+          Abrir Iglesia en Maps ↗
+        </a>
+        <span class="text-text-muted/40">•</span>
+        <a href="https://maps.google.com/?q=Casona+Anwandter+Avenida+Espana+620+Santiago" target="_blank" rel="noopener noreferrer" class="font-sans text-[10px] tracking-wider uppercase font-semibold text-bronze-gold hover:underline">
+          Abrir Casona en Maps ↗
+        </a>
       </div>
 
     </div>
@@ -566,21 +896,254 @@
   <!-- ======================================================== -->
   <!-- 8. FOOTER SECTION                                        -->
   <!-- ======================================================== -->
-  <div class="h-10 sm:h-12 w-full" style="background-color: #353B2D;"></div>
+  <footer class="py-12 px-4 text-center text-[#FAF7F2] relative overflow-hidden" style="background-color: #282F22;">
+    <div class="max-w-md mx-auto flex flex-col items-center justify-center">
+      <p class="font-script text-[#E4D9C8] text-[38px] sm:text-[44px] mb-1">
+        Natalia & Franco
+      </p>
+      <p class="font-sans text-[#B5824C] text-[10px] tracking-[0.3em] uppercase font-semibold mb-4">
+        30 · 01 · 27 — Santiago de Chile
+      </p>
+      <div class="w-16 h-[1px] bg-[#B5824C]/40 mb-4"></div>
+      <p class="font-serif italic text-[#FAF7F2]/75 text-[14px]">
+        "Gracias por ser parte de nuestra historia y acompañarnos en este comienzo."
+      </p>
+    </div>
+  </footer>
 
 
 
-  <!-- Toast Notification Container -->
-  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-[#353B2D] text-[#FAF7F2] px-5 py-3 rounded shadow-lg text-sm font-serif transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
-    Mensaje
+  <!-- ======================================================== -->
+  <!-- MODAL 1: POLAROID MEMORIES LIGHTBOX                      -->
+  <!-- ======================================================== -->
+  <div id="modal-lightbox" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300" role="dialog" aria-modal="true" aria-label="Galería de recuerdos">
+    
+    <!-- Close button -->
+    <button onclick="closeLightbox()" class="absolute top-5 right-5 z-20 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors" title="Cerrar (Esc)">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+
+    <!-- Prev button -->
+    <button onclick="changeLightboxPhoto(-1)" class="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors" title="Foto anterior (←)">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
+    </button>
+
+    <!-- Next button -->
+    <button onclick="changeLightboxPhoto(1)" class="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors" title="Siguiente foto (→)">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+
+    <!-- Content Card -->
+    <div class="relative max-w-lg w-full bg-white p-4 pb-8 sm:p-6 sm:pb-10 rounded-sm shadow-2xl transform scale-95 transition-transform duration-300" id="lightbox-card">
+      <div class="aspect-[4/3] bg-neutral-900 rounded-sm overflow-hidden mb-4 shadow-inner">
+        <img id="lightbox-img" src="" alt="Foto de recuerdo" class="w-full h-full object-cover transition-opacity duration-300" />
+      </div>
+      <div class="text-center">
+        <p id="lightbox-caption" class="font-script text-bronze-gold text-[28px] sm:text-[32px] leading-tight mb-1">
+          Nuestra historia
+        </p>
+        <p id="lightbox-counter" class="font-sans text-[10px] uppercase tracking-[0.25em] text-text-muted font-semibold">
+          1 de 6
+        </p>
+      </div>
+    </div>
   </div>
 
+
+
   <!-- ======================================================== -->
-  <!-- JAVASCRIPT: LOGIC & INTERACTIONS                         -->
+  <!-- MODAL 2: SMART CALENDAR SELECTION                        -->
+  <!-- ======================================================== -->
+  <div id="modal-calendar" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300" role="dialog" aria-modal="true" aria-label="Añadir a calendario">
+    <div class="max-w-sm w-full double-bezel-card p-6 sm:p-7 relative bg-white shadow-2xl text-center">
+      
+      <button onclick="closeCalendarModal()" class="absolute top-4 right-4 text-text-muted hover:text-text-charcoal" title="Cerrar">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <div class="w-14 h-14 mx-auto mb-3 rounded-full bg-[#F4E9D7]/60 flex items-center justify-center border border-[#D8C5AE]">
+        <img src="images/icon-calendar.svg" alt="" class="w-8 h-8 object-contain" />
+      </div>
+
+      <h3 class="font-serif text-[22px] font-semibold text-text-charcoal mb-1">
+        Agendar la Fecha
+      </h3>
+      <p class="font-sans text-[10px] tracking-[0.2em] uppercase text-bronze-gold font-semibold mb-2">
+        Sábado 30 de Enero, 2027
+      </p>
+      <p class="font-serif text-[14px] text-text-muted mb-5 leading-snug">
+        Elige tu calendario favorito para no perderte ningún detalle:
+      </p>
+
+      <div class="space-y-2.5">
+        <!-- Google Calendar direct URL -->
+        <a id="btn-add-gcal" href="#" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-[#8E5F34] hover:bg-[#774D26] text-white font-sans text-[10.5px] uppercase tracking-wider font-semibold rounded-sm transition-all flex items-center justify-center gap-2 shadow-sm">
+          <svg class="w-4 h-4 fill-currentColor" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 002 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>
+          Google Calendar
+        </a>
+
+        <!-- Apple / Outlook .ics download -->
+        <button type="button" onclick="downloadIcsFile()" class="w-full py-2.5 px-4 bg-[#FAF7F2] hover:bg-[#F3ECE0] text-text-charcoal border border-[#DFD5C6] font-sans text-[10.5px] uppercase tracking-wider font-semibold rounded-sm transition-all flex items-center justify-center gap-2">
+          <svg class="w-4 h-4 fill-currentColor" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+          Apple / Outlook (.ics)
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- ======================================================== -->
+  <!-- MODAL 3: NOVIOS PARIS & DATOS DE TRANSFERENCIA           -->
+  <!-- ======================================================== -->
+  <div id="modal-gifts" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300" role="dialog" aria-modal="true" aria-label="Lista de novios y regalos">
+    <div class="max-w-md w-full double-bezel-card p-6 sm:p-7 relative bg-white shadow-2xl">
+      
+      <button onclick="closeGiftsModal()" class="absolute top-4 right-4 text-text-muted hover:text-text-charcoal" title="Cerrar">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <div class="text-center mb-5">
+        <div class="w-12 h-12 mx-auto mb-2 rounded-full bg-[#F4E9D7]/60 flex items-center justify-center border border-[#D8C5AE]">
+          <img src="images/icon-gift.svg" alt="" class="w-6 h-6 object-contain" />
+        </div>
+        <h3 class="font-serif text-[22px] font-semibold text-text-charcoal mb-0.5">
+          Mesa de Regalos
+        </h3>
+        <p class="font-serif italic text-text-muted text-[13.5px]">
+          Tu presencia es nuestro mayor regalo. Si deseas hacernos un presente:
+        </p>
+      </div>
+
+      <!-- Option 1: Novios Paris -->
+      <div class="bg-[#FAF8F5] border border-[#E8DCCB] p-4 rounded-sm mb-4 text-center">
+        <span class="font-sans text-[9px] uppercase tracking-[0.25em] text-text-muted font-semibold block mb-1">
+          Código Novios Paris
+        </span>
+        <p class="font-serif text-[26px] font-bold text-bronze-gold tracking-wider my-0.5">
+          21 05 64 48
+        </p>
+        <div class="flex items-center justify-center gap-2 mt-2">
+          <button type="button" onclick="copyText('21 05 64 48', 'Código Novios Paris copiado al portapapeles')" class="py-1.5 px-3 bg-white border border-[#D8C5AE] hover:border-bronze-gold rounded-sm font-sans text-[9.5px] uppercase tracking-wider font-semibold text-text-charcoal transition-all">
+            Copiar Código
+          </button>
+          <a href="https://www.paris.cl" target="_blank" rel="noopener noreferrer" class="py-1.5 px-3 bg-[#8E5F34] hover:bg-[#774D26] text-white rounded-sm font-sans text-[9.5px] uppercase tracking-wider font-semibold transition-all">
+            Ir a Paris.cl ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Option 2: Chilean Bank Transfer Details -->
+      <div class="bg-[#FFFFFF] border border-[#EAE1D4] p-3.5 rounded-sm text-left">
+        <p class="font-sans text-[9.5px] uppercase tracking-[0.2em] text-bronze-gold font-semibold mb-2 text-center">
+          Datos de Transferencia
+        </p>
+        <div class="space-y-1.5 font-serif text-[13.5px] text-text-charcoal">
+          <div class="flex justify-between border-b border-[#F4E9D7] pb-1">
+            <span class="text-text-muted">Titular:</span>
+            <span class="font-medium">Natalia & Franco</span>
+          </div>
+          <div class="flex justify-between border-b border-[#F4E9D7] pb-1">
+            <span class="text-text-muted">Banco:</span>
+            <span class="font-medium">Banco Santander / Banco de Chile</span>
+          </div>
+          <div class="flex justify-between border-b border-[#F4E9D7] pb-1">
+            <span class="text-text-muted">Tipo de Cuenta:</span>
+            <span class="font-medium">Cuenta Corriente</span>
+          </div>
+          <div class="flex justify-between items-center pt-1">
+            <span class="text-text-muted">RUT & Cuenta:</span>
+            <button type="button" onclick="copyText('Consultar datos de transferencia a los novios', 'Datos de contacto listos')" class="text-bronze-gold hover:underline font-sans text-[9px] uppercase font-semibold">
+              Copiar Datos
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <!-- ======================================================== -->
+  <!-- MODAL 4: FULLSCREEN MAP MODAL                            -->
+  <!-- ======================================================== -->
+  <div id="modal-map" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 opacity-0 pointer-events-none transition-opacity duration-300" role="dialog" aria-modal="true" aria-label="Plano ilustrado completo">
+    <button onclick="closeMapModal()" class="absolute top-4 right-4 z-20 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors" title="Cerrar (Esc)">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+    <div class="max-w-4xl w-full max-h-[90vh] overflow-auto bg-[#F4E9D7] border-2 border-[#8E6D4B] p-2 sm:p-4 rounded shadow-2xl">
+      <img src="images/mapa-santiago.svg" alt="Mapa ilustrado completo" class="w-full h-auto block select-none" />
+    </div>
+  </div>
+
+
+
+  <!-- ======================================================== -->
+  <!-- MODAL 5: CELEBRATORY RSVP CONFIRMATION MODAL             -->
+  <!-- ======================================================== -->
+  <div id="modal-rsvp-success" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300" role="dialog" aria-modal="true" aria-label="Confirmación recibida">
+    <div class="max-w-md w-full double-bezel-card p-6 sm:p-8 relative bg-white shadow-2xl text-center">
+      
+      <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-[#F4E9D7] text-bronze-gold flex items-center justify-center border border-[#D8C5AE] text-3xl">
+        💌
+      </div>
+
+      <span class="font-sans text-[9px] uppercase tracking-[0.25em] text-bronze-gold font-semibold block mb-1">
+        ¡Muchísimas Gracias!
+      </span>
+      <h3 id="rsvp-success-title" class="font-serif text-[26px] font-bold text-text-charcoal mb-2">
+        Respuesta Registrada
+      </h3>
+      <p id="rsvp-success-msg" class="font-serif italic text-text-muted text-[15px] mb-6 leading-snug">
+        Nos emociona muchísimo contar con tu compañía en nuestro matrimonio.
+      </p>
+
+      <div class="space-y-3">
+        <!-- Direct 1-Click WhatsApp Confirmation Link -->
+        <a id="btn-rsvp-whatsapp" href="#" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-[#25D366] hover:bg-[#1EBE5D] text-white font-sans text-[10.5px] uppercase tracking-wider font-semibold rounded-sm transition-all flex items-center justify-center gap-2 shadow-md">
+          <svg class="w-4 h-4 fill-currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.969.54 1.761.815 2.796.815 3.183 0 5.77-2.587 5.77-5.767 0-3.181-2.587-5.768-5.77-5.768zm0 10.354c-.934 0-1.849-.251-2.646-.725l-.189-.113-1.571.412.42-1.531-.124-.197c-.521-.828-.795-1.785-.795-2.734 0-2.827 2.301-5.127 5.128-5.127 2.828 0 5.129 2.301 5.129 5.128 0 2.828-2.301 5.127-5.128 5.127z"/></svg>
+          Enviar respaldo por WhatsApp
+        </a>
+
+        <button type="button" onclick="closeRsvpSuccessModal()" class="w-full py-2 px-4 bg-transparent hover:bg-[#FAF7F2] text-text-muted font-sans text-[10px] uppercase tracking-wider font-semibold rounded-sm transition-all">
+          Cerrar ventana
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <!-- Toast Notification Floating Island -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-[#282F22] text-[#FAF7F2] border border-[#B5824C]/40 px-5 py-3 rounded-full shadow-2xl text-[13.5px] font-serif transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-2.5">
+    <span id="toast-icon">✨</span>
+    <span id="toast-msg">Mensaje</span>
+  </div>
+
+
+
+  <!-- ======================================================== -->
+  <!-- JAVASCRIPT: LOGIC & ENHANCED INTERACTIVITY               -->
   <!-- ======================================================== -->
   <script>
-    // 1. LIVE COUNTDOWN TIMER
+    /* ========================================================
+       CONFIGURACIÓN DE INTEGRACIÓN (WEBHOOK / DESTINOS)
+       ======================================================== */
+    // Configura aquí tu Webhook para registrar confirmaciones en Google Sheets, Formspree o Airtable:
+    // Ejemplo: 'https://formspree.io/f/xyz123' o tu URL de Google Apps Script Web App
+    const RSVP_WEBHOOK_URL = ''; 
+
+    // Teléfono de contacto de los novios para el botón directo de WhatsApp (código país + número, sin signos):
+    const NOVIOS_WHATSAPP_PHONE = '56912345678';
+
+
+    /* ========================================================
+       1. LIVE COUNTDOWN TIMER (PRECISO & SIN SALTO)
+       ======================================================== */
     (function initCountdown() {
+      // Fecha del matrimonio: Sábado 30 de Enero de 2027 a las 18:00 hrs (Santiago de Chile, GMT-3)
       const targetDate = new Date('2027-01-30T18:00:00-03:00').getTime();
       const elDays = document.getElementById('cd-days');
       const elHours = document.getElementById('cd-hours');
@@ -588,14 +1151,14 @@
       const elSeconds = document.getElementById('cd-seconds');
 
       function update() {
-        const now = new Date().getTime();
+        const now = Date.now();
         const difference = targetDate - now;
 
         if (difference <= 0) {
-          elDays.textContent = '0';
-          elHours.textContent = '0';
-          elMinutes.textContent = '0';
-          elSeconds.textContent = '0';
+          elDays.textContent = '00';
+          elHours.textContent = '00';
+          elMinutes.textContent = '00';
+          elSeconds.textContent = '00';
           return;
         }
 
@@ -604,74 +1167,90 @@
         const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-        elDays.textContent = days;
+        elDays.textContent = days < 10 ? '0' + days : days;
         elHours.textContent = hours < 10 ? '0' + hours : hours;
         elMinutes.textContent = minutes < 10 ? '0' + minutes : minutes;
         elSeconds.textContent = seconds < 10 ? '0' + seconds : seconds;
       }
 
+      // Ejecución inmediata inicial para evitar destello
       update();
       setInterval(update, 1000);
     })();
 
 
-    // 2. AUDIO / MUSIC PLAYER
+    /* ========================================================
+       2. REFINED AUDIO / MUSIC PLAYER
+       ======================================================== */
     (function initPlayer() {
       const audio = document.getElementById('audio-player');
       const btnPlay = document.getElementById('btn-player-play');
       const playIcon = document.getElementById('player-play-icon');
       const progressFill = document.getElementById('player-progress-fill');
       const progressBar = document.getElementById('player-progress-bar');
+      const timeCurrent = document.getElementById('player-time-current');
+      const timeDuration = document.getElementById('player-time-duration');
+      const soundwave = document.getElementById('soundwave-container');
       const btnPrev = document.getElementById('btn-player-prev');
       const btnNext = document.getElementById('btn-player-next');
+      const btnMute = document.getElementById('btn-player-mute');
+      const iconVolume = document.getElementById('icon-volume');
 
       if (!audio) return;
 
-      const playSvg = '<svg class="w-2.5 h-2.5 fill-white translate-x-[1px]" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
-      const pauseSvg = '<svg class="w-2.5 h-2.5 fill-white" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+      const playSvg = '<svg class="w-3.5 h-3.5 fill-[#262C20] translate-x-[1px]" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+      const pauseSvg = '<svg class="w-3.5 h-3.5 fill-[#262C20]" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
 
-      let hasInteractedOrStarted = false;
+      let userInteracted = false;
+
+      function formatTime(seconds) {
+        if (isNaN(seconds)) return '0:00';
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return mins + ':' + (secs < 10 ? '0' : '') + secs;
+      }
 
       function updateUi(isPlaying) {
         if (isPlaying) {
           playIcon.innerHTML = pauseSvg;
           btnPlay.setAttribute('title', 'Pausar música');
+          soundwave.classList.add('is-playing');
         } else {
           playIcon.innerHTML = playSvg;
           btnPlay.setAttribute('title', 'Reproducir música');
+          soundwave.classList.remove('is-playing');
         }
       }
 
       function togglePlay() {
-        hasInteractedOrStarted = true;
+        userInteracted = true;
         if (audio.paused) {
           audio.play().then(() => {
             updateUi(true);
-            showToast('♪ Reproduciendo música');
+            showToast('♪ Reproduciendo música de fondo', '🎶');
           }).catch((err) => {
-            console.warn('Error al reproducir audio:', err);
+            console.warn('Autoplay bloqueado por el navegador:', err);
           });
         } else {
           audio.pause();
           updateUi(false);
-          showToast('⏸ Música pausada');
+          showToast('⏸ Música en pausa', '⏸');
         }
       }
 
-      audio.addEventListener('play', () => {
-        hasInteractedOrStarted = true;
-        updateUi(true);
-      });
-
-      audio.addEventListener('pause', () => {
-        updateUi(false);
-      });
+      audio.addEventListener('play', () => updateUi(true));
+      audio.addEventListener('pause', () => updateUi(false));
 
       audio.addEventListener('timeupdate', () => {
         if (audio.duration) {
           const pct = (audio.currentTime / audio.duration) * 100;
           progressFill.style.width = pct + '%';
+          timeCurrent.textContent = formatTime(audio.currentTime);
         }
+      });
+
+      audio.addEventListener('loadedmetadata', () => {
+        timeDuration.textContent = formatTime(audio.duration);
       });
 
       btnPlay.addEventListener('click', (e) => {
@@ -681,22 +1260,28 @@
 
       btnPrev.addEventListener('click', (e) => {
         e.stopPropagation();
-        hasInteractedOrStarted = true;
         audio.currentTime = 0;
-        if (audio.paused) {
-          audio.play().catch(() => {});
-        }
-        showToast('⏮ Canción reiniciada');
+        if (audio.paused) audio.play().catch(() => {});
+        showToast('⏮ Canción reiniciada', '⏮');
       });
 
       btnNext.addEventListener('click', (e) => {
         e.stopPropagation();
-        hasInteractedOrStarted = true;
         audio.currentTime = 0;
-        if (audio.paused) {
-          audio.play().catch(() => {});
+        if (audio.paused) audio.play().catch(() => {});
+        showToast('⏮ Canción reiniciada', '⏮');
+      });
+
+      btnMute.addEventListener('click', (e) => {
+        e.stopPropagation();
+        audio.muted = !audio.muted;
+        if (audio.muted) {
+          iconVolume.innerHTML = '<path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>';
+          showToast('🔇 Audio silenciado', '🔇');
+        } else {
+          iconVolume.innerHTML = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>';
+          showToast('🔊 Audio activado', '🔊');
         }
-        showToast('⏮ Canción reiniciada');
       });
 
       progressBar.addEventListener('click', (e) => {
@@ -710,92 +1295,269 @@
         progressFill.style.width = (pct * 100) + '%';
       });
 
-      // ================= AUTOPLAY HANDLING =================
-      function startPlayback() {
-        const promise = audio.play();
-        if (promise !== undefined) {
-          promise.then(() => {
-            hasInteractedOrStarted = true;
+      // Primer gesto de desbloqueo de audio para políticas móviles
+      const unlockEvents = ['pointerdown', 'touchstart', 'click', 'keydown', 'scroll'];
+      function onFirstUserGesture() {
+        if (!userInteracted && audio.paused) {
+          userInteracted = true;
+          audio.play().then(() => {
             updateUi(true);
-            showToast('♪ Reproduciendo música');
-          }).catch((err) => {
-            // Browser restricted zero-interaction autoplay.
-            // Setup listener on first user interaction (touch, click, scroll, key).
-            updateUi(false);
-            setupInteractionUnlock();
-          });
+            showToast('♪ Reproduciendo música de fondo', '🎶');
+          }).catch(() => {});
         }
+        unlockEvents.forEach(evt => window.removeEventListener(evt, onFirstUserGesture, { capture: true }));
       }
-
-      function setupInteractionUnlock() {
-        const unlockEvents = ['pointerdown', 'touchstart', 'click', 'keydown', 'scroll'];
-
-        function onFirstInteraction() {
-          if (!hasInteractedOrStarted && audio.paused) {
-            hasInteractedOrStarted = true;
-            audio.play().then(() => {
-              updateUi(true);
-              showToast('♪ Reproduciendo música');
-            }).catch(() => {});
-          }
-          cleanupUnlock();
-        }
-
-        function cleanupUnlock() {
-          unlockEvents.forEach((evt) => {
-            window.removeEventListener(evt, onFirstInteraction, { capture: true });
-            document.removeEventListener(evt, onFirstInteraction, { capture: true });
-          });
-        }
-
-        unlockEvents.forEach((evt) => {
-          window.addEventListener(evt, onFirstInteraction, { capture: true, once: true });
-          document.addEventListener(evt, onFirstInteraction, { capture: true, once: true });
-        });
-      }
-
-      // Initial attempt
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', startPlayback);
-      } else {
-        startPlayback();
-      }
-
-      window.addEventListener('load', () => {
-        if (!hasInteractedOrStarted && audio.paused) {
-          startPlayback();
-        }
-      }, { once: true });
+      unlockEvents.forEach(evt => window.addEventListener(evt, onFirstUserGesture, { capture: true, once: true }));
     })();
 
 
-    // 3. TOAST NOTIFICATIONS
-    function showToast(message) {
-      const toast = document.getElementById('toast');
-      toast.textContent = message;
-      toast.classList.remove('translate-y-20', 'opacity-0');
-      toast.classList.add('translate-y-0', 'opacity-100');
+    /* ========================================================
+       3. POLAROID MEMORIES LIGHTBOX
+       ======================================================== */
+    const galleryPhotos = [
+      { src: 'images/polaroid-1.jpg', caption: 'Bajo la luz del atardecer', alt: 'Natalia y Franco al atardecer' },
+      { src: 'images/polaroid-4.jpg', caption: 'Nuestras alianzas & bouquet floral', alt: 'Anillos de matrimonio y flores' },
+      { src: 'images/polaroid-5.jpg', caption: 'Lluvia de amor y pétalos', alt: 'Beso de los novios bajo lluvia de pétalos' },
+      { src: 'images/polaroid-2.jpg', caption: 'En la inmensidad del paisaje', alt: 'Paisaje natural' },
+      { src: 'images/polaroid-3.jpg', caption: 'Celebrando con quienes más amamos', alt: 'Celebración y globos con invitados' },
+      { src: 'images/polaroid-6.jpg', caption: 'Tomados de la mano para siempre', alt: 'Tomados de la mano' },
+    ];
+    let currentPhotoIndex = 0;
+
+    function openLightbox(index) {
+      currentPhotoIndex = index;
+      const modal = document.getElementById('modal-lightbox');
+      const img = document.getElementById('lightbox-img');
+      const caption = document.getElementById('lightbox-caption');
+      const counter = document.getElementById('lightbox-counter');
+      const card = document.getElementById('lightbox-card');
+
+      img.src = galleryPhotos[index].src;
+      img.alt = galleryPhotos[index].alt;
+      caption.textContent = galleryPhotos[index].caption;
+      counter.textContent = (index + 1) + ' de ' + galleryPhotos.length;
+
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      card.classList.remove('scale-95');
+      card.classList.add('scale-100');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('modal-lightbox');
+      const card = document.getElementById('lightbox-card');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      card.classList.remove('scale-100');
+      card.classList.add('scale-95');
+      document.body.style.overflow = '';
+    }
+
+    function changeLightboxPhoto(direction) {
+      currentPhotoIndex = (currentPhotoIndex + direction + galleryPhotos.length) % galleryPhotos.length;
+      const img = document.getElementById('lightbox-img');
+      const caption = document.getElementById('lightbox-caption');
+      const counter = document.getElementById('lightbox-counter');
+
+      img.style.opacity = '0';
       setTimeout(() => {
-        toast.classList.add('translate-y-20', 'opacity-0');
-        toast.classList.remove('translate-y-0', 'opacity-100');
-      }, 3200);
+        img.src = galleryPhotos[currentPhotoIndex].src;
+        img.alt = galleryPhotos[currentPhotoIndex].alt;
+        caption.textContent = galleryPhotos[currentPhotoIndex].caption;
+        counter.textContent = (currentPhotoIndex + 1) + ' de ' + galleryPhotos.length;
+        img.style.opacity = '1';
+      }, 150);
+    }
+
+    // Cerrar con Escape o mover con flechas
+    window.addEventListener('keydown', (e) => {
+      const modal = document.getElementById('modal-lightbox');
+      if (!modal.classList.contains('pointer-events-none')) {
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') changeLightboxPhoto(1);
+        if (e.key === 'ArrowLeft') changeLightboxPhoto(-1);
+      }
+    });
+
+
+    /* ========================================================
+       4. RSVP LOGIC & CONDITIONAL FIELDS
+       ======================================================== */
+    function setAttendance(attending) {
+      const valInput = document.getElementById('rsvp-attendance-value');
+      const btnYes = document.getElementById('toggle-attending-yes');
+      const btnNo = document.getElementById('toggle-attending-no');
+      const fieldsAttending = document.getElementById('rsvp-attending-fields');
+      const fieldsNotAttending = document.getElementById('rsvp-not-attending-fields');
+
+      if (attending) {
+        valInput.value = 'si';
+        btnYes.className = 'py-2 px-3 rounded-sm text-xs font-sans tracking-wider uppercase font-semibold transition-all bg-[#8E5F34] text-white shadow-sm flex items-center justify-center gap-1.5';
+        btnNo.className = 'py-2 px-3 rounded-sm text-xs font-sans tracking-wider uppercase font-semibold transition-all text-text-muted hover:text-text-charcoal flex items-center justify-center gap-1.5';
+        fieldsAttending.classList.remove('hidden');
+        fieldsNotAttending.classList.add('hidden');
+      } else {
+        valInput.value = 'no';
+        btnNo.className = 'py-2 px-3 rounded-sm text-xs font-sans tracking-wider uppercase font-semibold transition-all bg-[#353B2D] text-white shadow-sm flex items-center justify-center gap-1.5';
+        btnYes.className = 'py-2 px-3 rounded-sm text-xs font-sans tracking-wider uppercase font-semibold transition-all text-text-muted hover:text-text-charcoal flex items-center justify-center gap-1.5';
+        fieldsAttending.classList.add('hidden');
+        fieldsNotAttending.classList.remove('hidden');
+      }
+    }
+
+    function toggleCompanionFields(checked) {
+      const container = document.getElementById('companion-container');
+      if (checked) {
+        container.classList.remove('hidden');
+      } else {
+        container.classList.add('hidden');
+        document.getElementById('rsvp-companion-name').value = '';
+      }
+    }
+
+    async function handleRsvpSubmit() {
+      const attendance = document.getElementById('rsvp-attendance-value').value;
+      const name = document.getElementById('rsvp-name').value.trim();
+      const email = document.getElementById('rsvp-email').value.trim();
+      const btnSubmit = document.getElementById('btn-rsvp-submit');
+      const btnText = document.getElementById('btn-rsvp-text');
+      const spinner = document.getElementById('btn-rsvp-spinner');
+
+      if (!name || !email) {
+        showToast('Por favor completa tu nombre y correo', '⚠️');
+        return;
+      }
+
+      // Payload completo de la confirmación
+      const payload = {
+        fechaEnvio: new Date().toISOString(),
+        asistira: attendance === 'si' ? 'Sí, asistirá' : 'No asistirá',
+        nombre: name,
+        correo: email,
+        preferenciaAlimentaria: attendance === 'si' ? document.getElementById('rsvp-diet').value : 'N/A',
+        alergias: attendance === 'si' ? document.getElementById('rsvp-allergies').value.trim() : 'N/A',
+        acompanante: attendance === 'si' && document.getElementById('rsvp-has-companion').checked ? {
+          asiste: true,
+          nombre: document.getElementById('rsvp-companion-name').value.trim(),
+          preferencia: document.getElementById('rsvp-companion-diet').value
+        } : { asiste: false },
+        cancionODeseo: attendance === 'si' ? document.getElementById('rsvp-song').value.trim() : document.getElementById('rsvp-message').value.trim()
+      };
+
+      // Guardar respaldo local en el navegador por seguridad
+      try {
+        const localList = JSON.parse(localStorage.getItem('matrimonio_rsvp_backup') || '[]');
+        localList.push(payload);
+        localStorage.setItem('matrimonio_rsvp_backup', JSON.stringify(localList));
+      } catch (e) {
+        console.warn('No se pudo guardar en localStorage', e);
+      }
+
+      // Estado de carga en botón
+      btnSubmit.disabled = true;
+      btnText.textContent = 'Enviando...';
+      spinner.classList.remove('hidden');
+
+      // Envío a Webhook si está configurado
+      if (RSVP_WEBHOOK_URL) {
+        try {
+          await fetch(RSVP_WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+        } catch (err) {
+          console.warn('Error al enviar al Webhook, pero se respaldó localmente:', err);
+        }
+      }
+
+      // Restaurar estado de botón
+      setTimeout(() => {
+        btnSubmit.disabled = false;
+        btnText.textContent = 'Enviar Confirmación';
+        spinner.classList.add('hidden');
+
+        // Configurar enlace directo de WhatsApp con el resumen formateado
+        const companionText = payload.acompanante.asiste ? `\n- Acompañante: ${payload.acompanante.nombre} (${payload.acompanante.preferencia})` : '';
+        const dietText = payload.asistira === 'Sí, asistirá' ? `\n- Menú: ${payload.preferenciaAlimentaria}\n- Alergias: ${payload.alergias || 'Ninguna'}` : '';
+        const noteText = payload.cancionODeseo ? `\n- Mensaje/Canción: "${payload.cancionODeseo}"` : '';
+        
+        const waMessage = encodeURIComponent(
+          `¡Hola Natalia y Franco! 💍\nAcabo de confirmar mi asistencia para su matrimonio:\n\n` +
+          `• Estado: ${payload.asistira}\n` +
+          `• Nombre: ${payload.nombre}\n` +
+          `• Correo: ${payload.correo}` +
+          dietText +
+          companionText +
+          noteText +
+          `\n\n¡Un abrazo enorme!`
+        );
+
+        const waLink = document.getElementById('btn-rsvp-whatsapp');
+        waLink.href = `https://wa.me/${NOVIOS_WHATSAPP_PHONE}?text=${waMessage}`;
+
+        const successTitle = document.getElementById('rsvp-success-title');
+        const successMsg = document.getElementById('rsvp-success-msg');
+        if (attendance === 'si') {
+          successTitle.textContent = '¡Te esperamos con los brazos abiertos!';
+          successMsg.textContent = `Muchas gracias ${name}. Tu confirmación para el 30 de enero de 2027 ha quedado registrada.`;
+        } else {
+          successTitle.textContent = 'Gracias por avisarnos';
+          successMsg.textContent = `Agradecemos mucho tu respuesta ${name}. Sentiremos tu ausencia pero llevamos tus buenos deseos con nosotros.`;
+        }
+
+        // Abrir modal de éxito y reiniciar formulario
+        openRsvpSuccessModal();
+        document.getElementById('rsvp-form').reset();
+        setAttendance(true);
+      }, 600);
+    }
+
+    function openRsvpSuccessModal() {
+      const modal = document.getElementById('modal-rsvp-success');
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function closeRsvpSuccessModal() {
+      const modal = document.getElementById('modal-rsvp-success');
+      modal.classList.add('opacity-0', 'pointer-events-none');
     }
 
 
-    // 4. QUICK ACTIONS HANDLERS
-    function addToCalendar() {
+    /* ========================================================
+       5. MODALES DE CALENDARIO, REGALOS & MAPA
+       ======================================================== */
+    function openCalendarModal() {
+      const modal = document.getElementById('modal-calendar');
+      // Configurar enlace directo a Google Calendar
+      const gcalLink = document.getElementById('btn-add-gcal');
+      const title = encodeURIComponent('Matrimonio Natalia & Franco');
+      const details = encodeURIComponent('Ceremonia en Iglesia San Ignacio de Loyola (18:00 hr) seguida de Recepción en Casona Anwandter.');
+      const location = encodeURIComponent('Iglesia San Ignacio de Loyola, Padre Alonso de Ovalle 1494, Santiago Centro');
+      const dates = '20270130T210000Z/20270131T070000Z'; // 18:00 Santiago (GMT-3) = 21:00 UTC
+      gcalLink.href = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${dates}&details=${details}&location=${location}`;
+
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function closeCalendarModal() {
+      document.getElementById('modal-calendar').classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    function downloadIcsFile() {
       const icsContent = 
 `BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//Natalia y Franco//Matrimonio//ES
+CALSCALE:GREGORIAN
 BEGIN:VEVENT
-UID:matrimonio-natalia-franco-2027
+UID:matrimonio-natalia-franco-2027@boda
 DTSTAMP:20261001T000000Z
 DTSTART:20270130T210000Z
 DTEND:20270131T070000Z
 SUMMARY:Matrimonio Natalia & Franco
 DESCRIPTION:Ceremonia en Iglesia San Ignacio de Loyola (18:00 hr) seguida de Recepción en Casona Anwandter.
 LOCATION:Iglesia San Ignacio de Loyola, Padre Alonso de Ovalle #1494, Santiago Centro
+STATUS:CONFIRMED
 END:VEVENT
 END:VCALENDAR`;
 
@@ -806,28 +1568,80 @@ END:VCALENDAR`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-
-      showToast('📅 ¡Evento guardado en tu calendario!');
+      showToast('📅 ¡Archivo de calendario descargado!', '📅');
+      closeCalendarModal();
     }
 
-    function copyRegistryCode() {
-      const code = '21 05 64 48';
-      navigator.clipboard.writeText(code).then(() => {
-        showToast('🎁 Código Novios Paris copiado: ' + code);
+    function openGiftsModal() {
+      document.getElementById('modal-gifts').classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function closeGiftsModal() {
+      document.getElementById('modal-gifts').classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    function openMapModal() {
+      document.getElementById('modal-map').classList.remove('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMapModal() {
+      document.getElementById('modal-map').classList.add('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = '';
+    }
+
+    function copyText(text, successMsg) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast(successMsg, '✓');
       }).catch(() => {
-        showToast('🎁 Código Novios Paris: ' + code);
+        showToast('Texto: ' + text, '📋');
       });
     }
 
-    function submitRsvp() {
-      const attendance = document.getElementById('rsvp-attendance').value;
-      if (!attendance) {
-        showToast('Por favor, selecciona si asistirás en el menú');
-        return;
-      }
-      showToast('💌 ¡Muchas gracias! Tu confirmación ha sido enviada.');
-      document.getElementById('rsvp-form').reset();
+
+    /* ========================================================
+       6. TOAST NOTIFICATIONS SYSTEM
+       ======================================================== */
+    let toastTimeout = null;
+    function showToast(message, icon = '✨') {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-msg');
+      const toastIcon = document.getElementById('toast-icon');
+
+      if (!toast) return;
+
+      toastMsg.textContent = message;
+      toastIcon.textContent = icon;
+
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      if (toastTimeout) clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 3400);
     }
+
+
+    /* ========================================================
+       7. SMOOTH SCROLL REVEAL OBSERVER
+       ======================================================== */
+    document.addEventListener('DOMContentLoaded', () => {
+      const revealElements = document.querySelectorAll('section');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      revealElements.forEach(el => {
+        el.classList.add('reveal-on-scroll');
+        observer.observe(el);
+      });
+    });
   </script>
 
 </body>
