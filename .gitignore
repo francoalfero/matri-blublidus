@@ -1,0 +1,7 @@
+# Screenshots / test previews
+/before*.png
+/after*.png
+
+# Operating System files
+.DS_Store
+Thumbs.db
