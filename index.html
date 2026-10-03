@@ -558,16 +558,10 @@
           <!-- RSVP Form -->
           <form id="rsvp-form" class="space-y-3" onsubmit="event.preventDefault(); handleRsvpSubmit();">
             
-            <!-- Guest Full Name & Email -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-              <div>
-                <label for="rsvp-name" class="block font-sans text-[9px] uppercase tracking-wider text-text-muted mb-1 font-semibold">Tu nombre y apellido *</label>
-                <input id="rsvp-name" type="text" required placeholder="Ej: Carla Morales" class="rsvp-input" />
-              </div>
-              <div>
-                <label for="rsvp-email" class="block font-sans text-[9px] uppercase tracking-wider text-text-muted mb-1 font-semibold">Tu correo electrónico *</label>
-                <input id="rsvp-email" type="email" required placeholder="tu-correo@ejemplo.com" class="rsvp-input" />
-              </div>
+            <!-- Guest Full Name -->
+            <div>
+              <label for="rsvp-name" class="block font-sans text-[9px] uppercase tracking-wider text-text-muted mb-1 font-semibold">Tu nombre y apellido *</label>
+              <input id="rsvp-name" type="text" required placeholder="Ej: Carla Morales" class="rsvp-input" />
             </div>
 
             <!-- Conditional Block: When Attending (Yes) -->
@@ -601,11 +595,11 @@
                 </div>
 
                 <div id="companion-container" class="hidden space-y-2.5 pt-1 pl-2 border-l-2 border-[#D8C5AE]">
+                  <div>
+                    <label for="rsvp-companion-name" class="block font-sans text-[9px] uppercase tracking-wider text-text-muted mb-1 font-semibold">Nombre del acompañante</label>
+                    <input id="rsvp-companion-name" type="text" placeholder="Nombre completo" class="rsvp-input" />
+                  </div>
                   <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                    <div>
-                      <label for="rsvp-companion-name" class="block font-sans text-[9px] uppercase tracking-wider text-text-muted mb-1 font-semibold">Nombre del acompañante</label>
-                      <input id="rsvp-companion-name" type="text" placeholder="Nombre completo" class="rsvp-input" />
-                    </div>
                     <div>
                       <label for="rsvp-companion-diet" class="block font-sans text-[9px] uppercase tracking-wider text-text-muted mb-1 font-semibold">Menú acompañante</label>
                       <select id="rsvp-companion-diet" class="rsvp-input cursor-pointer bg-white">
@@ -615,6 +609,10 @@
                         <option value="Celiaco">Celíaco / Sin gluten</option>
                         <option value="Infantil">Menú infantil</option>
                       </select>
+                    </div>
+                    <div>
+                      <label for="rsvp-companion-allergies" class="block font-sans text-[9px] uppercase tracking-wider text-text-muted mb-1 font-semibold">¿Alergias o restricciones?</label>
+                      <input id="rsvp-companion-allergies" type="text" placeholder="Ej: Frutos secos, mariscos, etc." class="rsvp-input" />
                     </div>
                   </div>
                 </div>
@@ -1346,34 +1344,42 @@
       } else {
         container.classList.add('hidden');
         document.getElementById('rsvp-companion-name').value = '';
+        const compDiet = document.getElementById('rsvp-companion-diet');
+        if (compDiet) compDiet.selectedIndex = 0;
+        const compAllergies = document.getElementById('rsvp-companion-allergies');
+        if (compAllergies) compAllergies.value = '';
       }
     }
 
     async function handleRsvpSubmit() {
       const attendance = document.getElementById('rsvp-attendance-value').value;
       const name = document.getElementById('rsvp-name').value.trim();
-      const email = document.getElementById('rsvp-email').value.trim();
       const btnSubmit = document.getElementById('btn-rsvp-submit');
       const btnText = document.getElementById('btn-rsvp-text');
       const spinner = document.getElementById('btn-rsvp-spinner');
 
-      if (!name || !email) {
-        showToast('Por favor completa tu nombre y correo', '⚠️');
+      if (!name) {
+        showToast('Por favor completa tu nombre y apellido', '⚠️');
         return;
       }
+
+      const hasCompanion = attendance === 'si' && document.getElementById('rsvp-has-companion').checked;
+      const companionName = hasCompanion ? document.getElementById('rsvp-companion-name').value.trim() : '';
+      const companionDiet = hasCompanion ? document.getElementById('rsvp-companion-diet').value : '';
+      const companionAllergies = hasCompanion ? document.getElementById('rsvp-companion-allergies').value.trim() : '';
 
       // Payload completo de la confirmación
       const payload = {
         fechaEnvio: new Date().toISOString(),
         asistira: attendance === 'si' ? 'Sí, asistirá' : 'No asistirá',
         nombre: name,
-        correo: email,
         preferenciaAlimentaria: attendance === 'si' ? document.getElementById('rsvp-diet').value : 'N/A',
         alergias: attendance === 'si' ? document.getElementById('rsvp-allergies').value.trim() : 'N/A',
-        acompanante: attendance === 'si' && document.getElementById('rsvp-has-companion').checked ? {
+        acompanante: hasCompanion ? {
           asiste: true,
-          nombre: document.getElementById('rsvp-companion-name').value.trim(),
-          preferencia: document.getElementById('rsvp-companion-diet').value
+          nombre: companionName || 'Acompañante',
+          preferencia: companionDiet,
+          alergias: companionAllergies || 'Ninguna'
         } : { asiste: false },
         cancionODeseo: attendance === 'si' ? document.getElementById('rsvp-song').value.trim() : document.getElementById('rsvp-message').value.trim()
       };
@@ -1412,15 +1418,20 @@
         spinner.classList.add('hidden');
 
         // Configurar enlace directo de WhatsApp con el resumen formateado
-        const companionText = payload.acompanante.asiste ? `\n- Acompañante: ${payload.acompanante.nombre} (${payload.acompanante.preferencia})` : '';
-        const dietText = payload.asistira === 'Sí, asistirá' ? `\n- Menú: ${payload.preferenciaAlimentaria}\n- Alergias: ${payload.alergias || 'Ninguna'}` : '';
-        const noteText = payload.cancionODeseo ? `\n- Mensaje/Canción: "${payload.cancionODeseo}"` : '';
+        let companionText = '';
+        if (payload.acompanante.asiste) {
+          companionText = `\n• Acompañante: ${payload.acompanante.nombre} (${payload.acompanante.preferencia})`;
+          if (payload.acompanante.alergias && payload.acompanante.alergias !== 'Ninguna') {
+            companionText += `\n• Alergias acompañante: ${payload.acompanante.alergias}`;
+          }
+        }
+        const dietText = payload.asistira === 'Sí, asistirá' ? `\n• Menú: ${payload.preferenciaAlimentaria}\n• Alergias: ${payload.alergias || 'Ninguna'}` : '';
+        const noteText = payload.cancionODeseo ? `\n• Mensaje/Canción: "${payload.cancionODeseo}"` : '';
         
         const waMessage = encodeURIComponent(
           `¡Hola Natalia y Franco! 💍\nAcabo de confirmar mi asistencia para su matrimonio:\n\n` +
           `• Estado: ${payload.asistira}\n` +
-          `• Nombre: ${payload.nombre}\n` +
-          `• Correo: ${payload.correo}` +
+          `• Nombre: ${payload.nombre}` +
           dietText +
           companionText +
           noteText +
