@@ -65,8 +65,8 @@
               '50%': { opacity: '0.85' },
             },
             soundwave: {
-              '0%, 100%': { height: '4px' },
-              '50%': { height: '14px' },
+              '0%, 100%': { transform: 'scaleY(0.25)' },
+              '50%': { transform: 'scaleY(1)' },
             }
           }
         },
@@ -97,17 +97,6 @@
     ::selection {
       background-color: #E8DCCB;
       color: #353B2D;
-    }
-
-    /* Subtle Paper Grain Overlay */
-    .paper-texture-overlay {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 99;
-      opacity: 0.025;
-      background-image: radial-gradient(#000 1px, transparent 1px);
-      background-size: 3px 3px;
     }
 
     /* Hero Section Linen Canvas */
@@ -149,13 +138,14 @@
       background: #FFFFFF;
       padding: 6px 6px 20px 6px;
       box-shadow: 0 14px 30px rgba(45, 35, 20, 0.2), 0 3px 8px rgba(0, 0, 0, 0.09);
-      transition: all 0.4s cubic-bezier(0.2, 0.8, 0.25, 1);
+      transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.25, 1), box-shadow 0.3s ease;
       cursor: pointer;
       border-radius: 2px;
       position: relative;
+      will-change: transform;
     }
     .polaroid-frame:hover {
-      transform: scale(1.1) rotate(0deg) !important;
+      transform: scale(1.08) rotate(0deg) !important;
       box-shadow: 0 24px 44px rgba(45, 35, 20, 0.32), 0 6px 16px rgba(0, 0, 0, 0.15);
       z-index: 50 !important;
     }
@@ -167,8 +157,7 @@
       transform: translateX(-50%);
       width: 28px;
       height: 10px;
-      background: rgba(228, 217, 200, 0.65);
-      backdrop-filter: blur(1px);
+      background: rgba(228, 217, 200, 0.75);
       box-shadow: 0 1px 2px rgba(0,0,0,0.06);
       border-radius: 1px;
       pointer-events: none;
@@ -250,34 +239,24 @@
       pointer-events: none;
     }
 
-    /* Equalizer Bar Animation */
+    /* Equalizer Bar Animation (GPU ScaleY) */
     .eq-bar {
       width: 2px;
+      height: 14px;
       background: #B5824C;
       border-radius: 1px;
-      transition: height 0.2s ease;
+      transform-origin: bottom;
+      transform: scaleY(0.25);
+      transition: transform 0.2s ease;
+      will-change: transform;
     }
     .is-playing .eq-bar:nth-child(1) { animation: soundwave 1s ease-in-out infinite 0.1s; }
     .is-playing .eq-bar:nth-child(2) { animation: soundwave 0.8s ease-in-out infinite 0.3s; }
     .is-playing .eq-bar:nth-child(3) { animation: soundwave 1.2s ease-in-out infinite 0s; }
     .is-playing .eq-bar:nth-child(4) { animation: soundwave 0.9s ease-in-out infinite 0.2s; }
-    
-    /* Reveal Animation Utility */
-    .reveal-on-scroll {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-    }
-    .reveal-on-scroll.is-revealed {
-      opacity: 1;
-      transform: translateY(0);
-    }
   </style>
 </head>
 <body class="antialiased">
-
-  <!-- Subtle Paper Texture Overlay -->
-  <div class="paper-texture-overlay" aria-hidden="true"></div>
 
   <!-- ======================================================== -->
   <!-- 1. HERO / INVITATION SECTION                             -->
@@ -290,62 +269,57 @@
       <div class="relative w-full max-w-[480px] sm:max-w-[620px] md:max-w-[760px] lg:max-w-[880px] flex items-center justify-center py-4 -translate-x-4 sm:-translate-x-2 md:translate-x-0">
 
         <!-- Envelope and Letter Assembly -->
-        <div class="envelope-container relative flex items-center justify-center filter drop-shadow-[0_16px_32px_rgba(55,42,28,0.18)]">
-          <img src="images/envelope.svg" alt="Sobre de invitación" class="w-[285px] sm:w-[360px] md:w-[430px] h-[315px] sm:h-[380px] md:h-[450px] select-none" />
+        <div class="envelope-container relative flex items-center justify-center">
+          <img src="images/envelope.svg" alt="Sobre de invitación" class="w-[285px] sm:w-[360px] md:w-[430px] h-[315px] sm:h-[380px] md:h-[450px] select-none" decoding="async" />
 
           <!-- Central Invitation Letter with subtle micro-scale -->
           <div class="invitation-card absolute z-10 w-[200px] sm:w-[250px] md:w-[290px] filter drop-shadow-[0_12px_32px_rgba(55,42,28,0.16)] transition-transform duration-300 hover:scale-[1.01]" style="top: 50%; left: 50%; transform: translate(-50%, -46%);">
-            <img src="images/letter.svg" alt="Carta de invitación: Natalia & Franco — Sábado 30 · 01 · 27" class="w-full h-auto block select-none" />
+            <img src="images/letter.svg" alt="Carta de invitación: Natalia & Franco — Sábado 30 · 01 · 27" class="w-full h-auto block select-none" decoding="async" />
           </div>
         </div>
 
         <!-- Polaroid Photos Cascade (Interactive 6-photo fan) -->
         <div class="absolute right-[-8px] sm:right-[-20px] md:right-[-45px] lg:right-[-80px] xl:right-[-105px] -top-3 sm:-top-5 md:-top-7 z-20 pointer-events-auto">
-          
-          <!-- Bougainvillea Flower Accent pinned top-right -->
-          <div class="absolute -top-7 -right-2 z-30 w-14 h-14 sm:w-16 sm:h-16 pointer-events-none drop-shadow-md">
-            <img src="images/bougainvillea-flower.svg" alt="Flor Bougainvillea" class="w-full h-full transform rotate-12 select-none" />
-          </div>
 
           <!-- Polaroid 1: Atardecer -->
           <div onclick="openLightbox(0)" class="polaroid-frame w-[110px] sm:w-[145px] md:w-[185px] lg:w-[215px] xl:w-[230px] transform rotate-[8deg] absolute top-0 right-4 sm:right-6 md:right-8 lg:right-11 z-[21]" title="Clic para ver foto en grande">
             <div class="aspect-[4/3] bg-neutral-800 overflow-hidden relative">
-              <img src="images/polaroid-1.jpg" alt="Natalia y Franco al atardecer" class="w-full h-full object-cover brightness-95 contrast-105" />
+              <img src="images/polaroid-1.jpg" alt="Natalia y Franco al atardecer" class="w-full h-full object-cover brightness-95 contrast-105" decoding="async" />
             </div>
           </div>
 
           <!-- Polaroid 2: Alianzas & Flores -->
           <div onclick="openLightbox(1)" class="polaroid-frame w-[106px] sm:w-[140px] md:w-[178px] lg:w-[208px] xl:w-[222px] transform rotate-[-5deg] absolute top-[54px] sm:top-[74px] md:top-[92px] lg:top-[100px] right-0 sm:right-1 md:right-2 lg:right-3 z-[22]" title="Clic para ver foto en grande">
             <div class="aspect-[4/3] bg-neutral-100 overflow-hidden relative">
-              <img src="images/polaroid-4.jpg" alt="Anillos de matrimonio y bouquet floral" class="w-full h-full object-cover brightness-100 contrast-100" />
+              <img src="images/polaroid-4.jpg" alt="Anillos de matrimonio y bouquet floral" class="w-full h-full object-cover brightness-100 contrast-100" decoding="async" />
             </div>
           </div>
 
           <!-- Polaroid 3: Beso bajo lluvia de pétalos -->
           <div onclick="openLightbox(2)" class="polaroid-frame w-[112px] sm:w-[148px] md:w-[188px] lg:w-[220px] xl:w-[234px] transform rotate-[6deg] absolute top-[108px] sm:top-[148px] md:top-[184px] lg:top-[210px] right-3 sm:right-5 md:right-7 lg:right-9 z-[23]" title="Clic para ver foto en grande">
             <div class="aspect-[4/3] bg-neutral-100 overflow-hidden relative">
-              <img src="images/polaroid-5.jpg" alt="Beso de los novios bajo lluvia de pétalos" class="w-full h-full object-cover brightness-100 contrast-105" />
+              <img src="images/polaroid-5.jpg" alt="Beso de los novios bajo lluvia de pétalos" class="w-full h-full object-cover brightness-100 contrast-105" decoding="async" />
             </div>
           </div>
 
           <!-- Polaroid 4: En la naturaleza -->
           <div onclick="openLightbox(3)" class="polaroid-frame w-[105px] sm:w-[138px] md:w-[176px] lg:w-[206px] xl:w-[220px] transform rotate-[-6deg] absolute top-[162px] sm:top-[222px] md:top-[276px] lg:top-[320px] right-0 sm:right-2 md:right-3 lg:right-4 z-[24]" title="Clic para ver foto en grande">
             <div class="aspect-[4/3] bg-neutral-700 overflow-hidden relative">
-              <img src="images/polaroid-2.jpg" alt="Paisaje natural" class="w-full h-full object-cover sepia-[0.15]" />
+              <img src="images/polaroid-2.jpg" alt="Paisaje natural" class="w-full h-full object-cover sepia-[0.15]" decoding="async" />
             </div>
           </div>
 
           <!-- Polaroid 5: Globos y celebración -->
           <div onclick="openLightbox(4)" class="polaroid-frame w-[110px] sm:w-[145px] md:w-[185px] lg:w-[216px] xl:w-[230px] transform rotate-[5deg] absolute top-[216px] sm:top-[296px] md:top-[368px] lg:top-[430px] right-4 sm:right-6 md:right-8 lg:right-10 z-[25]" title="Clic para ver foto en grande">
             <div class="aspect-[4/3] bg-neutral-200 overflow-hidden relative">
-              <img src="images/polaroid-3.jpg" alt="Celebración con globos y amigos" class="w-full h-full object-cover brightness-105" />
+              <img src="images/polaroid-3.jpg" alt="Celebración con globos y amigos" class="w-full h-full object-cover brightness-105" decoding="async" />
             </div>
           </div>
 
           <!-- Polaroid 6: Tomados de la mano -->
           <div onclick="openLightbox(5)" class="polaroid-frame w-[108px] sm:w-[142px] md:w-[180px] lg:w-[212px] xl:w-[226px] transform rotate-[-4deg] absolute top-[270px] sm:top-[370px] md:top-[460px] lg:top-[540px] right-1 sm:right-2 md:right-4 lg:right-6 z-[26]" title="Clic para ver foto en grande">
             <div class="aspect-[4/3] bg-neutral-200 overflow-hidden relative">
-              <img src="images/polaroid-6.jpg" alt="Tomados de la mano" class="w-full h-full object-cover brightness-100" />
+              <img src="images/polaroid-6.jpg" alt="Tomados de la mano" class="w-full h-full object-cover brightness-100" decoding="async" />
             </div>
           </div>
 
@@ -353,7 +327,7 @@
 
         <!-- White Gardenia Flower (Bottom-Right of Card) -->
         <div class="absolute bottom-[-10px] sm:bottom-[-16px] right-[90px] sm:right-[120px] md:right-[140px] z-30 pointer-events-none drop-shadow-xl w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32">
-          <img src="images/gardenia-flower.svg" alt="Flor Gardenia" class="w-full h-full object-contain select-none" />
+          <img src="images/gardenia-flower.svg" alt="Flor Gardenia" class="w-full h-full object-contain select-none" decoding="async" />
         </div>
 
       </div>
@@ -687,7 +661,7 @@
         </div>
       </button>
 
-      <!-- Novios Paris Action Trigger (Opens Paris Registry & Bank Details) -->
+      <!-- Novios Paris Action Trigger (Opens Paris Registry Modal) -->
       <button type="button" onclick="openGiftsModal()" class="group flex items-center gap-3.5 text-text-charcoal hover:text-bronze-gold transition-all text-left bg-transparent border-0 cursor-pointer">
         <div class="w-12 h-12 rounded-full bg-white/80 border border-[#D8C5AE] shadow-sm flex items-center justify-center group-hover:scale-105 group-hover:border-bronze-gold transition-all flex-shrink-0">
           <img src="images/icon-gift.svg" alt="Regalo" class="w-7 h-7 object-contain" />
@@ -699,7 +673,7 @@
           <p class="font-serif text-[17px] sm:text-[18.5px] leading-tight text-bronze-gold font-semibold">
             21 05 64 48
           </p>
-          <span class="font-sans text-[8.5px] uppercase tracking-wider text-text-muted font-semibold">Ver código y datos ↗</span>
+          <span class="font-sans text-[8.5px] uppercase tracking-wider text-text-muted font-semibold">Ver lista de regalos ↗</span>
         </div>
       </button>
 
@@ -867,7 +841,7 @@
         <div class="vintage-map-inner-border"></div>
 
         <!-- The Grand Architectural Map Image with lazy load -->
-        <img src="images/mapa-santiago.svg" loading="lazy" alt="Mapa ilustrado: Cómo llegar a Iglesia San Ignacio de Loyola y Casona Anwandter" class="w-full h-auto select-none rounded-[2px] block" />
+        <img src="images/mapa-santiago.svg" loading="lazy" decoding="async" alt="Mapa ilustrado: Cómo llegar a Iglesia San Ignacio de Loyola y Casona Anwandter" class="w-full h-auto select-none rounded-[2px] block" />
 
         <!-- Floating Zoom Pill -->
         <div class="absolute bottom-6 right-6 z-10">
@@ -916,7 +890,7 @@
   <!-- ======================================================== -->
   <!-- MODAL 1: POLAROID MEMORIES LIGHTBOX                      -->
   <!-- ======================================================== -->
-  <div id="modal-lightbox" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300" role="dialog" aria-modal="true" aria-label="Galería de recuerdos">
+  <div id="modal-lightbox" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Galería de recuerdos">
     
     <!-- Close button -->
     <button onclick="closeLightbox()" class="absolute top-5 right-5 z-20 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors" title="Cerrar (Esc)">
@@ -954,7 +928,7 @@
   <!-- ======================================================== -->
   <!-- MODAL 2: SMART CALENDAR SELECTION                        -->
   <!-- ======================================================== -->
-  <div id="modal-calendar" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300" role="dialog" aria-modal="true" aria-label="Añadir a calendario">
+  <div id="modal-calendar" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Añadir a calendario">
     <div class="max-w-sm w-full double-bezel-card p-6 sm:p-7 relative bg-white shadow-2xl text-center">
       
       <button onclick="closeCalendarModal()" class="absolute top-4 right-4 text-text-muted hover:text-text-charcoal" title="Cerrar">
@@ -994,9 +968,9 @@
 
 
   <!-- ======================================================== -->
-  <!-- MODAL 3: NOVIOS PARIS & DATOS DE TRANSFERENCIA           -->
+  <!-- MODAL 3: NOVIOS PARIS (MESA DE REGALOS)                  -->
   <!-- ======================================================== -->
-  <div id="modal-gifts" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300" role="dialog" aria-modal="true" aria-label="Lista de novios y regalos">
+  <div id="modal-gifts" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Lista de novios y regalos">
     <div class="max-w-md w-full double-bezel-card p-6 sm:p-7 relative bg-white shadow-2xl">
       
       <button onclick="closeGiftsModal()" class="absolute top-4 right-4 text-text-muted hover:text-text-charcoal" title="Cerrar">
@@ -1015,48 +989,21 @@
         </p>
       </div>
 
-      <!-- Option 1: Novios Paris -->
-      <div class="bg-[#FAF8F5] border border-[#E8DCCB] p-4 rounded-sm mb-4 text-center">
+      <!-- Novios Paris -->
+      <div class="bg-[#FAF8F5] border border-[#E8DCCB] p-5 rounded-sm text-center">
         <span class="font-sans text-[9px] uppercase tracking-[0.25em] text-text-muted font-semibold block mb-1">
           Código Novios Paris
         </span>
-        <p class="font-serif text-[26px] font-bold text-bronze-gold tracking-wider my-0.5">
+        <p class="font-serif text-[28px] sm:text-[30px] font-bold text-bronze-gold tracking-wider my-1">
           21 05 64 48
         </p>
-        <div class="flex items-center justify-center gap-2 mt-2">
-          <button type="button" onclick="copyText('21 05 64 48', 'Código Novios Paris copiado al portapapeles')" class="py-1.5 px-3 bg-white border border-[#D8C5AE] hover:border-bronze-gold rounded-sm font-sans text-[9.5px] uppercase tracking-wider font-semibold text-text-charcoal transition-all">
+        <div class="flex items-center justify-center gap-2 mt-4">
+          <button type="button" onclick="copyText('21 05 64 48', 'Código Novios Paris copiado al portapapeles')" class="py-2 px-3.5 bg-white border border-[#D8C5AE] hover:border-bronze-gold rounded-sm font-sans text-[9.5px] uppercase tracking-wider font-semibold text-text-charcoal transition-all">
             Copiar Código
           </button>
-          <a href="https://www.paris.cl" target="_blank" rel="noopener noreferrer" class="py-1.5 px-3 bg-[#8E5F34] hover:bg-[#774D26] text-white rounded-sm font-sans text-[9.5px] uppercase tracking-wider font-semibold transition-all">
-            Ir a Paris.cl ↗
+          <a href="https://www.noviosparis.cl/home/couple-catalog/21056448" target="_blank" rel="noopener noreferrer" class="py-2 px-3.5 bg-[#8E5F34] hover:bg-[#774D26] text-white rounded-sm font-sans text-[9.5px] uppercase tracking-wider font-semibold transition-all">
+            Ir a Novios Paris ↗
           </a>
-        </div>
-      </div>
-
-      <!-- Option 2: Chilean Bank Transfer Details -->
-      <div class="bg-[#FFFFFF] border border-[#EAE1D4] p-3.5 rounded-sm text-left">
-        <p class="font-sans text-[9.5px] uppercase tracking-[0.2em] text-bronze-gold font-semibold mb-2 text-center">
-          Datos de Transferencia
-        </p>
-        <div class="space-y-1.5 font-serif text-[13.5px] text-text-charcoal">
-          <div class="flex justify-between border-b border-[#F4E9D7] pb-1">
-            <span class="text-text-muted">Titular:</span>
-            <span class="font-medium">Natalia & Franco</span>
-          </div>
-          <div class="flex justify-between border-b border-[#F4E9D7] pb-1">
-            <span class="text-text-muted">Banco:</span>
-            <span class="font-medium">Banco Santander / Banco de Chile</span>
-          </div>
-          <div class="flex justify-between border-b border-[#F4E9D7] pb-1">
-            <span class="text-text-muted">Tipo de Cuenta:</span>
-            <span class="font-medium">Cuenta Corriente</span>
-          </div>
-          <div class="flex justify-between items-center pt-1">
-            <span class="text-text-muted">RUT & Cuenta:</span>
-            <button type="button" onclick="copyText('Consultar datos de transferencia a los novios', 'Datos de contacto listos')" class="text-bronze-gold hover:underline font-sans text-[9px] uppercase font-semibold">
-              Copiar Datos
-            </button>
-          </div>
         </div>
       </div>
 
@@ -1068,12 +1015,12 @@
   <!-- ======================================================== -->
   <!-- MODAL 4: FULLSCREEN MAP MODAL                            -->
   <!-- ======================================================== -->
-  <div id="modal-map" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 opacity-0 pointer-events-none transition-opacity duration-300" role="dialog" aria-modal="true" aria-label="Plano ilustrado completo">
+  <div id="modal-map" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-3 sm:p-6" role="dialog" aria-modal="true" aria-label="Plano ilustrado completo">
     <button onclick="closeMapModal()" class="absolute top-4 right-4 z-20 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors" title="Cerrar (Esc)">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
     </button>
     <div class="max-w-4xl w-full max-h-[90vh] overflow-auto bg-[#F4E9D7] border-2 border-[#8E6D4B] p-2 sm:p-4 rounded shadow-2xl">
-      <img src="images/mapa-santiago.svg" alt="Mapa ilustrado completo" class="w-full h-auto block select-none" />
+      <img id="modal-map-img" src="" alt="Mapa ilustrado completo" class="w-full h-auto block select-none" />
     </div>
   </div>
 
@@ -1082,7 +1029,7 @@
   <!-- ======================================================== -->
   <!-- MODAL 5: CELEBRATORY RSVP CONFIRMATION MODAL             -->
   <!-- ======================================================== -->
-  <div id="modal-rsvp-success" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300" role="dialog" aria-modal="true" aria-label="Confirmación recibida">
+  <div id="modal-rsvp-success" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md hidden opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Confirmación recibida">
     <div class="max-w-md w-full double-bezel-card p-6 sm:p-8 relative bg-white shadow-2xl text-center">
       
       <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-[#F4E9D7] text-bronze-gold flex items-center justify-center border border-[#D8C5AE] text-3xl">
@@ -1337,9 +1284,12 @@
       caption.textContent = galleryPhotos[index].caption;
       counter.textContent = (index + 1) + ' de ' + galleryPhotos.length;
 
-      modal.classList.remove('opacity-0', 'pointer-events-none');
-      card.classList.remove('scale-95');
-      card.classList.add('scale-100');
+      modal.classList.remove('hidden');
+      requestAnimationFrame(() => {
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+        card.classList.remove('scale-95');
+        card.classList.add('scale-100');
+      });
       document.body.style.overflow = 'hidden';
     }
 
@@ -1349,6 +1299,9 @@
       modal.classList.add('opacity-0', 'pointer-events-none');
       card.classList.remove('scale-100');
       card.classList.add('scale-95');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 300);
       document.body.style.overflow = '';
     }
 
@@ -1514,12 +1467,18 @@
 
     function openRsvpSuccessModal() {
       const modal = document.getElementById('modal-rsvp-success');
-      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modal.classList.remove('hidden');
+      requestAnimationFrame(() => {
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+      });
     }
 
     function closeRsvpSuccessModal() {
       const modal = document.getElementById('modal-rsvp-success');
       modal.classList.add('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 300);
     }
 
 
@@ -1536,11 +1495,18 @@
       const dates = '20270130T210000Z/20270131T070000Z'; // 18:00 Santiago (GMT-3) = 21:00 UTC
       gcalLink.href = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${dates}&details=${details}&location=${location}`;
 
-      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modal.classList.remove('hidden');
+      requestAnimationFrame(() => {
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+      });
     }
 
     function closeCalendarModal() {
-      document.getElementById('modal-calendar').classList.add('opacity-0', 'pointer-events-none');
+      const modal = document.getElementById('modal-calendar');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 300);
     }
 
     function downloadIcsFile() {
@@ -1573,20 +1539,40 @@ END:VCALENDAR`;
     }
 
     function openGiftsModal() {
-      document.getElementById('modal-gifts').classList.remove('opacity-0', 'pointer-events-none');
+      const modal = document.getElementById('modal-gifts');
+      modal.classList.remove('hidden');
+      requestAnimationFrame(() => {
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+      });
     }
 
     function closeGiftsModal() {
-      document.getElementById('modal-gifts').classList.add('opacity-0', 'pointer-events-none');
+      const modal = document.getElementById('modal-gifts');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 300);
     }
 
     function openMapModal() {
-      document.getElementById('modal-map').classList.remove('opacity-0', 'pointer-events-none');
+      const modal = document.getElementById('modal-map');
+      const img = document.getElementById('modal-map-img');
+      if (img && !img.src) {
+        img.src = 'images/mapa-santiago.svg';
+      }
+      modal.classList.remove('hidden');
+      requestAnimationFrame(() => {
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+      });
       document.body.style.overflow = 'hidden';
     }
 
     function closeMapModal() {
-      document.getElementById('modal-map').classList.add('opacity-0', 'pointer-events-none');
+      const modal = document.getElementById('modal-map');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 300);
       document.body.style.overflow = '';
     }
 
@@ -1622,26 +1608,6 @@ END:VCALENDAR`;
         toast.classList.remove('translate-y-0', 'opacity-100');
       }, 3400);
     }
-
-
-    /* ========================================================
-       7. SMOOTH SCROLL REVEAL OBSERVER
-       ======================================================== */
-    document.addEventListener('DOMContentLoaded', () => {
-      const revealElements = document.querySelectorAll('section');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-revealed');
-          }
-        });
-      }, { threshold: 0.1 });
-
-      revealElements.forEach(el => {
-        el.classList.add('reveal-on-scroll');
-        observer.observe(el);
-      });
-    });
   </script>
 
 </body>
