@@ -544,7 +544,7 @@
         <div class="md:col-span-7 p-6 sm:p-8 flex flex-col justify-center">
           
           <div class="text-center mb-5">
-            <p class="font-serif text-text-charcoal text-[14px]">
+            <p id="rsvp-companion-badge" class="font-serif text-text-charcoal text-[14px] hidden">
               Esta invitación incluye acompañante
             </p>
             <p class="font-script text-bronze-gold text-[22px] sm:text-[24px] leading-tight">
@@ -597,8 +597,8 @@
                 </div>
               </div>
 
-              <!-- Companion Details -->
-              <div class="pt-2 border-t border-[#EFE8DF]">
+              <!-- Companion Details (Conditional based on +1 pass) -->
+              <div id="rsvp-companion-section" class="pt-2 border-t border-[#EFE8DF] hidden">
                 <div class="flex items-center justify-between mb-2">
                   <label for="rsvp-has-companion" class="font-sans text-[9.5px] uppercase tracking-wider text-text-charcoal font-semibold cursor-pointer">
                     ¿Asistirás con acompañante?
@@ -1068,7 +1068,7 @@
   <!-- ======================================================== -->
   <script>
     /* ========================================================
-       CONFIGURACIÓN DE INTEGRACIÓN (WEBHOOK / DESTINOS)
+       CONFIGURACIÓN DE INTEGRACIÓN & PASES DE INVITACIÓN
        ======================================================== */
     // Configura aquí tu Webhook para registrar confirmaciones en Google Sheets, Formspree o Airtable:
     // Ejemplo: 'https://formspree.io/f/xyz123' o tu URL de Google Apps Script Web App
@@ -1076,6 +1076,12 @@
 
     // Teléfono de contacto de los novios para el botón directo de WhatsApp (código país + número, sin signos):
     const NOVIOS_WHATSAPP_PHONE = '56966660670';
+
+    // Configuración de Invitación con Acompañante (+1):
+    // • Enlace Individual: URL directa sin parámetros (ej: tudominio.cl/)
+    // • Enlace Con Acompañante: URL con el parámetro secreto (ej: tudominio.cl/?t=b8k2)
+    const PLUS_ONE_PARAM = 't';         // Nombre del parámetro en la URL (?t=...)
+    const PLUS_ONE_TOKEN = 'b8k2';      // Token secreto que desbloquea el +1
 
 
     /* ========================================================
@@ -1422,8 +1428,36 @@
 
 
     /* ========================================================
-       4. RSVP LOGIC & CONDITIONAL FIELDS
+       4. RSVP LOGIC, INVITATION TYPES & CONDITIONAL FIELDS
        ======================================================== */
+    function hasPlusOneAccess() {
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        // Soporta ?t=b8k2 y ?pase=b8k2
+        const token = urlParams.get(PLUS_ONE_PARAM) || urlParams.get('pase');
+        return token === PLUS_ONE_TOKEN;
+      } catch (e) {
+        return false;
+      }
+    }
+
+    function initInvitationType() {
+      const isPlusOne = hasPlusOneAccess();
+      const badge = document.getElementById('rsvp-companion-badge');
+      const companionSection = document.getElementById('rsvp-companion-section');
+      const companionCheck = document.getElementById('rsvp-has-companion');
+
+      if (isPlusOne) {
+        if (badge) badge.classList.remove('hidden');
+        if (companionSection) companionSection.classList.remove('hidden');
+      } else {
+        if (badge) badge.classList.add('hidden');
+        if (companionSection) companionSection.classList.add('hidden');
+        if (companionCheck) companionCheck.checked = false;
+        toggleCompanionFields(false);
+      }
+    }
+
     function setAttendance(attending) {
       const valInput = document.getElementById('rsvp-attendance-value');
       const btnYes = document.getElementById('toggle-attending-yes');
@@ -1444,15 +1478,19 @@
         fieldsAttending.classList.add('hidden');
         fieldsNotAttending.classList.remove('hidden');
       }
+      // Re-verificar visibilidad de campos de acompañante según tipo de invitación
+      initInvitationType();
     }
 
     function toggleCompanionFields(checked) {
       const container = document.getElementById('companion-container');
-      if (checked) {
+      if (!container) return;
+      if (checked && hasPlusOneAccess()) {
         container.classList.remove('hidden');
       } else {
         container.classList.add('hidden');
-        document.getElementById('rsvp-companion-name').value = '';
+        const compName = document.getElementById('rsvp-companion-name');
+        if (compName) compName.value = '';
         const compDiet = document.getElementById('rsvp-companion-diet');
         if (compDiet) compDiet.selectedIndex = 0;
         const compAllergies = document.getElementById('rsvp-companion-allergies');
@@ -1472,7 +1510,10 @@
         return;
       }
 
-      const hasCompanion = attendance === 'si' && document.getElementById('rsvp-has-companion').checked;
+      // Validar si el invitado tiene derecho a acompañante (+1) mediante token
+      const isPlusOneAllowed = hasPlusOneAccess();
+      const companionCheckbox = document.getElementById('rsvp-has-companion');
+      const hasCompanion = isPlusOneAllowed && attendance === 'si' && companionCheckbox && companionCheckbox.checked;
       const companionName = hasCompanion ? document.getElementById('rsvp-companion-name').value.trim() : '';
       const companionDiet = hasCompanion ? document.getElementById('rsvp-companion-diet').value : '';
       const companionAllergies = hasCompanion ? document.getElementById('rsvp-companion-allergies').value.trim() : '';
@@ -1480,6 +1521,8 @@
       // Payload completo de la confirmación
       const payload = {
         fechaEnvio: new Date().toISOString(),
+        tipoInvitacion: isPlusOneAllowed ? 'Con acompañante (+1)' : 'Individual',
+        cuposPermitidos: isPlusOneAllowed ? 2 : 1,
         asistira: attendance === 'si' ? 'Sí, asistirá' : 'No asistirá',
         nombre: name,
         preferenciaAlimentaria: attendance === 'si' ? document.getElementById('rsvp-diet').value : 'N/A',
@@ -1565,6 +1608,7 @@
         openRsvpSuccessModal();
         document.getElementById('rsvp-form').reset();
         setAttendance(true);
+        initInvitationType();
       }, 600);
     }
 
@@ -1711,6 +1755,12 @@ END:VCALENDAR`;
         toast.classList.remove('translate-y-0', 'opacity-100');
       }, 3400);
     }
+
+    /* ========================================================
+       7. INICIALIZACIÓN DE TIPO DE INVITACIÓN
+       ======================================================== */
+    initInvitationType();
+    document.addEventListener('DOMContentLoaded', initInvitationType);
   </script>
 
 </body>
