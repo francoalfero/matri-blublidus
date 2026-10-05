@@ -367,7 +367,7 @@
     <!-- HIGH-CONTRAST LUXURY FLOATING AUDIO CONTROLLER           -->
     <!-- ======================================================== -->
     <div class="relative z-30 mt-4 sm:mt-6 w-full max-w-[350px] sm:max-w-[380px] mx-auto px-3">
-      <audio id="audio-player" src="Levitating.mp3" preload="auto" autoplay loop playsinline></audio>
+      <audio id="audio-player" src="Levitating.mp3" preload="auto" autoplay playsinline></audio>
 
       <!-- Liquid Glass Capsule Island -->
       <div id="audio-capsule" class="liquid-glass-player rounded-full px-3.5 sm:px-4 py-2.5 flex flex-col gap-1.5 transition-all duration-300">
@@ -386,16 +386,16 @@
               <p class="font-sans text-[9px] sm:text-[10px] tracking-[0.12em] sm:tracking-[0.16em] uppercase font-semibold text-[#8E5F34] truncate leading-tight">
                 Música de Fondo
               </p>
-              <p class="font-serif italic text-[13px] sm:text-[13.5px] text-[#2D261E] font-medium truncate leading-none">
-                Natalia & Franco
+              <p id="player-track-title" class="font-serif italic text-[13px] sm:text-[13.5px] text-[#2D261E] font-medium truncate leading-none">
+                Levitating
               </p>
             </div>
           </div>
 
           <!-- Controls: Prev, Play, Next, Mute -->
           <div class="flex items-center gap-1 sm:gap-2 flex-shrink-0">
-            <!-- Prev / Restart -->
-            <button id="btn-player-prev" class="w-7 h-7 rounded-full flex items-center justify-center text-[#5A4B3C] hover:text-[#2D261E] hover:bg-black/5 active:scale-95 transition-all" title="Reiniciar canción" aria-label="Reiniciar canción">
+            <!-- Prev -->
+            <button id="btn-player-prev" class="w-7 h-7 rounded-full flex items-center justify-center text-[#5A4B3C] hover:text-[#2D261E] hover:bg-black/5 active:scale-95 transition-all" title="Canción anterior" aria-label="Canción anterior">
               <svg class="w-3 h-3 fill-currentColor" viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
             </button>
 
@@ -407,7 +407,7 @@
             </button>
 
             <!-- Next -->
-            <button id="btn-player-next" class="w-7 h-7 rounded-full flex items-center justify-center text-[#5A4B3C] hover:text-[#2D261E] hover:bg-black/5 active:scale-95 transition-all" title="Reiniciar pista" aria-label="Reiniciar pista">
+            <button id="btn-player-next" class="w-7 h-7 rounded-full flex items-center justify-center text-[#5A4B3C] hover:text-[#2D261E] hover:bg-black/5 active:scale-95 transition-all" title="Siguiente canción" aria-label="Siguiente canción">
               <svg class="w-3 h-3 fill-currentColor" viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
             </button>
 
@@ -903,15 +903,12 @@
     </button>
 
     <!-- Content Card -->
-    <div class="relative max-w-lg w-full bg-white p-4 pb-8 sm:p-6 sm:pb-10 rounded-sm shadow-2xl transform scale-95 transition-transform duration-300" id="lightbox-card">
-      <div class="aspect-[4/3] bg-neutral-900 rounded-sm overflow-hidden mb-4 shadow-inner">
+    <div class="relative max-w-lg w-full bg-white p-4 pb-5 sm:p-6 sm:pb-6 rounded-sm shadow-2xl transform scale-95 transition-transform duration-300" id="lightbox-card">
+      <div class="aspect-[4/3] bg-neutral-900 rounded-sm overflow-hidden mb-3 shadow-inner">
         <img id="lightbox-img" src="" alt="Foto de recuerdo" class="w-full h-full object-cover transition-opacity duration-300" />
       </div>
       <div class="text-center">
-        <p id="lightbox-caption" class="font-script text-bronze-gold text-[28px] sm:text-[32px] leading-tight mb-1">
-          Nuestra historia
-        </p>
-        <p id="lightbox-counter" class="font-sans text-[10px] uppercase tracking-[0.25em] text-text-muted font-semibold">
+        <p id="lightbox-counter" class="font-sans text-[11px] uppercase tracking-[0.25em] text-text-muted font-semibold">
           1 de 6
         </p>
       </div>
@@ -1122,7 +1119,7 @@
 
 
     /* ========================================================
-       2. REFINED AUDIO / MUSIC PLAYER
+       2. REFINED AUDIO / MUSIC PLAYER (PLAYLIST LOOP)
        ======================================================== */
     (function initPlayer() {
       const audio = document.getElementById('audio-player');
@@ -1133,12 +1130,19 @@
       const timeCurrent = document.getElementById('player-time-current');
       const timeDuration = document.getElementById('player-time-duration');
       const soundwave = document.getElementById('soundwave-container');
+      const trackTitle = document.getElementById('player-track-title');
       const btnPrev = document.getElementById('btn-player-prev');
       const btnNext = document.getElementById('btn-player-next');
       const btnMute = document.getElementById('btn-player-mute');
       const iconVolume = document.getElementById('icon-volume');
 
       if (!audio) return;
+
+      const playlist = [
+        { title: 'Levitating', src: 'Levitating.mp3' },
+        { title: 'Golden', src: 'Golden.mp3' }
+      ];
+      let currentTrackIndex = 0;
 
       const playSvg = '<svg class="w-3.5 h-3.5 fill-white translate-x-[1px]" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
       const pauseSvg = '<svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
@@ -1164,12 +1168,57 @@
         }
       }
 
+      function loadTrack(index, playImmediately = true) {
+        currentTrackIndex = ((index % playlist.length) + playlist.length) % playlist.length;
+        const currentSong = playlist[currentTrackIndex];
+        
+        audio.src = currentSong.src;
+        if (trackTitle) {
+          trackTitle.textContent = currentSong.title;
+        }
+        progressFill.style.width = '0%';
+        timeCurrent.textContent = '0:00';
+        timeDuration.textContent = '0:00';
+
+        if (playImmediately) {
+          const playPromise = audio.play();
+          if (playPromise !== undefined) {
+            playPromise.then(() => {
+              userInteracted = true;
+              updateUi(true);
+              showToast(`♪ Reproduciendo: ${currentSong.title}`, '🎶');
+            }).catch((err) => {
+              console.warn('Playback prevented:', err);
+              updateUi(false);
+            });
+          }
+        } else {
+          updateUi(false);
+        }
+      }
+
+      function nextTrack(forcePlay = true) {
+        loadTrack(currentTrackIndex + 1, forcePlay || !audio.paused);
+      }
+
+      function prevTrack(forcePlay = true) {
+        if (audio.currentTime > 3) {
+          audio.currentTime = 0;
+          if (audio.paused && (forcePlay || userInteracted)) {
+            audio.play().then(() => updateUi(true)).catch(() => {});
+          }
+          showToast(`⏮ Reiniciando: ${playlist[currentTrackIndex].title}`, '⏮');
+        } else {
+          loadTrack(currentTrackIndex - 1, forcePlay || !audio.paused);
+        }
+      }
+
       function togglePlay() {
         userInteracted = true;
         if (audio.paused) {
           audio.play().then(() => {
             updateUi(true);
-            showToast('♪ Reproduciendo música de fondo', '🎶');
+            showToast(`♪ Reproduciendo: ${playlist[currentTrackIndex].title}`, '🎶');
           }).catch((err) => {
             console.warn('Autoplay bloqueado por el navegador:', err);
           });
@@ -1179,6 +1228,11 @@
           showToast('⏸ Música en pausa', '⏸');
         }
       }
+
+      // Al terminar una canción, pasa automáticamente a la siguiente en bucle infinito
+      audio.addEventListener('ended', () => {
+        nextTrack(true);
+      });
 
       audio.addEventListener('play', () => updateUi(true));
       audio.addEventListener('pause', () => updateUi(false));
@@ -1191,9 +1245,14 @@
         }
       });
 
-      audio.addEventListener('loadedmetadata', () => {
-        timeDuration.textContent = formatTime(audio.duration);
-      });
+      function updateDuration() {
+        if (audio.duration && !isNaN(audio.duration)) {
+          timeDuration.textContent = formatTime(audio.duration);
+        }
+      }
+
+      audio.addEventListener('loadedmetadata', updateDuration);
+      audio.addEventListener('durationchange', updateDuration);
 
       btnPlay.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -1202,16 +1261,14 @@
 
       btnPrev.addEventListener('click', (e) => {
         e.stopPropagation();
-        audio.currentTime = 0;
-        if (audio.paused) audio.play().catch(() => {});
-        showToast('⏮ Canción reiniciada', '⏮');
+        userInteracted = true;
+        prevTrack(true);
       });
 
       btnNext.addEventListener('click', (e) => {
         e.stopPropagation();
-        audio.currentTime = 0;
-        if (audio.paused) audio.play().catch(() => {});
-        showToast('⏮ Canción reiniciada', '⏮');
+        userInteracted = true;
+        nextTrack(true);
       });
 
       btnMute.addEventListener('click', (e) => {
@@ -1266,7 +1323,7 @@
         audio.play().then(() => {
           userInteracted = true;
           updateUi(true);
-          showToast('♪ Reproduciendo música de fondo', '🎶');
+          showToast(`♪ Reproduciendo: ${playlist[currentTrackIndex].title}`, '🎶');
           removeUnlockListeners();
         }).catch(() => {
           // Si por alguna razón el evento no fue suficiente, mantenemos los listeners activos
@@ -1298,12 +1355,12 @@
        3. POLAROID MEMORIES LIGHTBOX
        ======================================================== */
     const galleryPhotos = [
-      { src: 'images/polaroid-1.jpg', caption: 'Bajo la luz del atardecer', alt: 'Natalia y Franco al atardecer' },
-      { src: 'images/polaroid-4.jpg', caption: 'Nuestras alianzas & bouquet floral', alt: 'Anillos de matrimonio y flores' },
-      { src: 'images/polaroid-5.jpg', caption: 'Lluvia de amor y pétalos', alt: 'Beso de los novios bajo lluvia de pétalos' },
-      { src: 'images/polaroid-2.jpg', caption: 'En la inmensidad del paisaje', alt: 'Paisaje natural' },
-      { src: 'images/polaroid-3.jpg', caption: 'Celebrando con quienes más amamos', alt: 'Celebración y globos con invitados' },
-      { src: 'images/polaroid-6.jpg', caption: 'Tomados de la mano para siempre', alt: 'Tomados de la mano' },
+      { src: 'images/polaroid-1.jpg', alt: 'Natalia y Franco al atardecer' },
+      { src: 'images/polaroid-4.jpg', alt: 'Anillos de matrimonio y flores' },
+      { src: 'images/polaroid-5.jpg', alt: 'Beso de los novios bajo lluvia de pétalos' },
+      { src: 'images/polaroid-2.jpg', alt: 'Paisaje natural' },
+      { src: 'images/polaroid-3.jpg', alt: 'Celebración y globos con invitados' },
+      { src: 'images/polaroid-6.jpg', alt: 'Tomados de la mano' },
     ];
     let currentPhotoIndex = 0;
 
@@ -1311,14 +1368,12 @@
       currentPhotoIndex = index;
       const modal = document.getElementById('modal-lightbox');
       const img = document.getElementById('lightbox-img');
-      const caption = document.getElementById('lightbox-caption');
       const counter = document.getElementById('lightbox-counter');
       const card = document.getElementById('lightbox-card');
 
       img.src = galleryPhotos[index].src;
       img.alt = galleryPhotos[index].alt;
-      caption.textContent = galleryPhotos[index].caption;
-      counter.textContent = (index + 1) + ' de ' + galleryPhotos.length;
+      if (counter) counter.textContent = (index + 1) + ' de ' + galleryPhotos.length;
 
       modal.classList.remove('hidden');
       requestAnimationFrame(() => {
@@ -1344,15 +1399,13 @@
     function changeLightboxPhoto(direction) {
       currentPhotoIndex = (currentPhotoIndex + direction + galleryPhotos.length) % galleryPhotos.length;
       const img = document.getElementById('lightbox-img');
-      const caption = document.getElementById('lightbox-caption');
       const counter = document.getElementById('lightbox-counter');
 
       img.style.opacity = '0';
       setTimeout(() => {
         img.src = galleryPhotos[currentPhotoIndex].src;
         img.alt = galleryPhotos[currentPhotoIndex].alt;
-        caption.textContent = galleryPhotos[currentPhotoIndex].caption;
-        counter.textContent = (currentPhotoIndex + 1) + ' de ' + galleryPhotos.length;
+        if (counter) counter.textContent = (currentPhotoIndex + 1) + ' de ' + galleryPhotos.length;
         img.style.opacity = '1';
       }, 150);
     }
