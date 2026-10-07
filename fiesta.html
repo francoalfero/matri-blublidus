@@ -3,22 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script>
-    // Redirección inmediata a fiesta.html si el enlace contiene parámetros de fiesta
-    (function() {
-      try {
-        var p = new URLSearchParams(window.location.search);
-        if (p.has('fiesta') || p.get('tipo') === 'fiesta' || p.get('evento') === 'fiesta' || p.get('invitacion') === 'fiesta' || p.get('v') === 'fiesta') {
-          window.location.replace('fiesta.html' + window.location.search);
-        }
-      } catch (e) {}
-    })();
-  </script>
-  <title>Natalia & Franco — Nuestro Matrimonio · 30 · 01 · 27</title>
+  <title>Natalia & Franco — Fiesta de Matrimonio · 30 · 01 · 27</title>
 
   <!-- OpenGraph / Social Sharing Meta (WhatsApp, iMessage, etc.) -->
-  <meta property="og:title" content="Natalia & Franco — Nuestro Matrimonio · 30 · 01 · 27" />
-  <meta property="og:description" content="Acompáñanos a celebrar nuestro matrimonio el sábado 30 de enero de 2027 en Santiago de Chile." />
+  <meta property="og:title" content="Natalia & Franco — Fiesta de Matrimonio · 30 · 01 · 27" />
+  <meta property="og:description" content="Acompáñanos a celebrar la fiesta de nuestro matrimonio el sábado 30 de enero de 2027 a las 23:00 hrs en Casona Anwandter, Santiago de Chile." />
   <meta property="og:image" content="images/polaroid-5.jpg" />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#353B2D" />
@@ -225,7 +214,7 @@
       text-transform: uppercase;
       text-decoration: none;
       box-shadow: 0 4px 12px rgba(142, 95, 52, 0.25);
-      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.25, 1);
       cursor: pointer;
     }
     .btn-luxury-pill .icon-bubble {
@@ -300,10 +289,17 @@
 <body class="antialiased">
 
   <!-- ======================================================== -->
-  <!-- 1. HERO / INVITATION SECTION                             -->
+  <!-- 1. HERO / INVITATION SECTION (FIESTA)                    -->
   <!-- ======================================================== -->
   <header class="hero-linen-bg pt-8 pb-14 sm:pt-12 sm:pb-16 flex flex-col items-center justify-center relative">
     <div class="hero-linen-overlay"></div>
+
+    <!-- Badge Indicador de Invitación a la Fiesta -->
+    <div class="relative z-20 mb-3 text-center">
+      <span class="inline-flex items-center gap-1.5 px-3.5 py-1 bg-white/80 backdrop-blur-sm border border-[#D8C5AE] rounded-full text-bronze-gold font-sans text-[9px] sm:text-[10px] uppercase tracking-[0.25em] font-semibold shadow-sm">
+        <span>✨</span> Invitación a la Fiesta · 23:00 hrs
+      </span>
+    </div>
 
     <!-- Main Assembly: Envelope + Card + Polaroids + Flowers -->
     <div class="relative z-10 max-w-5xl mx-auto w-full px-3 sm:px-6 flex items-center justify-center">
@@ -449,7 +445,7 @@
   </header>
 
   <!-- ======================================================== -->
-  <!-- 2. COUNTDOWN / CUENTA REGRESIVA SECTION                  -->
+  <!-- 2. COUNTDOWN / CUENTA REGRESIVA SECTION (23:00 HRS)      -->
   <!-- ======================================================== -->
   <section class="relative py-8 sm:py-10 text-white overflow-hidden" style="background-color: #353B2D; background-image: radial-gradient(circle at 50% 50%, rgba(65, 75, 55, 0.45) 0%, rgba(40, 47, 34, 0.9) 100%);">
     
@@ -468,7 +464,7 @@
       <div class="flex items-center justify-center gap-4 mb-3 sm:mb-5">
         <span class="w-12 sm:w-20 h-[1px] bg-[#B5824C] opacity-50"></span>
         <h2 class="font-sans text-[#B5824C] text-[10px] sm:text-[11px] tracking-[0.3em] font-semibold uppercase">
-          Cuenta Regresiva
+          Cuenta Regresiva para la Fiesta
         </h2>
         <span class="w-12 sm:w-20 h-[1px] bg-[#B5824C] opacity-50"></span>
       </div>
@@ -510,7 +506,7 @@
   </section>
 
   <!-- ======================================================== -->
-  <!-- 3. RSVP / CONFIRMAR ASISTENCIA SECTION                   -->
+  <!-- 3. RSVP / CONFIRMAR ASISTENCIA SECTION (SOLO FIESTA)     -->
   <!-- ======================================================== -->
   <section id="rsvp-section" class="py-12 sm:py-16 px-4 relative overflow-visible">
     <div class="max-w-[780px] mx-auto relative">
@@ -528,7 +524,7 @@
             Confirmar
           </h2>
           <p class="font-sans text-text-charcoal text-[9.5px] sm:text-[10px] tracking-[0.24em] font-semibold uppercase leading-relaxed mb-4">
-            Tu asistencia es muy<br />importante para nosotros
+            Tu presencia en la fiesta<br />es muy importante para nosotros
           </p>
 
           <!-- Botanical Sprig -->
@@ -540,7 +536,7 @@
 
           <div class="mt-4 p-3 bg-white/80 border border-[#E8DCCB] rounded-sm max-w-[210px] text-center shadow-sm">
             <p class="font-serif italic text-text-muted text-[13px] leading-snug">
-              "Los momentos más hermosos cobran vida cuando los compartimos con quienes más queremos."
+              "Una gran noche para bailar, brindar y celebrar juntos."
             </p>
             <p class="font-sans text-[9px] uppercase tracking-[0.2em] text-bronze-gold font-semibold mt-2">
               Plazo de confirmación
@@ -551,7 +547,7 @@
           </div>
         </div>
 
-        <!-- Right Column: Interactive Segmented Form -->
+        <!-- Right Column: Interactive Segmented Form (Sin campos de comida) -->
         <div class="md:col-span-7 p-6 sm:p-8 flex flex-col justify-center">
           
           <div class="text-center mb-5">
@@ -559,11 +555,11 @@
               Esta invitación incluye acompañante
             </p>
             <p class="font-script text-bronze-gold text-[22px] sm:text-[24px] leading-tight">
-              ¿Nos acompañarás en nuestro gran día?
+              ¿Nos acompañarás a celebrar en la fiesta?
             </p>
           </div>
 
-          <!-- Segmented Attendance Toggle (Clear, prominent and integrated!) -->
+          <!-- Segmented Attendance Toggle -->
           <div class="mb-5">
             <label class="block font-sans text-[9.5px] tracking-[0.2em] uppercase font-semibold text-text-muted text-center mb-2">
               Selecciona tu respuesta:
@@ -591,24 +587,7 @@
             <!-- Conditional Block: When Attending (Yes) -->
             <div id="rsvp-attending-fields" class="space-y-3 transition-all duration-300">
               
-              <!-- Dietary Preference -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                <div>
-                  <label for="rsvp-diet" class="block font-sans text-[9px] uppercase tracking-wider text-text-muted mb-1 font-semibold">Preferencia alimentaria</label>
-                  <select id="rsvp-diet" class="rsvp-input cursor-pointer bg-white">
-                    <option value="Tradicional">Menú tradicional</option>
-                    <option value="Vegetariano">Vegetariano</option>
-                    <option value="Vegano">Vegano</option>
-                    <option value="Celiaco">Celíaco / Sin gluten</option>
-                  </select>
-                </div>
-                <div>
-                  <label for="rsvp-allergies" class="block font-sans text-[9px] uppercase tracking-wider text-text-muted mb-1 font-semibold">¿Alergias o restricciones?</label>
-                  <input id="rsvp-allergies" type="text" placeholder="Ej: Frutos secos, mariscos, etc." class="rsvp-input" />
-                </div>
-              </div>
-
-              <!-- Companion Details (Conditional based on +1 pass) -->
+              <!-- Companion Details (Conditional based on +1 pass) - Solo nombre -->
               <div id="rsvp-companion-section" class="pt-2 border-t border-[#EFE8DF] hidden">
                 <div class="flex items-center justify-between mb-2">
                   <label for="rsvp-has-companion" class="font-sans text-[9.5px] uppercase tracking-wider text-text-charcoal font-semibold cursor-pointer">
@@ -620,27 +599,12 @@
                 <div id="companion-container" class="hidden space-y-2.5 pt-1 pl-2 border-l-2 border-[#D8C5AE]">
                   <div>
                     <label for="rsvp-companion-name" class="block font-sans text-[9px] uppercase tracking-wider text-text-muted mb-1 font-semibold">Nombre del acompañante</label>
-                    <input id="rsvp-companion-name" type="text" placeholder="Nombre completo" class="rsvp-input" />
-                  </div>
-                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                    <div>
-                      <label for="rsvp-companion-diet" class="block font-sans text-[9px] uppercase tracking-wider text-text-muted mb-1 font-semibold">Menú acompañante</label>
-                      <select id="rsvp-companion-diet" class="rsvp-input cursor-pointer bg-white">
-                        <option value="Tradicional">Menú tradicional</option>
-                        <option value="Vegetariano">Vegetariano</option>
-                        <option value="Vegano">Vegano</option>
-                        <option value="Celiaco">Celíaco / Sin gluten</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label for="rsvp-companion-allergies" class="block font-sans text-[9px] uppercase tracking-wider text-text-muted mb-1 font-semibold">¿Alergias o restricciones?</label>
-                      <input id="rsvp-companion-allergies" type="text" placeholder="Ej: Frutos secos, mariscos, etc." class="rsvp-input" />
-                    </div>
+                    <input id="rsvp-companion-name" type="text" placeholder="Nombre completo del acompañante" class="rsvp-input" />
                   </div>
                 </div>
               </div>
 
-              <!-- Song suggestion or note -->
+              <!-- Song suggestion for party -->
               <div>
                 <label for="rsvp-song" class="block font-sans text-[9px] uppercase tracking-wider text-text-muted mb-1 font-semibold">Canción infaltable para la fiesta (opcional)</label>
                 <input id="rsvp-song" type="text" placeholder="Ej: Dua Lipa — Levitating / Tu tema favorito" class="rsvp-input text-[13px]" />
@@ -651,7 +615,7 @@
             <!-- Conditional Block: When NOT Attending (No) -->
             <div id="rsvp-not-attending-fields" class="hidden transition-all duration-300">
               <label for="rsvp-message" class="block font-sans text-[9px] uppercase tracking-wider text-text-muted mb-1 font-semibold">Déjanos un mensaje con tus mejores deseos</label>
-              <textarea id="rsvp-message" rows="3" placeholder="Queridos Natalia y Franco, lamentablemente no podré acompañarlos, pero les deseo lo mejor..." class="rsvp-input text-[13px] resize-none"></textarea>
+              <textarea id="rsvp-message" rows="3" placeholder="Queridos Natalia y Franco, lamentablemente no podré acompañarlos a la fiesta, pero les deseo lo mejor..." class="rsvp-input text-[13px] resize-none"></textarea>
             </div>
 
             <!-- Submit Button with loading state -->
@@ -685,20 +649,20 @@
   <section class="py-8 sm:py-12 md:py-14 px-4">
     <div class="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 sm:gap-10 md:gap-16">
       
-      <!-- Calendar Action Trigger (Opens Smart Calendar Options) -->
+      <!-- Calendar Action Trigger -->
       <button type="button" onclick="openCalendarModal()" class="group flex items-center gap-4 sm:gap-5 text-text-charcoal hover:text-bronze-gold transition-all text-left bg-transparent border-0 cursor-pointer w-[290px] sm:w-[325px] max-w-full">
         <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/85 border border-[#D8C5AE] shadow-md flex items-center justify-center group-hover:scale-105 group-hover:border-bronze-gold group-hover:shadow-lg transition-all flex-shrink-0">
           <img src="images/icon-calendar.svg" alt="Calendario" class="w-9 h-9 sm:w-11 sm:h-11 object-contain" />
         </div>
         <div class="min-w-0">
           <p class="font-serif text-[20px] sm:text-[23px] md:text-[25px] leading-tight font-medium text-text-charcoal group-hover:text-bronze-gold transition-colors">
-            Agrega la fecha a<br />tu calendario
+            Agrega la fiesta a<br />tu calendario
           </p>
           <span class="font-sans text-[10px] sm:text-[11.5px] uppercase tracking-wider text-bronze-gold font-semibold whitespace-nowrap">Google / Apple / Outlook ↗</span>
         </div>
       </button>
 
-      <!-- Novios Paris Action Trigger (Opens Paris Registry Modal) -->
+      <!-- Novios Paris Action Trigger -->
       <button type="button" onclick="openGiftsModal()" class="group flex items-center gap-4 sm:gap-5 text-text-charcoal hover:text-bronze-gold transition-all text-left bg-transparent border-0 cursor-pointer w-[290px] sm:w-[325px] max-w-full">
         <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/85 border border-[#D8C5AE] shadow-md flex items-center justify-center group-hover:scale-105 group-hover:border-bronze-gold group-hover:shadow-lg transition-all flex-shrink-0">
           <img src="images/icon-gift.svg" alt="Regalo" class="w-9 h-9 sm:w-11 sm:h-11 object-contain" />
@@ -718,7 +682,7 @@
   </section>
 
   <!-- ======================================================== -->
-  <!-- 5. DÓNDE Y CUÁNDO SECTION (WITH DIRECT GPS LINKS)        -->
+  <!-- 5. DÓNDE Y CUÁNDO SECTION (SOLO CASONA ANWANDTER 23:00)  -->
   <!-- ======================================================== -->
   <section class="py-12 sm:py-16 px-4">
     
@@ -731,73 +695,36 @@
       <span class="w-14 sm:w-20 h-[1px] bg-bronze-gold opacity-50"></span>
     </div>
 
-    <!-- Two Venues Grid: Ceremonia & Recepción -->
-    <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 text-center">
-      
-      <!-- Venue 1: CEREMONIA RELIGIOSA -->
-      <div class="double-bezel-card p-6 sm:p-8 flex flex-col items-center justify-between hover:shadow-luxury-hover transition-all duration-300">
+    <!-- Centered Single Venue Card: CASONA ANWANDTER -->
+    <div class="max-w-xl mx-auto text-center">
+      <div class="double-bezel-card p-7 sm:p-10 flex flex-col items-center justify-between hover:shadow-luxury-hover transition-all duration-300">
         <div class="flex flex-col items-center w-full">
           
-          <div class="w-16 h-16 mb-3 rounded-full bg-[#F4E9D7]/50 border border-[#D8C5AE] flex items-center justify-center shadow-sm">
-            <img src="images/icon-church.svg" alt="Ceremonia Iglesia San Ignacio" class="w-9 h-9 object-contain" />
+          <div class="w-16 h-16 sm:w-20 sm:h-20 mb-3.5 rounded-full bg-[#F4E9D7]/50 border border-[#D8C5AE] flex items-center justify-center shadow-sm">
+            <img src="images/icon-reception.svg" alt="Fiesta Casona Anwandter" class="w-9 h-9 sm:w-11 sm:h-11 object-contain" />
           </div>
 
-          <span class="font-sans text-bronze-gold text-[10px] sm:text-[11px] tracking-[0.25em] font-semibold uppercase mb-1">
-            Ceremonia Religiosa
+          <span class="font-sans text-bronze-gold text-[10px] sm:text-[11.5px] tracking-[0.25em] font-semibold uppercase mb-1">
+            Fiesta de Matrimonio
           </span>
 
-          <h3 class="font-serif text-text-charcoal text-[21px] sm:text-[23px] font-semibold leading-snug">
-            Iglesia San Ignacio de Loyola
-          </h3>
-
-          <!-- Readable address in crisp font -->
-          <p class="font-serif text-text-muted text-[15px] sm:text-[16px] mt-1 mb-2 font-normal">
-            Padre Alonso de Ovalle #1494, Santiago Centro
-          </p>
-
-          <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#F4E9D7]/60 border border-[#D8C5AE] rounded-full text-bronze-gold font-serif font-semibold text-[14.5px] mb-6">
-            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            18:00 hrs
-          </div>
-        </div>
-
-        <!-- Direct GPS Action Buttons -->
-        <div class="flex flex-wrap items-center justify-center gap-2.5 w-full pt-4 border-t border-[#EFE8DF]">
-          <a href="https://maps.google.com/?q=Iglesia+San+Ignacio+de+Loyola+Padre+Alonso+de+Ovalle+1494+Santiago" target="_blank" rel="noopener noreferrer" class="btn-luxury-pill" title="Abrir en Google Maps">
-            <span>Google Maps</span>
-            <span class="icon-bubble">↗</span>
-          </a>
-          <a href="https://waze.com/ul?q=Iglesia+San+Ignacio+de+Loyola+Padre+Alonso+de+Ovalle+1494+Santiago" target="_blank" rel="noopener noreferrer" class="btn-luxury-pill bg-[#5B6350] hover:bg-[#434A3A]" title="Abrir en Waze">
-            <span>Waze</span>
-            <span class="icon-bubble">↗</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Venue 2: RECEPCIÓN Y FIESTA -->
-      <div class="double-bezel-card p-6 sm:p-8 flex flex-col items-center justify-between hover:shadow-luxury-hover transition-all duration-300">
-        <div class="flex flex-col items-center w-full">
-          
-          <div class="w-16 h-16 mb-3 rounded-full bg-[#F4E9D7]/50 border border-[#D8C5AE] flex items-center justify-center shadow-sm">
-            <img src="images/icon-reception.svg" alt="Recepción Casona Anwandter" class="w-9 h-9 object-contain" />
-          </div>
-
-          <span class="font-sans text-bronze-gold text-[10px] sm:text-[11px] tracking-[0.25em] font-semibold uppercase mb-1">
-            Recepción, Cóctel & Fiesta
-          </span>
-
-          <h3 class="font-serif text-text-charcoal text-[21px] sm:text-[23px] font-semibold leading-snug">
+          <h3 class="font-serif text-text-charcoal text-[24px] sm:text-[27px] font-semibold leading-snug">
             Casona Anwandter
           </h3>
 
           <!-- Readable address in crisp font -->
-          <p class="font-serif text-text-muted text-[15px] sm:text-[16px] mt-1 mb-6 font-normal">
+          <p class="font-serif text-text-muted text-[15px] sm:text-[16px] mt-1 mb-3 font-normal">
             Avenida España #620, Santiago Centro
           </p>
+
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#F4E9D7]/60 border border-[#D8C5AE] rounded-full text-bronze-gold font-serif font-semibold text-[15px] sm:text-[16px] mb-6">
+            <svg class="w-4 h-4 text-bronze-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            23:00 hrs
+          </div>
         </div>
 
         <!-- Direct GPS Action Buttons -->
-        <div class="flex flex-wrap items-center justify-center gap-2.5 w-full pt-4 border-t border-[#EFE8DF]">
+        <div class="flex flex-wrap items-center justify-center gap-3 w-full pt-5 border-t border-[#EFE8DF]">
           <a href="https://maps.google.com/?q=Casona+Anwandter+Avenida+Espana+620+Santiago" target="_blank" rel="noopener noreferrer" class="btn-luxury-pill" title="Abrir en Google Maps">
             <span>Google Maps</span>
             <span class="icon-bubble">↗</span>
@@ -808,13 +735,12 @@
           </a>
         </div>
       </div>
-
     </div>
 
     <!-- Scroll down to illustrated map indicator -->
     <div class="text-center mt-10">
       <a href="#mapa-section" class="inline-flex items-center gap-1.5 text-bronze-gold hover:text-text-charcoal font-sans text-[10px] uppercase tracking-widest font-semibold transition-colors">
-        <span>Ver plano ilustrado de cómo llegar</span>
+        <span>Ver plano ilustrado de cómo llegar a Casona Anwandter</span>
         <svg class="w-3.5 h-3.5 animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 10l5 5 5-5"/></svg>
       </a>
     </div>
@@ -843,7 +769,7 @@
           Formal
         </p>
         <p class="font-serif italic text-text-muted text-[14px] leading-relaxed max-w-[280px]">
-          Traje formal y vestido largo o de fiesta.
+          Traje formal y vestido de fiesta.
         </p>
         <p class="font-sans text-[9px] uppercase tracking-wider text-bronze-gold font-semibold mt-1">
           Nota: Colores blanco y marfil reservados para la novia.
@@ -863,7 +789,7 @@
         <div class="vintage-map-inner-border"></div>
 
         <!-- The Grand Architectural Map Image with lazy load -->
-        <img src="images/mapa-santiago.svg" loading="lazy" decoding="async" alt="Mapa ilustrado: Cómo llegar a Iglesia San Ignacio de Loyola y Casona Anwandter" class="w-full h-auto select-none rounded-[2px] block" />
+        <img src="images/mapa-santiago.svg" loading="lazy" decoding="async" alt="Mapa ilustrado: Cómo llegar a Casona Anwandter" class="w-full h-auto select-none rounded-[2px] block" />
       </div>
     </div>
   </section>
@@ -886,7 +812,7 @@
       </p>
       <div class="w-16 h-[1px] bg-[#B5824C]/40 mb-4"></div>
       <p class="font-serif italic text-[#FAF7F2]/75 text-[14px]">
-        "Gracias por ser parte de nuestra historia y acompañarnos en este comienzo."
+        "Gracias por ser parte de nuestra historia y acompañarnos a celebrar esta gran noche."
       </p>
     </div>
   </footer>
@@ -929,7 +855,7 @@
 
 
   <!-- ======================================================== -->
-  <!-- MODAL 2: SMART CALENDAR SELECTION                        -->
+  <!-- MODAL 2: SMART CALENDAR SELECTION (FIESTA 23:00)         -->
   <!-- ======================================================== -->
   <div id="modal-calendar" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Añadir a calendario">
     <div class="max-w-sm w-full double-bezel-card p-6 sm:p-7 relative bg-white shadow-2xl text-center">
@@ -943,13 +869,13 @@
       </div>
 
       <h3 class="font-serif text-[22px] font-semibold text-text-charcoal mb-1">
-        Agendar la Fecha
+        Agendar la Fiesta
       </h3>
       <p class="font-sans text-[10px] tracking-[0.2em] uppercase text-bronze-gold font-semibold mb-2">
-        Sábado 30 de Enero, 2027
+        Sábado 30 de Enero, 2027 · 23:00 hrs
       </p>
       <p class="font-serif text-[14px] text-text-muted mb-5 leading-snug">
-        Elige tu calendario favorito para no perderte ningún detalle:
+        Elige tu calendario favorito para no perderte la fiesta:
       </p>
 
       <div class="space-y-2.5">
@@ -1036,17 +962,17 @@
     <div class="max-w-md w-full double-bezel-card p-6 sm:p-8 relative bg-white shadow-2xl text-center">
       
       <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-[#F4E9D7] text-bronze-gold flex items-center justify-center border border-[#D8C5AE] text-3xl">
-        💌
+        🪩
       </div>
 
       <span class="font-sans text-[9px] uppercase tracking-[0.25em] text-bronze-gold font-semibold block mb-1">
         ¡Muchísimas Gracias!
       </span>
       <h3 id="rsvp-success-title" class="font-serif text-[26px] font-bold text-text-charcoal mb-2">
-        Respuesta Registrada
+        ¡Nos vemos en la fiesta!
       </h3>
       <p id="rsvp-success-msg" class="font-serif italic text-text-muted text-[15px] mb-6 leading-snug">
-        Nos emociona muchísimo contar con tu compañía en nuestro matrimonio.
+        Nos emociona muchísimo contar con tu compañía para celebrar y bailar toda la noche.
       </p>
 
       <div class="space-y-3">
@@ -1081,28 +1007,22 @@
     /* ========================================================
        CONFIGURACIÓN DE INTEGRACIÓN & PASES DE INVITACIÓN
        ======================================================== */
-    // Configura aquí tu Webhook para registrar confirmaciones en Google Sheets, Formspree o Airtable:
-    // Ejemplo: 'https://formspree.io/f/xyz123' o tu URL de Google Apps Script Web App
     const RSVP_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwfC4jrQtrKOUpDdd-fLTK4Gxo119FVsFk3qT6FUcssUuGMbdDmTCRKZXDxlrAd_aoN/exec'; 
 
-    // Teléfono de contacto de los novios para el botón directo de WhatsApp (código país + número, sin signos):
+    // Teléfono de contacto de los novios para el botón directo de WhatsApp:
     const NOVIOS_WHATSAPP_PHONE = '56966660670';
 
-    // Configuración de Invitaciones y Enlaces:
-    // • Matrimonio Completo Individual: URL directa (ej: tudominio.cl/)
-    // • Matrimonio Completo con Acompañante (+1): URL con token (ej: tudominio.cl/?t=b8k2)
-    // • Solo Fiesta Individual: tudominio.cl/fiesta.html (o tudominio.cl/?fiesta)
-    // • Solo Fiesta con Acompañante (+1): tudominio.cl/fiesta.html?t=b8k2 (o tudominio.cl/?fiesta&t=b8k2)
+    // Configuración de Invitación con Acompañante (+1):
     const PLUS_ONE_PARAM = 't';         // Nombre del parámetro en la URL (?t=...)
     const PLUS_ONE_TOKEN = 'b8k2';      // Token secreto que desbloquea el +1
 
 
     /* ========================================================
-       1. LIVE COUNTDOWN TIMER (PRECISO & SIN SALTO)
+       1. LIVE COUNTDOWN TIMER (FIESTA 23:00 HRS)
        ======================================================== */
     (function initCountdown() {
-      // Fecha del matrimonio: Sábado 30 de Enero de 2027 a las 18:00 hrs (Santiago de Chile, GMT-3)
-      const targetDate = new Date('2027-01-30T18:00:00-03:00').getTime();
+      // Fecha de la fiesta: Sábado 30 de Enero de 2027 a las 23:00 hrs (Santiago de Chile, GMT-3)
+      const targetDate = new Date('2027-01-30T23:00:00-03:00').getTime();
       const elDays = document.getElementById('cd-days');
       const elHours = document.getElementById('cd-hours');
       const elMinutes = document.getElementById('cd-minutes');
@@ -1131,7 +1051,6 @@
         elSeconds.textContent = seconds < 10 ? '0' + seconds : seconds;
       }
 
-      // Ejecución inmediata inicial para evitar destello
       update();
       setInterval(update, 1000);
     })();
@@ -1248,7 +1167,6 @@
         }
       }
 
-      // Al terminar una canción, pasa automáticamente a la siguiente en bucle infinito
       audio.addEventListener('ended', () => {
         nextTrack(true);
       });
@@ -1313,7 +1231,6 @@
         progressFill.style.width = (pct * 100) + '%';
       });
 
-      // Intento inmediato de reproducción al cargar (para navegadores con permisos o historial previo)
       function attemptAutoplay() {
         if (!audio.paused) return;
         const playPromise = audio.play();
@@ -1323,15 +1240,11 @@
             updateUi(true);
             removeUnlockListeners();
           }).catch(() => {
-            // Autoplay sin interacción previa restringido por la política de seguridad del navegador.
-            // Se mantendrán los escuchadores para iniciar la música con el primer toque en la pantalla.
             updateUi(false);
           });
         }
       }
 
-      // Desbloqueo ante el primer toque o interacción real en cualquier parte de la pantalla
-      // 'scroll' se omite intencionalmente porque los navegadores modernos no lo consideran un gesto válido.
       const unlockEvents = ['pointerdown', 'touchstart', 'touchend', 'click', 'keydown'];
 
       function onUserGesture() {
@@ -1344,9 +1257,7 @@
           updateUi(true);
           showToast(`♪ Reproduciendo: ${playlist[currentTrackIndex].title}`, '🎶');
           removeUnlockListeners();
-        }).catch(() => {
-          // Si por alguna razón el evento no fue suficiente, mantenemos los listeners activos
-        });
+        }).catch(() => {});
       }
 
       function removeUnlockListeners() {
@@ -1361,7 +1272,6 @@
         document.addEventListener(evt, onUserGesture, { capture: true });
       });
 
-      // Intentos automáticos al iniciar la página
       attemptAutoplay();
       if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', attemptAutoplay);
@@ -1429,7 +1339,6 @@
       }, 150);
     }
 
-    // Cerrar con Escape o mover con flechas
     window.addEventListener('keydown', (e) => {
       const modal = document.getElementById('modal-lightbox');
       if (!modal.classList.contains('pointer-events-none')) {
@@ -1441,12 +1350,11 @@
 
 
     /* ========================================================
-       4. RSVP LOGIC, INVITATION TYPES & CONDITIONAL FIELDS
+       4. RSVP LOGIC, INVITATION TYPES & CONDITIONAL FIELDS (FIESTA)
        ======================================================== */
     function hasPlusOneAccess() {
       try {
         const urlParams = new URLSearchParams(window.location.search);
-        // Soporta ?t=b8k2 y ?pase=b8k2
         const token = urlParams.get(PLUS_ONE_PARAM) || urlParams.get('pase');
         return token === PLUS_ONE_TOKEN;
       } catch (e) {
@@ -1491,7 +1399,6 @@
         fieldsAttending.classList.add('hidden');
         fieldsNotAttending.classList.remove('hidden');
       }
-      // Re-verificar visibilidad de campos de acompañante según tipo de invitación
       initInvitationType();
     }
 
@@ -1504,10 +1411,6 @@
         container.classList.add('hidden');
         const compName = document.getElementById('rsvp-companion-name');
         if (compName) compName.value = '';
-        const compDiet = document.getElementById('rsvp-companion-diet');
-        if (compDiet) compDiet.selectedIndex = 0;
-        const compAllergies = document.getElementById('rsvp-companion-allergies');
-        if (compAllergies) compAllergies.value = '';
       }
     }
 
@@ -1528,28 +1431,27 @@
       const companionCheckbox = document.getElementById('rsvp-has-companion');
       const hasCompanion = isPlusOneAllowed && attendance === 'si' && companionCheckbox && companionCheckbox.checked;
       const companionName = hasCompanion ? document.getElementById('rsvp-companion-name').value.trim() : '';
-      const companionDiet = hasCompanion ? document.getElementById('rsvp-companion-diet').value : '';
-      const companionAllergies = hasCompanion ? document.getElementById('rsvp-companion-allergies').value.trim() : '';
 
-      // Payload completo de la confirmación
+      // Payload completo de confirmación para solo fiesta (sin campos de comida)
       const payload = {
         fechaEnvio: new Date().toISOString(),
-        tipoInvitacion: isPlusOneAllowed ? 'Con acompañante (+1)' : 'Individual',
+        tipoInvitacion: isPlusOneAllowed ? 'Fiesta con acompañante (+1)' : 'Fiesta individual',
+        tipoEvento: 'Fiesta (23:00 hrs)',
         cuposPermitidos: isPlusOneAllowed ? 2 : 1,
-        asistira: attendance === 'si' ? 'Sí, asistirá' : 'No asistirá',
+        asistira: attendance === 'si' ? 'Sí, asistirá a la fiesta' : 'No asistirá',
         nombre: name,
-        preferenciaAlimentaria: attendance === 'si' ? document.getElementById('rsvp-diet').value : 'N/A',
-        alergias: attendance === 'si' ? document.getElementById('rsvp-allergies').value.trim() : 'N/A',
+        preferenciaAlimentaria: 'N/A (Solo Fiesta)',
+        alergias: 'N/A (Solo Fiesta)',
         acompanante: hasCompanion ? {
           asiste: true,
           nombre: companionName || 'Acompañante',
-          preferencia: companionDiet,
-          alergias: companionAllergies || 'Ninguna'
+          preferencia: 'N/A (Solo Fiesta)',
+          alergias: 'N/A (Solo Fiesta)'
         } : { asiste: false },
         cancionODeseo: attendance === 'si' ? document.getElementById('rsvp-song').value.trim() : document.getElementById('rsvp-message').value.trim()
       };
 
-      // Guardar respaldo local en el navegador por seguridad
+      // Guardar respaldo local en el navegador
       try {
         const localList = JSON.parse(localStorage.getItem('matrimonio_rsvp_backup') || '[]');
         localList.push(payload);
@@ -1563,7 +1465,6 @@
       btnText.textContent = 'Enviando...';
       spinner.classList.remove('hidden');
 
-      // Envío a Webhook si está configurado (compatible con Google Apps Script y servicios REST)
       if (RSVP_WEBHOOK_URL) {
         try {
           await fetch(RSVP_WEBHOOK_URL, {
@@ -1583,25 +1484,20 @@
         btnText.textContent = 'Enviar Confirmación';
         spinner.classList.add('hidden');
 
-        // Configurar enlace directo de WhatsApp con el resumen formateado
+        // Formato limpio de WhatsApp para la fiesta
         let companionText = '';
         if (payload.acompanante.asiste) {
-          companionText = `\n• Acompañante: ${payload.acompanante.nombre} (${payload.acompanante.preferencia})`;
-          if (payload.acompanante.alergias && payload.acompanante.alergias !== 'Ninguna') {
-            companionText += `\n• Alergias acompañante: ${payload.acompanante.alergias}`;
-          }
+          companionText = `\n• Acompañante: ${payload.acompanante.nombre}`;
         }
-        const dietText = payload.asistira === 'Sí, asistirá' ? `\n• Menú: ${payload.preferenciaAlimentaria}\n• Alergias: ${payload.alergias || 'Ninguna'}` : '';
-        const noteText = payload.cancionODeseo ? `\n• Mensaje/Canción: "${payload.cancionODeseo}"` : '';
+        const noteOrSongText = payload.cancionODeseo ? (payload.asistira.includes('Sí') ? `\n• Canción sugerida: "${payload.cancionODeseo}"` : `\n• Mensaje: "${payload.cancionODeseo}"`) : '';
         
         const waMessage = encodeURIComponent(
-          `¡Hola Natalia y Franco! 💍\nAcabo de confirmar mi asistencia para su matrimonio:\n\n` +
+          `¡Hola Natalia y Franco! 🪩\nAcabo de confirmar mi asistencia para la fiesta de su matrimonio:\n\n` +
           `• Estado: ${payload.asistira}\n` +
           `• Nombre: ${payload.nombre}` +
-          dietText +
           companionText +
-          noteText +
-          `\n\n¡Un abrazo enorme!`
+          noteOrSongText +
+          `\n• Hora: Sábado 30 de Enero · 23:00 hrs\n\n¡Nos vemos allá para celebrar!`
         );
 
         const waLink = document.getElementById('btn-rsvp-whatsapp');
@@ -1610,11 +1506,11 @@
         const successTitle = document.getElementById('rsvp-success-title');
         const successMsg = document.getElementById('rsvp-success-msg');
         if (attendance === 'si') {
-          successTitle.textContent = '¡Te esperamos con los brazos abiertos!';
-          successMsg.textContent = `Muchas gracias ${name}. Tu confirmación para el 30 de enero de 2027 ha quedado registrada.`;
+          successTitle.textContent = '¡Nos vemos en la fiesta!';
+          successMsg.textContent = `Muchas gracias ${name}. Tu confirmación para la fiesta el sábado 30 de enero de 2027 a las 23:00 hrs ha quedado registrada.`;
         } else {
           successTitle.textContent = 'Gracias por avisarnos';
-          successMsg.textContent = `Agradecemos mucho tu respuesta ${name}. Sentiremos tu ausencia pero llevamos tus buenos deseos con nosotros.`;
+          successMsg.textContent = `Agradecemos mucho tu respuesta ${name}. Sentiremos tu ausencia en la fiesta pero llevamos tus buenos deseos con nosotros.`;
         }
 
         // Abrir modal de éxito y reiniciar formulario
@@ -1643,16 +1539,15 @@
 
 
     /* ========================================================
-       5. MODALES DE CALENDARIO, REGALOS & MAPA
+       5. MODALES DE CALENDARIO, REGALOS & MAPA (FIESTA 23:00)
        ======================================================== */
     function openCalendarModal() {
       const modal = document.getElementById('modal-calendar');
-      // Configurar enlace directo a Google Calendar
       const gcalLink = document.getElementById('btn-add-gcal');
-      const title = encodeURIComponent('Matrimonio Natalia & Franco');
-      const details = encodeURIComponent('Ceremonia en Iglesia San Ignacio de Loyola (18:00 hr) seguida de Recepción en Casona Anwandter.');
-      const location = encodeURIComponent('Iglesia San Ignacio de Loyola, Padre Alonso de Ovalle 1494, Santiago Centro');
-      const dates = '20270130T210000Z/20270131T070000Z'; // 18:00 Santiago (GMT-3) = 21:00 UTC
+      const title = encodeURIComponent('Fiesta Matrimonio Natalia & Franco');
+      const details = encodeURIComponent('Fiesta de matrimonio en Casona Anwandter a partir de las 23:00 hrs.');
+      const location = encodeURIComponent('Casona Anwandter, Avenida España 620, Santiago Centro');
+      const dates = '20270131T020000Z/20270131T080000Z'; // 23:00 Santiago (GMT-3) = 02:00 UTC día siguiente
       gcalLink.href = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${dates}&details=${details}&location=${location}`;
 
       modal.classList.remove('hidden');
@@ -1673,16 +1568,16 @@
       const icsContent = 
 `BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Natalia y Franco//Matrimonio//ES
+PRODID:-//Natalia y Franco//Fiesta Matrimonio//ES
 CALSCALE:GREGORIAN
 BEGIN:VEVENT
-UID:matrimonio-natalia-franco-2027@boda
+UID:fiesta-matrimonio-natalia-franco-2027@boda
 DTSTAMP:20261001T000000Z
-DTSTART:20270130T210000Z
-DTEND:20270131T070000Z
-SUMMARY:Matrimonio Natalia & Franco
-DESCRIPTION:Ceremonia en Iglesia San Ignacio de Loyola (18:00 hr) seguida de Recepción en Casona Anwandter.
-LOCATION:Iglesia San Ignacio de Loyola, Padre Alonso de Ovalle #1494, Santiago Centro
+DTSTART:20270131T020000Z
+DTEND:20270131T080000Z
+SUMMARY:Fiesta Matrimonio Natalia & Franco
+DESCRIPTION:Fiesta de matrimonio en Casona Anwandter a partir de las 23:00 hrs.
+LOCATION:Casona Anwandter, Avenida España #620, Santiago Centro
 STATUS:CONFIRMED
 END:VEVENT
 END:VCALENDAR`;
@@ -1690,7 +1585,7 @@ END:VCALENDAR`;
       const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
       const link = document.createElement('a');
       link.href = window.URL.createObjectURL(blob);
-      link.setAttribute('download', 'Matrimonio_Natalia_y_Franco.ics');
+      link.setAttribute('download', 'Fiesta_Matrimonio_Natalia_y_Franco.ics');
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
