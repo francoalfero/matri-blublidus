@@ -1454,7 +1454,9 @@
       }
     }
 
-    function initInvitationType() {
+    let companionInitialized = false;
+
+    function initInvitationType(isReset = false) {
       const isPlusOne = hasPlusOneAccess();
       const badge = document.getElementById('rsvp-companion-badge');
       const companionSection = document.getElementById('rsvp-companion-section');
@@ -1463,6 +1465,11 @@
       if (isPlusOne) {
         if (badge) badge.classList.remove('hidden');
         if (companionSection) companionSection.classList.remove('hidden');
+        if (!companionInitialized || isReset) {
+          if (companionCheck) companionCheck.checked = true;
+          toggleCompanionFields(true);
+          companionInitialized = true;
+        }
       } else {
         if (badge) badge.classList.add('hidden');
         if (companionSection) companionSection.classList.add('hidden');
@@ -1621,7 +1628,7 @@
         openRsvpSuccessModal();
         document.getElementById('rsvp-form').reset();
         setAttendance(true);
-        initInvitationType();
+        initInvitationType(true);
       }, 600);
     }
 
@@ -1772,8 +1779,8 @@ END:VCALENDAR`;
     /* ========================================================
        7. INICIALIZACIÓN DE TIPO DE INVITACIÓN
        ======================================================== */
-    initInvitationType();
-    document.addEventListener('DOMContentLoaded', initInvitationType);
+    initInvitationType(true);
+    document.addEventListener('DOMContentLoaded', () => initInvitationType());
   </script>
 
 </body>
